@@ -10,20 +10,74 @@
   },
   {
     "id": "2",
-    "title": "Indo-Western Crop Top & Palazzos",
-    "category": "fusion",
-    "price": "$52.00",
-    "image": "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=600&q=80",
+    "title": "Silk Floral Designer Saree",
+    "category": "ethnic",
+    "price": "$68.00",
+    "image": "https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?auto=format&fit=crop&w=600&q=80",
     "affiliateUrl": "https://desifit.com/contact",
     "badge": "Trending"
   },
   {
     "id": "3",
+    "title": "Velvet Festive Lehenga Choli",
+    "category": "ethnic",
+    "price": "$120.00",
+    "image": "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=600&q=80",
+    "affiliateUrl": "https://desifit.com/contact",
+    "badge": "Festive Pick"
+  },
+  {
+    "id": "4",
+    "title": "Indo-Western Crop Top & Palazzos",
+    "category": "fusion",
+    "price": "$52.00",
+    "image": "https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=600&q=80",
+    "affiliateUrl": "https://desifit.com/contact",
+    "badge": "Trending"
+  },
+  {
+    "id": "5",
+    "title": "Draped Saree Style Jumpsuit",
+    "category": "fusion",
+    "price": "$75.00",
+    "image": "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=600&q=80",
+    "affiliateUrl": "https://desifit.com/contact",
+    "badge": "New Arrival"
+  },
+  {
+    "id": "6",
+    "title": "Asymmetric Embroidered Jacket Set",
+    "category": "fusion",
+    "price": "$89.00",
+    "image": "https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=600&q=80",
+    "affiliateUrl": "https://desifit.com/contact",
+    "badge": "Editor's Choice"
+  },
+  {
+    "id": "7",
     "title": "Seamless Performance Gym Co-ord Set",
     "category": "active",
     "price": "$38.00",
     "image": "https://images.unsplash.com/photo-1518310383802-640c2de311b2?auto=format&fit=crop&w=600&q=80",
     "affiliateUrl": "https://desifit.com/contact",
-    "badge": "New Arrival"
+    "badge": "Bestseller"
+  },
+  {
+    "id": "8",
+    "title": "High-Waisted Ribbed Yoga Leggings",
+    "category": "active",
+    "price": "$28.00",
+    "image": "https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=600&q=80",
+    "affiliateUrl": "https://desifit.com/contact",
+    "badge": "Must Have"
+  },
+  {
+    "id": "9",
+    "title": "Oversized Athleisure Airport Hoodie",
+    "category": "active",
+    "price": "$42.00",
+    "image": "https://images.unsplash.com/photo-1556905055-8f358a7a47b2?auto=format&fit=crop&w=600&q=80",
+    "affiliateUrl": "https://desifit.com/contact",
+    "badge": "Cozy Fit"
   }
 ]
