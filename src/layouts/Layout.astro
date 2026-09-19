@@ -9,12 +9,26 @@
 		<title>DesiFit | Modern South Asian Fashion & Activewear</title>
 	</head>
 	<body>
+		<!-- Global Top Navigation Header -->
+		<header style="border-bottom: 1px solid #eee; background: #fff; position: sticky; top: 0; z-index: 100;">
+			<div style="max-width: 1000px; margin: 0 auto; padding: 1rem 1.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+				<a href="/" style="font-size: 1.5rem; font-weight: 800; letter-spacing: -0.5px; color: #111; text-decoration: none;">
+					DesiFit<span style="color: #e63946;">.</span>
+				</a>
+				<nav style="display: flex; gap: 1.5rem; font-weight: 600; font-size: 0.95rem;">
+					<a href="/ethnic" style="color: #333; text-decoration: none;">Ethnic</a>
+					<a href="/fusion" style="color: #333; text-decoration: none;">Fusion</a>
+					<a href="/active" style="color: #333; text-decoration: none;">Activewear</a>
+				</nav>
+			</div>
+		</header>
+
 		<!-- Centered Main Content Wrapper -->
-		<main style="max-width: 800px; margin: 0 auto; padding: 2rem 1.5rem; min-height: 70vh;">
+		<main style="max-width: 1000px; margin: 0 auto; padding: 2rem 1.5rem; min-height: 70vh;">
 			<slot />
 		</main>
 
-		<!-- Properly Placed Global Footer -->
+		<!-- Global Footer -->
 		<footer style="text-align: center; padding: 2rem 1rem; margin-top: 3rem; border-top: 1px solid #eee; font-family: system-ui, sans-serif;">
 			<p style="margin-bottom: 0.5rem; color: #666;">&copy; 2026 DesiFit. All rights reserved.</p>
 			<nav>
