@@ -1,11 +1,87 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
+import products from '../data/products.json';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+// Grab up to 3 featured items for the homepage preview
+const featuredProducts = products.slice(0, 3);
 ---
 
-<Layout>
-	<Welcome />
+<Layout title="DesiFit | Modern South Asian Fashion & Activewear Lookbook">
+  <!-- Hero Section -->
+  <section style="text-align: center; padding: 3rem 1rem 2rem 1rem; background: #fafafa; border-radius: 16px; margin-bottom: 3rem;">
+    <span style="font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: #e63946;">Curated Style Guide</span>
+    <h1 style="font-size: 2.5rem; font-weight: 800; color: #111; margin: 0.75rem 0 1rem 0; line-height: 1.2;">
+      Elevate Your Wardrobe with Modern Desi Elegance
+    </h1>
+    <p style="font-size: 1.1rem; color: #555; max-width: 600px; margin: 0 auto 2rem auto; line-height: 1.6;">
+      Discover handpicked ethnic wear, fusion silhouettes, and activewear tailored for modern South Asian lifestyle & fitness.
+    </p>
+    <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+      <a href="/ethnic" style="background: #111; color: #fff; padding: 12px 24px; border-radius: 8px; font-weight: 600; text-decoration: none;">Explore Ethnic &rarr;</a>
+      <a href="/fusion" style="background: #fff; color: #111; border: 1px solid #ccc; padding: 12px 24px; border-radius: 8px; font-weight: 600; text-decoration: none;">Shop Fusion</a>
+    </div>
+  </section>
+
+  <!-- Category Quick Links -->
+  <section style="margin-bottom: 3.5rem;">
+    <h2 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 1.5rem; color: #111; text-align: center;">Browse by Category</h2>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.25rem;">
+      
+      <a href="/ethnic" style="text-decoration: none; color: inherit;">
+        <div style="border: 1px solid #eee; border-radius: 12px; padding: 1.5rem; text-align: center; background: #fff; box-shadow: 0 2px 8px rgba(0,0,0,0.03); transition: transform 0.2s;">
+          <div style="font-size: 2rem; margin-bottom: 0.5rem;">✨</div>
+          <h3 style="font-size: 1.2rem; font-weight: 700; margin: 0 0 0.25rem 0; color: #111;">Ethnic Wear</h3>
+          <p style="font-size: 0.9rem; color: #666; margin: 0;">Anarkalis, Sarees & Festive Sets</p>
+        </div>
+      </a>
+
+      <a href="/fusion" style="text-decoration: none; color: inherit;">
+        <div style="border: 1px solid #eee; border-radius: 12px; padding: 1.5rem; text-align: center; background: #fff; box-shadow: 0 2px 8px rgba(0,0,0,0.03); transition: transform 0.2s;">
+          <div style="font-size: 2rem; margin-bottom: 0.5rem;">💃</div>
+          <h3 style="font-size: 1.2rem; font-weight: 700; margin: 0 0 0.25rem 0; color: #111;">Indo-Western</h3>
+          <p style="font-size: 0.9rem; color: #666; margin: 0;">Crop Tops, Palazzos & Jackets</p>
+        </div>
+      </a>
+
+      <a href="/active" style="text-decoration: none; color: inherit;">
+        <div style="border: 1px solid #eee; border-radius: 12px; padding: 1.5rem; text-align: center; background: #fff; box-shadow: 0 2px 8px rgba(0,0,0,0.03); transition: transform 0.2s;">
+          <div style="font-size: 2rem; margin-bottom: 0.5rem;">⚡</div>
+          <h3 style="font-size: 1.2rem; font-weight: 700; margin: 0 0 0.25rem 0; color: #111;">Activewear</h3>
+          <p style="font-size: 0.9rem; color: #666; margin: 0;">Gym Co-ords & Athleisure</p>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- Featured Trends Grid -->
+  <section>
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+      <h2 style="font-size: 1.5rem; font-weight: 700; color: #111; margin: 0;">Featured Looks</h2>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem;">
+      {featuredProducts.map((product) => (
+        <article style="border: 1px solid #eee; border-radius: 12px; overflow: hidden; background: #fff; box-shadow: 0 4px 12px rgba(0,0,0,0.04); display: flex; flex-direction: column;">
+          <div style="position: relative; width: 100%; height: 320px; background: #f9f9f9;">
+            <img src={product.image} alt={product.title} style="width: 100%; height: 100%; object-fit: cover;" />
+            {product.badge && (
+              <span style="position: absolute; top: 10px; left: 10px; background: #111; color: #fff; font-size: 0.7rem; font-weight: 600; padding: 4px 8px; border-radius: 20px; text-transform: uppercase;">
+                {product.badge}
+              </span>
+            )}
+          </div>
+          <div style="padding: 1rem; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+              <h3 style="font-size: 1.1rem; font-weight: 600; color: #222; margin: 0 0 0.4rem 0;">{product.title}</h3>
+              <p style="font-size: 1.05rem; font-weight: 700; color: #e63946; margin: 0 0 1rem 0;">{product.price}</p>
+            </div>
+            <a href={product.affiliateUrl} target="_blank" rel="noopener noreferrer" style="display: block; text-align: center; background: #111; color: #fff; text-decoration: none; font-weight: 600; padding: 10px; border-radius: 6px;">
+              Shop This Look &rarr;
+            </a>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
 </Layout>
