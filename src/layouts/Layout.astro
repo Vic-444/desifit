@@ -6,10 +6,23 @@
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="icon" href="/favicon.ico" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+		<title>DesiFit | Modern South Asian Fashion & Activewear</title>
 	</head>
 	<body>
-		<slot />
+		<!-- Centered Main Content Wrapper -->
+		<main style="max-width: 800px; margin: 0 auto; padding: 2rem 1.5rem; min-height: 70vh;">
+			<slot />
+		</main>
+
+		<!-- Properly Placed Global Footer -->
+		<footer style="text-align: center; padding: 2rem 1rem; margin-top: 3rem; border-top: 1px solid #eee; font-family: system-ui, sans-serif;">
+			<p style="margin-bottom: 0.5rem; color: #666;">&copy; 2026 DesiFit. All rights reserved.</p>
+			<nav>
+				<a href="/disclosure" style="margin: 0 10px; color: #111; text-decoration: none;">Affiliate Disclosure</a> | 
+				<a href="/privacy" style="margin: 0 10px; color: #111; text-decoration: none;">Privacy Policy</a> | 
+				<a href="/contact" style="margin: 0 10px; color: #111; text-decoration: none;">Contact Us</a>
+			</nav>
+		</footer>
 	</body>
 </html>
 
@@ -17,15 +30,9 @@
 	html,
 	body {
 		margin: 0;
-		width: 100%;
-		height: 100%;
+		padding: 0;
+		font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+		color: #222;
+		background-color: #fff;
 	}
 </style>
-<footer style="text-align: center; padding: 2rem 0; margin-top: 3rem; border-top: 1px solid #eee;">
-  <p>&copy; 2026 DesiFit. All rights reserved.</p>
-  <nav>
-    <a href="/disclosure" style="margin: 0 10px;">Affiliate Disclosure</a> | 
-    <a href="/privacy" style="margin: 0 10px;">Privacy Policy</a> | 
-    <a href="/contact" style="margin: 0 10px;">Contact Us</a>
-  </nav>
-</footer>
