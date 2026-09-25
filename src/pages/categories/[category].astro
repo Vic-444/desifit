@@ -1,0 +1,28 @@
+---
+import Layout from '../../layouts/Layout.astro'; // Adjust path to your layout if needed
+
+// 1. Define static paths for build time
+export async function getStaticPaths() {
+  const categories = [
+    { slug: 'fusion', name: 'Fusion Wear', description: 'Blended modern and traditional styles.' },
+    { slug: 'active', name: 'Active Wear', description: 'Performance and athletic apparel.' },
+    { slug: 'ethnic', name: 'Ethnic Wear', description: 'Traditional and festive clothing.' },
+  ];
+
+  return categories.map((cat) => ({
+    params: { category: cat.slug },
+    props: { categoryData: cat },
+  }));
+}
+
+// 2. Receive props passed from getStaticPaths
+const { category } = Astro.params;
+const { categoryData } = Astro.props;
+---
+
+<Layout title={categoryData.name}>
+  <main>
+    <h1>{categoryData.name}</h1>
+    <p>{categoryData.description}</p>
+  </main>
+</Layout>
