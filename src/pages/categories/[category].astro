@@ -22,7 +22,6 @@ export async function getStaticPaths() {
   ];
 
   return taxonomy.map((cat) => {
-    // Filter products matching this category slug
     const matchingProducts = products.filter(
       (item) => item.category?.toLowerCase() === cat.id.toLowerCase()
     );
@@ -37,21 +36,41 @@ export async function getStaticPaths() {
 const { categoryData, products: categoryProducts } = Astro.props;
 ---
 
-<Layout title={categoryData.title}>
+<Layout title={`${categoryData.title} | DesiFit`}>
   <main class="max-w-7xl mx-auto px-4 py-8 font-sans">
     <h1 class="text-3xl font-bold text-gray-900 mb-2">{categoryData.title}</h1>
     <p class="text-gray-600 mb-8">{categoryData.description}</p>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-      {categoryProducts.length > 0 ? (
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {categoryProducts && categoryProducts.length > 0 ? (
         categoryProducts.map((item) => (
-          <div class="border border-gray-200 rounded-lg p-4 bg-white shadow-sm">
-            <h2 class="font-semibold text-lg text-gray-800">{item.name || item.title}</h2>
-            {item.price && <p class="text-gray-600 mt-1">${item.price}</p>}
+          <div class="border border-gray-200 rounded-xl p-4 bg-white shadow-sm flex flex-col justify-between">
+            <div>
+              {item.image && (
+                <img 
+                  src={item.image} 
+                  alt={item.name || item.title} 
+                  class="w-full h-64 object-cover rounded-lg mb-4" 
+                />
+              )}
+              <h2 class="font-semibold text-lg text-gray-800">{item.name || item.title}</h2>
+              {item.brand && <p class="text-xs text-indigo-600 font-medium mt-1">{item.brand}</p>}
+              {item.price && <p class="text-gray-700 font-bold mt-2">₹{item.price}</p>}
+            </div>
+            {item.affiliateUrl && (
+              <a 
+                href={item.affiliateUrl} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                class="mt-4 block text-center bg-indigo-600 text-white font-medium py-2 px-4 rounded-lg hover:bg-indigo-700 transition"
+              >
+                Shop Fit &rarr;
+              </a>
+            )}
           </div>
         ))
       ) : (
-        <p class="text-gray-500">No products found for this category yet.</p>
+        <p class="text-gray-500 col-span-3">No products found for this category yet.</p>
       )}
     </div>
   </main>
