@@ -1,0 +1,1395 @@
+This file is a merged representation of the entire codebase, combined into a single document by Repomix.
+
+<file_summary>
+This section contains a summary of this file.
+
+<purpose>
+This file contains a packed representation of the entire repository's contents.
+It is designed to be easily consumable by AI systems for analysis, code review,
+or other automated processes.
+</purpose>
+
+<file_format>
+The content is organized as follows:
+1. This summary section
+2. Repository information
+3. Directory structure
+4. Repository files (if enabled)
+5. Multiple file entries, each consisting of:
+  - File path as an attribute
+  - Full contents of the file
+</file_format>
+
+<usage_guidelines>
+- This file should be treated as read-only. Any changes should be made to the
+  original repository files, not this packed version.
+- When processing this file, use the file path to distinguish
+  between different files in the repository.
+- Be aware that this file may contain sensitive information. Handle it with
+  the same level of security as you would the original repository.
+</usage_guidelines>
+
+<notes>
+- Some files may have been excluded based on .gitignore rules and Repomix's configuration
+- Binary files are not included in this packed representation. Please refer to the Repository Structure section for a complete list of file paths, including binary files
+- Files matching patterns in .gitignore are excluded
+- Files matching default ignore patterns are excluded
+- Files are sorted by Git change count (files with more changes are at the bottom)
+</notes>
+
+</file_summary>
+
+<directory_structure>
+.astro/
+  content.d.ts
+  types.d.ts
+public/
+  favicon.svg
+src/
+  components/
+    Welcome.astro
+  data/
+    products.json
+  layouts/
+    Layout.astro
+  pages/
+    categories/
+      [category].astro
+    categories.astro
+    contact.md
+    disclosure.md
+    index.astro
+    privacy.md
+astro.config.mjs
+package.json
+README.md
+tsconfig.json
+</directory_structure>
+
+<files>
+This section contains the contents of the repository's files.
+
+<file path=".astro/content.d.ts">
+declare module 'astro:content' {
+	export interface RenderResult {
+		Content: import('astro/runtime/server/index.js').AstroComponentFactory;
+		headings: import('astro').MarkdownHeading[];
+		remarkPluginFrontmatter: Record<string, any>;
+	}
+	interface Render {
+		'.md': Promise<RenderResult>;
+	}
+
+	export interface RenderedContent {
+		html: string;
+		metadata?: {
+			imagePaths: Array<string>;
+			[key: string]: unknown;
+		};
+	}
+
+	type Flatten<T> = T extends { [K: string]: infer U } ? U : never;
+
+	export type CollectionKey = keyof DataEntryMap;
+	export type CollectionEntry<C extends CollectionKey> = Flatten<DataEntryMap[C]>;
+
+	type AllValuesOf<T> = T extends any ? T[keyof T] : never;
+
+	export type ReferenceDataEntry<
+		C extends CollectionKey,
+		E extends keyof DataEntryMap[C] = string,
+	> = {
+		collection: C;
+		id: E;
+	};
+
+	export type ReferenceLiveEntry<C extends keyof LiveContentConfig['collections']> = {
+		collection: C;
+		id: string;
+	};
+
+	export function getCollection<C extends keyof DataEntryMap, E extends CollectionEntry<C>>(
+		collection: C,
+		filter?: (entry: CollectionEntry<C>) => entry is E,
+	): Promise<E[]>;
+	export function getCollection<C extends keyof DataEntryMap>(
+		collection: C,
+		filter?: (entry: CollectionEntry<C>) => unknown,
+	): Promise<CollectionEntry<C>[]>;
+
+	export function getLiveCollection<C extends keyof LiveContentConfig['collections']>(
+		collection: C,
+		filter?: LiveLoaderCollectionFilterType<C>,
+	): Promise<
+		import('astro').LiveDataCollectionResult<LiveLoaderDataType<C>, LiveLoaderErrorType<C>>
+	>;
+
+	export function getEntry<
+		C extends keyof DataEntryMap,
+		E extends keyof DataEntryMap[C] | (string & {}),
+	>(
+		entry: ReferenceDataEntry<C, E>,
+	): E extends keyof DataEntryMap[C]
+		? Promise<DataEntryMap[C][E]>
+		: Promise<CollectionEntry<C> | undefined>;
+	export function getEntry<
+		C extends keyof DataEntryMap,
+		E extends keyof DataEntryMap[C] | (string & {}),
+	>(
+		collection: C,
+		id: E,
+	): E extends keyof DataEntryMap[C]
+		? string extends keyof DataEntryMap[C]
+			? Promise<DataEntryMap[C][E]> | undefined
+			: Promise<DataEntryMap[C][E]>
+		: Promise<CollectionEntry<C> | undefined>;
+	export function getLiveEntry<C extends keyof LiveContentConfig['collections']>(
+		collection: C,
+		filter: string | LiveLoaderEntryFilterType<C>,
+	): Promise<import('astro').LiveDataEntryResult<LiveLoaderDataType<C>, LiveLoaderErrorType<C>>>;
+
+	/** Resolve an array of entry references from the same collection */
+	export function getEntries<C extends keyof DataEntryMap>(
+		entries: ReferenceDataEntry<C, keyof DataEntryMap[C]>[],
+	): Promise<CollectionEntry<C>[]>;
+
+	export function render<C extends keyof DataEntryMap>(
+		entry: DataEntryMap[C][string],
+	): Promise<RenderResult>;
+
+	export function render<C extends keyof LiveContentConfig['collections']>(
+		entry: import('astro').LiveDataEntry<LiveLoaderDataType<C>>,
+	): Promise<RenderResult>;
+
+	export function reference<
+		C extends
+			| keyof DataEntryMap
+			// Allow generic `string` to avoid excessive type errors in the config
+			// if `dev` is not running to update as you edit.
+			// Invalid collection names will be caught at build time.
+			| (string & {}),
+	>(
+		collection: C,
+	): import('astro/zod').ZodPipe<
+		import('astro/zod').ZodString,
+		import('astro/zod').ZodTransform<
+			C extends keyof DataEntryMap
+				? {
+						collection: C;
+						id: string;
+					}
+				: never,
+			string
+		>
+	>;
+
+	type ReturnTypeOrOriginal<T> = T extends (...args: any[]) => infer R ? R : T;
+	type InferEntrySchema<C extends keyof DataEntryMap> = import('astro/zod').infer<
+		ReturnTypeOrOriginal<Required<ContentConfig['collections'][C]>['schema']>
+	>;
+	type ExtractLoaderConfig<T> = T extends { loader: infer L } ? L : never;
+	type InferLoaderSchema<
+		C extends keyof DataEntryMap,
+		L = ExtractLoaderConfig<ContentConfig['collections'][C]>,
+	> = L extends { schema: import('astro/zod').ZodSchema }
+		? import('astro/zod').infer<L['schema']>
+		: any;
+
+	type DataEntryMap = {
+		
+	};
+
+	type ExtractLoaderTypes<T> = T extends import('astro/loaders').LiveLoader<
+		infer TData,
+		infer TEntryFilter,
+		infer TCollectionFilter,
+		infer TError
+	>
+		? { data: TData; entryFilter: TEntryFilter; collectionFilter: TCollectionFilter; error: TError }
+		: { data: never; entryFilter: never; collectionFilter: never; error: never };
+	type ExtractEntryFilterType<T> = ExtractLoaderTypes<T>['entryFilter'];
+	type ExtractCollectionFilterType<T> = ExtractLoaderTypes<T>['collectionFilter'];
+	type ExtractErrorType<T> = ExtractLoaderTypes<T>['error'];
+	type ExtractDataType<T> = ExtractLoaderTypes<T>['data'];
+
+	type LiveLoaderDataType<C extends keyof LiveContentConfig['collections']> =
+		LiveContentConfig['collections'][C]['schema'] extends undefined
+			? ExtractDataType<LiveContentConfig['collections'][C]['loader']>
+			: import('astro/zod').infer<
+					Exclude<LiveContentConfig['collections'][C]['schema'], undefined>
+				>;
+	type LiveLoaderEntryFilterType<C extends keyof LiveContentConfig['collections']> =
+		ExtractEntryFilterType<LiveContentConfig['collections'][C]['loader']>;
+	type LiveLoaderCollectionFilterType<C extends keyof LiveContentConfig['collections']> =
+		ExtractCollectionFilterType<LiveContentConfig['collections'][C]['loader']>;
+	type LiveLoaderErrorType<C extends keyof LiveContentConfig['collections']> = ExtractErrorType<
+		LiveContentConfig['collections'][C]['loader']
+	>;
+
+	export type ContentConfig = never;
+	export type LiveContentConfig = never;
+}
+</file>
+
+<file path=".astro/types.d.ts">
+/// <reference types="astro/client" />
+/// <reference path="content.d.ts" />
+</file>
+
+<file path="src/components/Welcome.astro">
+---
+import astroLogo from '../assets/astro.svg';
+import background from '../assets/background.svg';
+---
+
+<div id="container">
+	<img id="background" src={background.src} alt="" fetchpriority="high" />
+	<main>
+		<section id="hero">
+			<a href="https://astro.build"
+				><img src={astroLogo.src} width="115" height="48" alt="Astro Homepage" /></a
+			>
+			<h1>
+				To get started, open the <code><pre>src/pages</pre></code> directory in your project.
+			</h1>
+			<section id="links">
+				<a class="button" href="https://docs.astro.build">Read our docs</a>
+				<a href="https://astro.build/chat"
+					>Join our Discord <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 127.14 96.36"
+						><path
+							fill="currentColor"
+							d="M107.7 8.07A105.15 105.15 0 0 0 81.47 0a72.06 72.06 0 0 0-3.36 6.83 97.68 97.68 0 0 0-29.11 0A72.37 72.37 0 0 0 45.64 0a105.89 105.89 0 0 0-26.25 8.09C2.79 32.65-1.71 56.6.54 80.21a105.73 105.73 0 0 0 32.17 16.15 77.7 77.7 0 0 0 6.89-11.11 68.42 68.42 0 0 1-10.85-5.18c.91-.66 1.8-1.34 2.66-2a75.57 75.57 0 0 0 64.32 0c.87.71 1.76 1.39 2.66 2a68.68 68.68 0 0 1-10.87 5.19 77 77 0 0 0 6.89 11.1 105.25 105.25 0 0 0 32.19-16.14c2.64-27.38-4.51-51.11-18.9-72.15ZM42.45 65.69C36.18 65.69 31 60 31 53s5-12.74 11.43-12.74S54 46 53.89 53s-5.05 12.69-11.44 12.69Zm42.24 0C78.41 65.69 73.25 60 73.25 53s5-12.74 11.44-12.74S96.23 46 96.12 53s-5.04 12.69-11.43 12.69Z"
+						></path></svg
+					>
+				</a>
+			</section>
+		</section>
+	</main>
+
+	<a href="https://astro.build/blog/astro-7/" id="news" class="box">
+		<svg width="32" height="32" fill="none" xmlns="http://www.w3.org/2000/svg"
+			><path
+				d="M24.667 12c1.333 1.414 2 3.192 2 5.334 0 4.62-4.934 5.7-7.334 12C18.444 28.567 18 27.456 18 26c0-4.642 6.667-7.053 6.667-14Zm-5.334-5.333c1.6 1.65 2.4 3.43 2.4 5.333 0 6.602-8.06 7.59-6.4 17.334C13.111 27.787 12 25.564 12 22.666c0-4.434 7.333-8 7.333-16Zm-6-5.333C15.111 3.555 16 5.556 16 7.333c0 8.333-11.333 10.962-5.333 22-3.488-.774-6-4-6-8 0-8.667 8.666-10 8.666-20Z"
+				fill="#111827"></path></svg
+		>
+		<h2>What's New in Astro 7.0?</h2>
+		<p>
+			Rust-powered compiler, advanced routing, AI agent support, and more! Click to explore Astro
+			7.0's new features.
+		</p>
+	</a>
+</div>
+
+<style>
+	#background {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		z-index: -1;
+		filter: blur(100px);
+	}
+
+	#container {
+		font-family: Inter, Roboto, 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', Arial, sans-serif;
+		height: 100%;
+	}
+
+	main {
+		height: 100%;
+		display: flex;
+		justify-content: center;
+	}
+
+	#hero {
+		display: flex;
+		align-items: start;
+		flex-direction: column;
+		justify-content: center;
+		padding: 16px;
+	}
+
+	h1 {
+		font-size: 22px;
+		margin-top: 0.25em;
+	}
+
+	#links {
+		display: flex;
+		gap: 16px;
+	}
+
+	#links a {
+		display: flex;
+		align-items: center;
+		padding: 10px 12px;
+		color: #111827;
+		text-decoration: none;
+		transition: color 0.2s;
+	}
+
+	#links a:hover {
+		color: rgb(78, 80, 86);
+	}
+
+	#links a svg {
+		height: 1em;
+		margin-left: 8px;
+	}
+
+	#links a.button {
+		color: white;
+		background: linear-gradient(83.21deg, #3245ff 0%, #bc52ee 100%);
+		box-shadow:
+			inset 0 0 0 1px rgba(255, 255, 255, 0.12),
+			inset 0 -2px 0 rgba(0, 0, 0, 0.24);
+		border-radius: 10px;
+	}
+
+	#links a.button:hover {
+		color: rgb(230, 230, 230);
+		box-shadow: none;
+	}
+
+	pre {
+		font-family:
+			ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo, Consolas, 'DejaVu Sans Mono',
+			monospace;
+		font-weight: normal;
+		background: linear-gradient(14deg, #d83333 0%, #f041ff 100%);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-clip: text;
+		margin: 0;
+	}
+
+	h2 {
+		margin: 0 0 1em;
+		font-weight: normal;
+		color: #111827;
+		font-size: 20px;
+	}
+
+	p {
+		color: #4b5563;
+		font-size: 16px;
+		line-height: 24px;
+		letter-spacing: -0.006em;
+		margin: 0;
+	}
+
+	code {
+		display: inline-block;
+		background:
+			linear-gradient(66.77deg, #f3cddd 0%, #f5cee7 100%) padding-box,
+			linear-gradient(155deg, #d83333 0%, #f041ff 18%, #f5cee7 45%) border-box;
+		border-radius: 8px;
+		border: 1px solid transparent;
+		padding: 6px 8px;
+	}
+
+	.box {
+		padding: 16px;
+		background: rgba(255, 255, 255, 1);
+		border-radius: 16px;
+		border: 1px solid white;
+	}
+
+	#news {
+		position: absolute;
+		bottom: 16px;
+		right: 16px;
+		max-width: 300px;
+		text-decoration: none;
+		transition: background 0.2s;
+		backdrop-filter: blur(50px);
+	}
+
+	#news:hover {
+		background: rgba(255, 255, 255, 0.55);
+	}
+
+	@media screen and (max-height: 368px) {
+		#news {
+			display: none;
+		}
+	}
+
+	@media screen and (max-width: 768px) {
+		#container {
+			display: flex;
+			flex-direction: column;
+		}
+
+		#hero {
+			display: block;
+			padding-top: 10%;
+		}
+
+		#links {
+			flex-wrap: wrap;
+		}
+
+		#links a.button {
+			padding: 14px 18px;
+		}
+
+		#news {
+			right: 16px;
+			left: 16px;
+			bottom: 2.5rem;
+			max-width: 100%;
+		}
+
+		h1 {
+			line-height: 1.5;
+		}
+	}
+</style>
+</file>
+
+<file path="src/pages/contact.md">
+---
+layout: ../layouts/Layout.astro
+title: "Contact Us"
+---
+
+# Contact Us
+
+Have a question, feedback, or a partnership inquiry? We'd love to hear from you.
+
+### Get in Touch
+* **Email:** `hello@desifit.com`
+* **Website:** [desifit.com](https://desifit.com)
+
+We aim to respond to all inquiries within 24–48 business hours.
+</file>
+
+<file path="src/pages/disclosure.md">
+---
+layout: ../layouts/Layout.astro
+title: "Affiliate Disclosure"
+---
+
+# Affiliate Disclosure
+
+**Last updated:** September 19, 2026
+
+DesiFit (`desifit.com`) is a curated fashion discovery platform dedicated to showcasing traditional, fusion, and activewear styles. 
+
+### Affiliate Links & Commissions
+Some of the links on this website are affiliate links. This means that if you click on a product link and make a purchase on the merchant’s website (such as Amazon, Myntra, or other retail partners), DesiFit may earn a small commission at no extra cost to you.
+
+### Product Selection & Honesty
+Our recommendations are curated independently. Commission rates do not influence our item selection or styling recommendations. We only highlight products that align with our quality standards and aesthetic guidelines.
+
+### Contact Us
+If you have any questions regarding our affiliate relationships, please reach out via our [Contact Page](/contact) or email us directly at `hello@desifit.com`.
+</file>
+
+<file path="src/pages/privacy.md">
+---
+layout: ../layouts/Layout.astro
+title: "Privacy Policy"
+---
+
+# Privacy Policy
+
+**Last updated:** September 19, 2026
+
+At DesiFit (`desifit.com`), we respect your privacy and are committed to protecting any information collected while operating our website.
+
+### Information We Collect
+* **Log Data:** Like most website operators, Cloudflare and DesiFit collect non-personally-identifying information of the sort that web browsers and servers typically make available (such as browser type, language preference, referring site, and the date/time of each visitor request).
+* **Cookies & Tracking:** We do not track users across third-party websites or sell personal data. When you click an affiliate link on DesiFit, the destination merchant may place a temporary tracking cookie on your device to attribute any resulting purchase to our referral.
+
+### External Links
+Our website contains links to third-party merchant sites. Once you leave `desifit.com`, we are not responsible for the privacy practices or content of external sites. We encourage you to review the privacy policy of every platform you visit.
+
+### Contact Information
+For privacy concerns or inquiries, contact us at `hello@desifit.com`.
+</file>
+
+<file path="astro.config.mjs">
+// @ts-check
+import { defineConfig } from 'astro/config';
+
+// https://astro.build/config
+export default defineConfig({});
+</file>
+
+<file path="package.json">
+{
+  "name": "@example/basics",
+  "type": "module",
+  "version": "0.0.1",
+  "private": true,
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "astro": "^7.3.3"
+  },
+  "allowScripts": {
+    "esbuild": true
+  }
+}
+</file>
+
+<file path="tsconfig.json">
+{
+  "extends": "astro/tsconfigs/strict",
+  "include": [".astro/types.d.ts", "**/*"],
+  "exclude": ["dist"]
+}
+</file>
+
+<file path="public/favicon.svg">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <!-- Vibrant Marigold & Deep Orange Gradient Base -->
+    <linearGradient id="marigold-base" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FF5722" />
+      <stop offset="40%" stop-color="#E64A19" />
+      <stop offset="100%" stop-color="#8D2600" />
+    </linearGradient>
+
+    <!-- Warm Gold Outline Gradient -->
+    <linearGradient id="mandala-gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFE082" />
+      <stop offset="50%" stop-color="#FFB300" />
+      <stop offset="100%" stop-color="#FF6F00" />
+    </linearGradient>
+
+    <!-- Detailed 12-Petal Lotus Ring -->
+    <g id="lotus-petal-ring">
+      <!-- 12 Radiating Pointed Petals -->
+      <path d="M 0,-210 C 25,-170 35,-120 0,-90 C -35,-120 -25,-170 0,-210 Z" />
+      <path d="M 0,-210 C 25,-170 35,-120 0,-90 C -35,-120 -25,-170 0,-210 Z" transform="rotate(30)" />
+      <path d="M 0,-210 C 25,-170 35,-120 0,-90 C -35,-120 -25,-170 0,-210 Z" transform="rotate(60)" />
+      <path d="M 0,-210 C 25,-170 35,-120 0,-90 C -35,-120 -25,-170 0,-210 Z" transform="rotate(90)" />
+      <path d="M 0,-210 C 25,-170 35,-120 0,-90 C -35,-120 -25,-170 0,-210 Z" transform="rotate(120)" />
+      <path d="M 0,-210 C 25,-170 35,-120 0,-90 C -35,-120 -25,-170 0,-210 Z" transform="rotate(150)" />
+      <path d="M 0,-210 C 25,-170 35,-120 0,-90 C -35,-120 -25,-170 0,-210 Z" transform="rotate(180)" />
+      <path d="M 0,-210 C 25,-170 35,-120 0,-90 C -35,-120 -25,-170 0,-210 Z" transform="rotate(210)" />
+      <path d="M 0,-210 C 25,-170 35,-120 0,-90 C -35,-120 -25,-170 0,-210 Z" transform="rotate(240)" />
+      <path d="M 0,-210 C 25,-170 35,-120 0,-90 C -35,-120 -25,-170 0,-210 Z" transform="rotate(270)" />
+      <path d="M 0,-210 C 25,-170 35,-120 0,-90 C -35,-120 -25,-170 0,-210 Z" transform="rotate(300)" />
+      <path d="M 0,-210 C 25,-170 35,-120 0,-90 C -35,-120 -25,-170 0,-210 Z" transform="rotate(330)" />
+    </g>
+  </defs>
+
+  <!-- Canvas Squircle Badge -->
+  <rect width="512" height="512" rx="120" fill="url(#marigold-base)" />
+
+  <!-- Outer Frame Ring -->
+  <rect x="20" y="20" width="472" height="472" rx="100" fill="none" stroke="url(#mandala-gold)" stroke-width="6" opacity="0.6" />
+
+  <!-- Centered Mandala Floral Element -->
+  <g transform="translate(256, 256)">
+    <!-- Layered Outer Lotus Petals -->
+    <use href="#lotus-petal-ring" fill="none" stroke="url(#mandala-gold)" stroke-width="5" opacity="0.75" />
+    
+    <!-- Offset Inner Petals for Density -->
+    <use href="#lotus-petal-ring" fill="none" stroke="url(#mandala-gold)" stroke-width="3.5" opacity="0.5" transform="scale(0.82) rotate(15)" />
+
+    <!-- Concentric Decorative Mandala Rings -->
+    <circle r="185" stroke="url(#mandala-gold)" stroke-width="3" fill="none" opacity="0.8" />
+    <circle r="125" stroke="url(#mandala-gold)" stroke-width="2" stroke-dasharray="6 6" fill="none" opacity="0.9" />
+  </g>
+
+  <!-- Crisp Central Bold Typography -->
+  <text 
+    x="50%" 
+    y="53%" 
+    font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" 
+    font-size="220" 
+    font-weight="900" 
+    letter-spacing="-5" 
+    fill="#FFFFFF" 
+    text-anchor="middle" 
+    dominant-baseline="middle"
+    style="text-shadow: 0px 6px 16px rgba(0,0,0,0.5);">DF</text>
+</svg>
+</file>
+
+<file path="README.md">
+# Astro Starter Kit: Basics
+
+```sh
+npm create astro@latest -- --template basics
+```
+
+<!-- ASTRO:REMOVE:START -->
+
+[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
+[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
+
+<!-- ASTRO:REMOVE:END -->
+
+> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+
+<!-- ASTRO:REMOVE:START -->
+
+![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
+
+<!-- ASTRO:REMOVE:END -->
+
+## 🚀 Project Structure
+
+Inside of your Astro project, you'll see the following folders and files:
+
+```text
+/
+├── public/
+│   └── favicon.svg
+├── src
+│   ├── assets
+│   │   └── astro.svg
+│   ├── components
+│   │   └── Welcome.astro
+│   ├── layouts
+│   │   └── Layout.astro
+│   └── pages
+│       └── index.astro
+└── package.json
+```
+
+To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+
+## 🧞 Commands
+
+All commands are run from the root of the project, from a terminal:
+
+| Command                   | Action                                           |
+| :------------------------ | :----------------------------------------------- |
+| `npm install`             | Installs dependencies                            |
+| `npm run dev`             | Starts local dev server at `localhost:4321`      |
+| `npm run build`           | Build your production site to `./dist/`          |
+| `npm run preview`         | Preview your build locally, before deploying     |
+| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
+| `npm run astro -- --help` | Get help using the Astro CLI                     |
+
+## 👀 Want to learn more?
+
+Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+</file>
+
+<file path="src/data/products.json">
+{
+  "categories": [
+    {
+      "id": "indo-western",
+      "title": "Indo-Western Fusion",
+      "subcategories": [
+        {
+          "id": "short-kurtis-denim",
+          "title": "Short Kurtis & Denim",
+          "looks": [
+            {
+              "id": "skd-01",
+              "title": "Indigo Print Short Kurti x Wide Leg Denim",
+              "image": "/images/looks/skd-01.jpg",
+              "items": [
+                { "name": "Printed All-Over Short Kurta", "brand": "Bewakoof", "price": "₹699", "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fp%2Faop-v-notch-mandarins-neck-3-4th-sleeve-kurta&subid=skd01-top" },
+                { "name": "High Waist Wide Leg Jeans", "brand": "Bewakoof", "price": "₹1,299", "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fwomen-wide-leg-jeans&subid=skd01-bottom" },
+                { "name": "Cascade Gleam Drop Earrings", "brand": "Salty", "price": "₹399", "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fproducts%2Fcascade-gleam-drop-earrings&subid=skd01-acc" }
+              ]
+            },
+            {
+              "id": "skd-02",
+              "title": "Floral V-Neck Tunic x Straight Fit Blue Jeans",
+              "image": "/images/looks/skd-02.jpg",
+              "items": [
+                { "name": "Floral Short Cotton Tunic", "brand": "Bewakoof", "price": "₹599", "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fwomen-kurtas&subid=skd02-top" },
+                { "name": "High Waist Straight Fit Jeans", "brand": "Bewakoof", "price": "₹1,199", "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fwomen-high-waisted-jeans&subid=skd02-bottom" },
+                { "name": "Gleam Halo Silver Hoops", "brand": "Salty", "price": "₹299", "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fproducts%2Fgleam-halo-hoops-earrings-silver&subid=skd02-acc" }
+              ]
+            },
+            {
+              "id": "skd-03",
+              "title": "Solid Cotton Short Kurta x Distressed Denim",
+              "image": "/images/looks/skd-03.jpg",
+              "items": [
+                { "name": "Solid Mandarin Collar Short Kurti", "brand": "Bewakoof", "price": "₹649", "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fwomen-kurtas&subid=skd03-top" },
+                { "name": "Distressed Straight Leg Jeans", "brand": "Bewakoof", "price": "₹1,399", "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fjeans-for-women&subid=skd03-bottom" },
+                { "name": "Oxidized Statement Choker", "brand": "Salty", "price": "₹499", "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fcollections%2Fanti-tarnish-necklaces&subid=skd03-acc" }
+              ]
+            },
+            {
+              "id": "skd-04",
+              "title": "Block Print Tunic x Dark Grey Cargo Jeans",
+              "image": "/images/looks/skd-04.jpg",
+              "items": [
+                { "name": "Block Print 3/4th Sleeve Kurta", "brand": "Bewakoof", "price": "₹799", "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fwomen-kurtas&subid=skd04-top" },
+                { "name": "Washed Wide Leg Cargo Jeans", "brand": "Bewakoof", "price": "₹1,499", "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fwomen-cargo-jeans&subid=skd04-bottom" },
+                { "name": "Silver Stacked Bangles Set", "brand": "Salty", "price": "₹349", "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fcollections%2Fbracelets&subid=skd04-acc" }
+              ]
+            },
+            {
+              "id": "skd-05",
+              "title": "Pastel Pink Tunic x High-Rise Flared Denim",
+              "image": "/images/looks/skd-05.jpg",
+              "items": [
+                { "name": "Pastel Printed Tunic Top", "brand": "Bewakoof", "price": "₹549", "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fwomen-kurtas&subid=skd05-top" },
+                { "name": "High Waist Flared Jeans", "brand": "Bewakoof", "price": "₹1,299", "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fwomen-wide-leg-jeans&subid=skd05-bottom" },
+                { "name": "Oxidized Feather Dangle Earrings", "brand": "Salty", "price": "₹299", "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fcollections%2Fsilver-earrings&subid=skd05-acc" }
+              ]
+            },
+            {
+              "id": "skd-06",
+              "title": "Black Motif Short Kurta x Light Wash Mom Jeans",
+              "image": "/images/looks/skd-06.jpg",
+              "items": [
+                { "name": "Black Motif Cotton Kurti", "brand": "Bewakoof", "price": "₹699", "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fwomen-kurtas&subid=skd06-top" },
+                { "name": "Light Wash Mom Fit Denim", "brand": "Bewakoof", "price": "₹1,199", "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fjeans-for-women&subid=skd06-bottom" },
+                { "name": "Vintage Silver Ring Set", "brand": "Salty", "price": "₹249", "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fcollections%2Frings&subid=skd06-acc" }
+              ]
+            },
+            {
+              "id": "skd-07",
+              "title": "Yellow Ethnic Print Tunic x Black Skinny Jeans",
+              "image": "/images/looks/skd-07.jpg",
+              "items": [
+                { "name": "Yellow Ethnic Print Short Top", "brand": "Bewakoof", "price": "₹599", "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fwomen-kurtas&subid=skd07-top" },
+                { "name": "High Waist Black Stretch Jeans", "brand": "Bewakoof", "price": "₹1,099", "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fwomen-high-waisted-jeans&subid=skd07-bottom" },
+                { "name": "Geometric Silver Hoops", "brand": "Salty", "price": "₹299", "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fcollections%2Fhoops&subid=skd07-acc" }
+              ]
+            },
+            {
+              "id": "skd-08",
+              "title": "Embroidered Neck Tunic x Classic Blue Straight Jeans",
+              "image": "/images/looks/skd-08.jpg",
+              "items": [
+                { "name": "Embroidered Notch Neck Tunic", "brand": "Bewakoof", "price": "₹899", "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fwomen-kurtas&subid=skd08-top" },
+                { "name": "Classic Blue Straight Leg Jeans", "brand": "Bewakoof", "price": "₹1,299", "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fjeans-for-women&subid=skd08-bottom" },
+                { "name": "Chunky Oxidized Jhumkas", "brand": "Salty", "price": "₹399", "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fcollections%2Fsilver-earrings&subid=skd08-acc" }
+              ]
+            },
+            {
+              "id": "skd-09",
+              "title": "Geometric Print Cotton Tunic x Bootcut Denim",
+              "image": "/images/looks/skd-09.jpg",
+              "items": [
+                { "name": "Geometric Print Short Kurta", "brand": "Bewakoof", "price": "₹649", "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fwomen-kurtas&subid=skd09-top" },
+                { "name": "High Waist Bootcut Jeans", "brand": "Bewakoof", "price": "₹1,399", "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fjeans-for-women&subid=skd09-bottom" },
+                { "name": "Multi-Layer Silver Chain", "brand": "Salty", "price": "₹349", "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fcollections%2Fanti-tarnish-necklaces&subid=skd09-acc" }
+              ]
+            },
+            {
+              "id": "skd-10",
+              "title": "Red Bandhani Motif Kurti x Wide Leg Light Denim",
+              "image": "/images/looks/skd-10.jpg",
+              "items": [
+                { "name": "Bandhani Print Short Tunic", "brand": "Bewakoof", "price": "₹699", "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fwomen-kurtas&subid=skd10-top" },
+                { "name": "Light Wash Wide Leg Jeans", "brand": "Bewakoof", "price": "₹1,299", "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fwomen-wide-leg-jeans&subid=skd10-bottom" },
+                { "name": "Oxidized Mirror Drop Earrings", "brand": "Salty", "price": "₹399", "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fcollections%2Fsilver-earrings&subid=skd10-acc" }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "fusion-layering",
+          "title": "Fusion Sets & Layering",
+          "looks": [
+            {
+              "id": "fl-01",
+              "title": "Side-Slit Long Kurta x Flare Stretch Pants",
+              "image": "/images/looks/fl-01.jpg",
+              "items": [
+                { "name": "Side Slit Printed Long Kurta", "brand": "Bewakoof", "price": "₹899", "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fp%2Faop-boat-neck-sleeveless-kurtas&subid=fl01-top" },
+                { "name": "Ultimate Flare Stretch Pants", "brand": "BlissClub", "price": "₹1,499", "affiliateUrl": "https://tjzuh.com/g/f7dkjuc7zj0be660c062519b939af8/?ulp=https%3A%2F%2Fblissclub.com%2F&subid=fl01-bottom" },
+                { "name": "Cascade Gleam Drop Earrings", "brand": "Salty", "price": "₹399", "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fproducts%2Fcascade-gleam-drop-earrings&subid=fl01-acc" }
+              ]
+            },
+            {
+              "id": "fl-02",
+              "title": "Front Slit Tunic x Move All-Day Straight Leg Pants",
+              "image": "/images/looks/fl-02.jpg",
+              "items": [
+                { "name": "Front Open Printed Kurti", "brand": "Bewakoof", "price": "₹799", "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fwomen-kurtas&subid=fl02-top" },
+                { "name": "Move All-Day Straight Pants", "brand": "BlissClub", "price": "₹1,599", "affiliateUrl": "https://tjzuh.com/g/f7dkjuc7zj0be660c062519b939af8/?ulp=https%3A%2F%2Fblissclub.com%2F&subid=fl02-bottom" },
+                { "name": "Silver Choker & Coin Layer", "brand": "Salty", "price": "₹499", "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fcollections%2Fanti-tarnish-necklaces&subid=fl02-acc" }
+              ]
+            },
+            { "id": "fl-03", "title": "Sleeveless Long Kurti x Wide Leg Lounge Pants", "image": "/images/looks/fl-03.jpg", "items": [{ "name": "Sleeveless Floral Kurta", "brand": "Bewakoof", "price": "₹699", "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fwomen-kurtas&subid=fl03-top" }, { "name": "Flared Active Bottoms", "brand": "BlissClub", "price": "₹1,399", "affiliateUrl": "https://tjzuh.com/g/f7dkjuc7zj0be660c062519b939af8/?ulp=https%3A%2F%2Fblissclub.com%2F&subid=fl03-bottom" }, { "name": "Gleam Silver Hoops", "brand": "Salty", "price": "₹299", "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fproducts%2Fgleam-halo-hoops-earrings-silver&subid=fl03-acc" }] },
+            { "id": "fl-04", "title": "High-Low Tunic x High-Waist Comfort Leggings", "image": "/images/looks/fl-04.jpg", "items": [{ "name": "High-Low Printed Tunic", "brand": "Bewakoof", "price": "₹749", "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fwomen-kurtas&subid=fl04-top" }, { "name": "High-Waist Ankle Leggings", "brand": "BlissClub", "price": "₹1,199", "affiliateUrl": "https://tjzuh.com/g/f7dkjuc7zj0be660c062519b939af8/?ulp=https%3A%2F%2Fblissclub.com%2F&subid=fl04-bottom" }, { "name": "Stacked Silver Rings", "brand": "Salty", "price": "₹299", "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fcollections%2Frings&subid=fl04-acc" }] },
+            { "id": "fl-05", "title": "Shirt Style Kurti x Stretch Trousers", "image": "/images/looks/fl-05.jpg", "items": [{ "name": "Shirt Collar Cotton Kurta", "brand": "Bewakoof", "price": "₹849", "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fwomen-kurtas&subid=fl05-top" }, { "name": "Essential Straight Trousers", "brand": "BlissClub", "price": "₹1,499", "affiliateUrl": "https://tjzuh.com/g/f7dkjuc7zj0be660c062519b939af8/?ulp=https%3A%2F%2Fblissclub.com%2F&subid=fl05-bottom" }, { "name": "Oxidized Dangle Earrings", "brand": "Salty", "price": "₹349", "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fcollections%2Fsilver-earrings&subid=fl05-acc" }] },
+            { "id": "fl-06", "title": "A-Line Kurti x Ankle Length Active Tights", "image": "/images/looks/fl-06.jpg", "items": [{ "name": "A-Line Block Print Kurta", "brand": "Bewakoof", "price": "₹799", "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fwomen-kurtas&subid=fl06-top" }, { "name": "Move All-Day Tights", "brand": "BlissClub", "price": "₹1,299", "affiliateUrl": "https://tjzuh.com/g/f7dkjuc7zj0be660c062519b939af8/?ulp=https%3A%2F%2Fblissclub.com%2F&subid=fl06-bottom" }, { "name": "Silver Statement Cuff", "brand": "Salty", "price": "₹399", "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fcollections%2Fbracelets&subid=fl06-acc" }] },
+            { "id": "fl-07", "title": "Angrakha Style Kurti x Flared Trousers", "image": "/images/looks/fl-07.jpg", "items": [{ "name": "Angrakha Pattern Short Kurti", "brand": "Bewakoof", "price": "₹899", "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fwomen-kurtas&subid=fl07-top" }, { "name": "Ultimate Flare Trousers", "brand": "BlissClub", "price": "₹1,599", "affiliateUrl": "https://tjzuh.com/g/f7dkjuc7zj0be660c062519b939af8/?ulp=https%3A%2F%2Fblissclub.com%2F&subid=fl07-bottom" }, { "name": "Vintage Jhumka Earrings", "brand": "Salty", "price": "₹399", "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fcollections%2Fsilver-earrings&subid=fl07-acc" }] },
+            { "id": "fl-08", "title": "Kaftan Style Tunic x Straight Fit Pants", "image": "/images/looks/fl-08.jpg", "items": [{ "name": "Printed Cotton Kaftan Top", "brand": "Bewakoof", "price": "₹699", "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fwomen-kurtas&subid=fl08-top" }, { "name": "Straight Leg Comfort Pants", "brand": "BlissClub", "price": "₹1,399", "affiliateUrl": "https://tjzuh.com/g/f7dkjuc7zj0be660c062519b939af8/?ulp=https%3A%2F%2Fblissclub.com%2F&subid=fl08-bottom" }, { "name": "Silver Coin Layered Chain", "brand": "Salty", "price": "₹349", "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fcollections%2Fanti-tarnish-necklaces&subid=fl08-acc" }] },
+            { "id": "fl-09", "title": "Solid Tiered Kurti x Flare Leggings", "image": "/images/looks/fl-09.jpg", "items": [{ "name": "Tiered Short Cotton Kurti", "brand": "Bewakoof", "price": "₹749", "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fwomen-kurtas&subid=fl09-top" }, { "name": "Flare Leggings", "brand": "BlissClub", "price": "₹1,299", "affiliateUrl": "https://tjzuh.com/g/f7dkjuc7zj0be660c062519b939af8/?ulp=https%3A%2F%2Fblissclub.com%2F&subid=fl09-bottom" }, { "name": "Geometric Silver Studs", "brand": "Salty", "price": "₹249", "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fcollections%2Fsilver-earrings&subid=fl09-acc" }] },
+            { "id": "fl-10", "title": "Indigo Anarkali Tunic x Tapered Trousers", "image": "/images/looks/fl-10.jpg", "items": [{ "name": "Indigo Short Anarkali Kurta", "brand": "Bewakoof", "price": "₹899", "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fwomen-kurtas&subid=fl10-top" }, { "name": "Tapered Active Trousers", "brand": "BlissClub", "price": "₹1,499", "affiliateUrl": "https://tjzuh.com/g/f7dkjuc7zj0be660c062519b939af8/?ulp=https%3A%2F%2Fblissclub.com%2F&subid=fl10-bottom" }, { "name": "Oxidized Drop Earrings Set", "brand": "Salty", "price": "₹399", "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fcollections%2Fsilver-earrings&subid=fl10-acc" }] }
+          ]
+        },
+        {
+          "id": "boho-streetwear",
+          "title": "Boho Streetwear",
+          "looks": [
+            {
+              "id": "bs-01",
+              "title": "Graphic Desi Tee x Flared Pants x Chunky Silver",
+              "image": "/images/looks/bs-01.jpg",
+              "items": [
+                { "name": "Oversized Desi Motif Graphic Tee", "brand": "Bewakoof", "price": "₹599", "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2F&subid=bs01-top" },
+                { "name": "Ultimate Flare Leggings", "brand": "BlissClub", "price": "₹1,399", "affiliateUrl": "https://tjzuh.com/g/f7dkjuc7zj0be660c062519b939af8/?ulp=https%3A%2F%2Fblissclub.com%2F&subid=bs01-bottom" },
+                { "name": "Cascade Silver Drop Earrings", "brand": "Salty", "price": "₹399", "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fproducts%2Fcascade-gleam-drop-earrings&subid=bs01-acc" }
+              ]
+            },
+            { "id": "bs-02", "title": "Cropped Motif Top x Cargo Jeans x Silver Hoops", "image": "/images/looks/bs-02.jpg", "items": [{ "name": "Cropped Printed Top", "brand": "Bewakoof", "price": "₹499", "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2F&subid=bs02-top" }, { "name": "Dark Grey Washed Cargo Jeans", "brand": "Bewakoof", "price": "₹1,499", "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fwomen-cargo-jeans&subid=bs02-bottom" }, { "name": "Gleam Halo Silver Hoops", "brand": "Salty", "price": "₹299", "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fproducts%2Fgleam-halo-hoops-earrings-silver&subid=bs02-acc" }] },
+            { "id": "bs-03", "title": "Boxy Printed Tee x Straight Leg Active Pants", "image": "/images/looks/bs-03.jpg", "items": [{ "name": "Boxy Ethnic Graphic Tee", "brand": "Bewakoof", "price": "₹549", "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2F&subid=bs03-top" }, { "name": "Move All-Day Pants", "brand": "BlissClub", "price": "₹1,499", "affiliateUrl": "https://tjzuh.com/g/f7dkjuc7zj0be660c062519b939af8/?ulp=https%3A%2F%2Fblissclub.com%2F&subid=bs03-bottom" }, { "name": "Boho Layered Silver Necklace", "brand": "Salty", "price": "₹449", "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fcollections%2Fanti-tarnish-necklaces&subid=bs03-acc" }] },
+            { "id": "bs-04", "title": "Tie-Dye Crop Top x Flared Stretch Jeans", "image": "/images/looks/bs-04.jpg", "items": [{ "name": "Tie-Dye Cotton Crop Top", "brand": "Bewakoof", "price": "₹499", "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2F&subid=bs04-top" }, { "name": "Wide Leg Flared Jeans", "brand": "Bewakoof", "price": "₹1,299", "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fwomen-wide-leg-jeans&subid=bs04-bottom" }, { "name": "Chunky Silver Rings Set", "brand": "Salty", "price": "₹299", "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fcollections%2Frings&subid=bs04-acc" }] },
+            { "id": "bs-05", "title": "Sleeveless Graphic Vest x Ankle Tights", "image": "/images/looks/bs-05.jpg", "items": [{ "name": "Sleeveless Desi Printed Vest", "brand": "Bewakoof", "price": "₹449", "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2F&subid=bs05-top" }, { "name": "Essential Ankle Tights", "brand": "BlissClub", "price": "₹1,199", "affiliateUrl": "https://tjzuh.com/g/f7dkjuc7zj0be660c062519b939af8/?ulp=https%3A%2F%2Fblissclub.com%2F&subid=bs05-bottom" }, { "name": "Geometric Silver Hoops", "brand": "Salty", "price": "₹299", "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fcollections%2Fhoops&subid=bs05-acc" }] },
+            { "id": "bs-06", "title": "Oversized Printed Shirt x High-Rise Denim", "image": "/images/looks/bs-06.jpg", "items": [{ "name": "Oversized Cotton Print Shirt", "brand": "Bewakoof", "price": "₹799", "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2F&subid=bs06-top" }, { "name": "High Waist Straight Fit Jeans", "brand": "Bewakoof", "price": "₹1,199", "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fwomen-high-waisted-jeans&subid=bs06-bottom" }, { "name": "Oxidized Silver Coin Anklet", "brand": "Salty", "price": "₹249", "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fcollections%2Ffull-catalogue&subid=bs06-acc" }] },
+            { "id": "bs-07", "title": "Solid Cropped Tank x Cargo Trousers", "image": "/images/looks/bs-07.jpg", "items": [{ "name": "Ribbed Cropped Tank Top", "brand": "Bewakoof", "price": "₹399", "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2F&subid=bs07-top" }, { "name": "Washed Cargo Jeans", "brand": "Bewakoof", "price": "₹1,499", "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fwomen-cargo-jeans&subid=bs07-bottom" }, { "name": "Statement Oxidized Choker", "brand": "Salty", "price": "₹499", "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fcollections%2Fanti-tarnish-necklaces&subid=bs07-acc" }] },
+            { "id": "bs-08", "title": "Indigo Print Boxy Tee x Flared Active Bottoms", "image": "/images/looks/bs-08.jpg", "items": [{ "name": "Indigo Graphic Print Tee", "brand": "Bewakoof", "price": "₹599", "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2F&subid=bs08-top" }, { "name": "Flare Stretch Bottoms", "brand": "BlissClub", "price": "₹1,399", "affiliateUrl": "https://tjzuh.com/g/f7dkjuc7zj0be660c062519b939af8/?ulp=https%3A%2F%2Fblissclub.com%2F&subid=bs08-bottom" }, { "name": "Silver Statement Cuff Bracelet", "brand": "Salty", "price": "₹349", "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fcollections%2Fbracelets&subid=bs08-acc" }] },
+            { "id": "bs-09", "title": "Full Sleeve Motif Top x Distressed Wide Leg Denim", "image": "/images/looks/bs-09.jpg", "items": [{ "name": "Full Sleeve Motif Top", "brand": "Bewakoof", "price": "₹699", "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2F&subid=bs09-top" }, { "name": "Wide Leg Distressed Jeans", "brand": "Bewakoof", "price": "₹1,399", "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fwomen-wide-leg-jeans&subid=bs09-bottom" }, { "name": "Silver Drop Earrings Set", "brand": "Salty", "price": "₹299", "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fcollections%2Fsilver-earrings&subid=bs09-acc" }] },
+            { "id": "bs-10", "title": "Sleeveless Crop Kurti x High-Waist Straight Denim", "image": "/images/looks/bs-10.jpg", "items": [{ "name": "Sleeveless Crop Cotton Top", "brand": "Bewakoof", "price": "₹499", "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fwomen-kurtas&subid=bs10-top" }, { "name": "High Waist Straight Jeans", "brand": "Bewakoof", "price": "₹1,199", "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fwomen-high-waisted-jeans&subid=bs10-bottom" }, { "name": "Multi-Strand Silver Chain", "brand": "Salty", "price": "₹399", "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fcollections%2Fanti-tarnish-necklaces&subid=bs10-acc" }] }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "desi-casual",
+      "title": "Desi Casual & Everyday",
+      "subcategories": [
+        {
+          "id": "daily-cotton-kurtas",
+          "title": "Daily Cotton Kurtas",
+          "looks": [
+            {
+              "id": "dck-01",
+              "title": "Classic Straight Cotton Kurta x Comfort Trousers",
+              "image": "/images/looks/dck-01.jpg",
+              "items": [
+                { "name": "Straight Fit Daily Cotton Kurta", "brand": "Bewakoof", "price": "₹599", "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fwomen-kurtas&subid=dck01-top" },
+                { "name": "Move All-Day Straight Trousers", "brand": "BlissClub", "price": "₹1,499", "affiliateUrl": "https://tjzuh.com/g/f7dkjuc7zj0be660c062519b939af8/?ulp=https%3A%2F%2Fblissclub.com%2F&subid=dck01-bottom" },
+                { "name": "Gleam Halo Silver Hoops", "brand": "Salty", "price": "₹299", "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fproducts%2Fgleam-halo-hoops-earrings-silver&subid=dck01-acc" }
+              ]
+            },
+            { "id": "dck-02", "title": "A-Line Floral Cotton Kurta x Stretch Leggings", "image": "/images/looks/dck-02.jpg", "items": [{ "name": "A-Line Floral Print Kurta", "brand": "Bewakoof", "price": "₹699", "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fwomen-kurtas&subid=dck02-top" }, { "name": "High-Waist Ankle Leggings", "brand": "BlissClub", "price": "₹1,199", "affiliateUrl": "https://tjzuh.com/g/f7dkjuc7zj0be660c062519b939af8/?ulp=https%3A%2F%2Fblissclub.com%2F&subid=dck02-bottom" }, { "name": "Simple Silver Studs", "brand": "Salty", "price": "₹199", "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fcollections%2Fsilver-earrings&subid=dck02-acc" }] },
+            { "id": "dck-03", "title": "Solid Notch Neck Kurta x Flared Bottoms", "image": "/images/looks/dck-03.jpg", "items": [{ "name": "Solid Notch Neck Cotton Kurta", "brand": "Bewakoof", "price": "₹549", "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fwomen-kurtas&subid=dck03-top" }, { "name": "Flare Stretch Bottoms", "brand": "BlissClub", "price": "₹1,399", "affiliateUrl": "https://tjzuh.com/g/f7dkjuc7zj0be660c062519b939af8/?ulp=https%3A%2F%2Fblissclub.com%2F&subid=dck03-bottom" }, { "name": "Minimal Silver Chain", "brand": "Salty", "price": "₹299", "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fcollections%2Fanti-tarnish-necklaces&subid=dck03-acc" }] },
+            { "id": "dck-04", "title": "Block Print 3/4th Sleeve Kurta x Tapered Pants", "image": "/images/looks/dck-04.jpg", "items": [{ "name": "Block Print Cotton Kurta", "brand": "Bewakoof", "price": "₹749", "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fwomen-kurtas&subid=dck04-top" }, { "name": "Tapered Active Trousers", "brand": "BlissClub", "price": "₹1,499", "affiliateUrl": "https://tjzuh.com/g/f7dkjuc7zj0be660c062519b939af8/?ulp=https%3A%2F%2Fblissclub.com%2F&subid=dck04-bottom" }, { "name": "Silver Drop Earrings", "brand": "Salty", "price": "₹299", "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fcollections%2Fsilver-earrings&subid=dck04-acc" }] },
+            { "id": "dck-05", "title": "Indigo Print Long Tunic x Straight Fit Trousers", "image": "/images/looks/dck-05.jpg", "items": [{ "name": "Indigo Printed Long Tunic", "brand": "Bewakoof", "price": "₹699", "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fwomen-kurtas&subid=dck05-top" }, { "name": "Move All-Day Pants", "brand": "BlissClub", "price": "₹1,499", "affiliateUrl": "https://tjzuh.com/g/f7dkjuc7zj0be660c062519b939af8/?ulp=https%3A%2F%2Fblissclub.com%2F&subid=dck05-bottom" }, { "name": "Silver Hoop Earrings", "brand": "Salty", "price": "₹249", "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fcollections%2Fhoops&subid=dck05-acc" }] },
+            { "id": "dck-06", "title": "Sleeveless Floral Kurta x Wide Leg Lounge Pants", "image": "/images/looks/dck-06.jpg", "items": [{ "name": "Sleeveless Printed Kurta", "brand": "Bewakoof", "price": "₹599", "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fwomen-kurtas&subid=dck06-top" }, { "name": "Wide Leg Lounge Bottoms", "brand": "BlissClub", "price": "₹1,399", "affiliateUrl": "https://tjzuh.com/g/f7dkjuc7zj0be660c062519b939af8/?ulp=https%3A%2F%2Fblissclub.com%2F&subid=dck06-bottom" }, { "name": "Silver Bangle Bracelet", "brand": "Salty", "price": "₹299", "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fcollections%2Fbracelets&subid=dck06-acc" }] },
+            { "id": "dck-07", "title": "Pastel Printed Cotton Kurta x Ankle Leggings", "image": "/images/looks/dck-07.jpg", "items": [{ "name": "Pastel Printed Cotton Kurti", "brand": "Bewakoof", "price": "₹649", "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fwomen-kurtas&subid=dck07-top" }, { "name": "Essential Ankle Leggings", "brand": "BlissClub", "price": "₹1,199", "affiliateUrl": "https://tjzuh.com/g/f7dkjuc7zj0be660c062519b939af8/?ulp=https%3A%2F%2Fblissclub.com%2F&subid=dck07-bottom" }, { "name": "Dainty Pendant Necklace", "brand": "Salty", "price": "₹349", "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fcollections%2Fanti-tarnish-necklaces&subid=dck07-acc" }] },
+            { "id": "dck-08", "title": "Mandarin Collar Kurta x Flared Stretch Trousers", "image": "/images/looks/dck-08.jpg", "items": [{ "name": "Mandarin Collar Daily Kurta", "brand": "Bewakoof", "price": "₹699", "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fwomen-kurtas&subid=dck08-top" }, { "name": "Ultimate Flare Trousers", "brand": "BlissClub", "price": "₹1,599", "affiliateUrl": "https://tjzuh.com/g/f7dkjuc7zj0be660c062519b939af8/?ulp=https%3A%2F%2Fblissclub.com%2F&subid=dck08-bottom" }, { "name": "Small Silver Hoops", "brand": "Salty", "price": "₹249", "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fcollections%2Fhoops&subid=dck08-acc" }] },
+            { "id": "dck-09", "title": "Geometric Print Cotton Kurta x Straight Pants", "image": "/images/looks/dck-09.jpg", "items": [{ "name": "Geometric Print Cotton Kurti", "brand": "Bewakoof", "price": "₹599", "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fwomen-kurtas&subid=dck09-top" }, { "name": "Straight Leg Comfort Trousers", "brand": "BlissClub", "price": "₹1,499", "affiliateUrl": "https://tjzuh.com/g/f7dkjuc7zj0be660c062519b939af8/?ulp=https%3A%2F%2Fblissclub.com%2F&subid=dck09-bottom" }, { "name": "Silver Drop Earrings", "brand": "Salty", "price": "₹299", "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fcollections%2Fsilver-earrings&subid=dck09-acc" }] },
+            { "id": "dck-10", "title": "Bandhani Pattern Kurta x Move All-Day Bottoms", "image": "/images/looks/dck-10.jpg", "items": [{ "name": "Bandhani Pattern Cotton Kurti", "brand": "Bewakoof", "price": "₹699", "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fwomen-kurtas&subid=dck10-top" }, { "name": "Move All-Day Tights", "brand": "BlissClub", "price": "₹1,299", "affiliateUrl": "https://tjzuh.com/g/f7dkjuc7zj0be660c062519b939af8/?ulp=https%3A%2F%2Fblissclub.com%2F&subid=dck10-bottom" }, { "name": "Silver Chain Bracelet", "brand": "Salty", "price": "₹299", "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fcollections%2Fbracelets&subid=dck10-acc" }] }
+          ]
+        },
+        {
+          "id": "kurti-comfort-bottoms",
+          "title": "Kurti & Comfort Bottoms",
+          "looks": [
+            {
+              "id": "kcb-01",
+              "title": "Short Printed Kurti x Flare Stretch Pants",
+              "image": "/images/looks/kcb-01.jpg",
+              "items": [
+                { "name": "Printed All-Over Short Kurta", "brand": "Bewakoof", "price": "₹699", "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fp%2Faop-v-notch-mandarins-neck-3-4th-sleeve-kurta&subid=kcb01-top" },
+                { "name": "Ultimate Flare Stretch Pants", "brand": "BlissClub", "price": "₹1,499", "affiliateUrl": "https://tjzuh.com/g/f7dkjuc7zj0be660c062519b939af8/?ulp=https%3A%2F%2Fblissclub.com%2F&subid=kcb01-bottom" },
+                { "name": "Cascade Gleam Drop Earrings", "brand": "Salty", "price": "₹399", "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fproducts%2Fcascade-gleam-drop-earrings&subid=kcb01-acc" }
+              ]
+            },
+            { "id": "kcb-02", "title": "Cotton Tunic Top x Move All-Day Tights", "image": "/images/looks/kcb-02.jpg", "items": [{ "name": "Floral Short Tunic Top", "brand": "Bewakoof", "price": "₹599", "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fwomen-kurtas&subid=kcb02-top" }, { "name": "Move All-Day Tights", "brand": "BlissClub", "price": "₹1,299", "affiliateUrl": "https://tjzuh.com/g/f7dkjuc7zj0be660c062519b939af8/?ulp=https%3A%2F%2Fblissclub.com%2F&subid=kcb02-bottom" }, { "name": "Gleam Halo Silver Hoops", "brand": "Salty", "price": "₹299", "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fproducts%2Fgleam-halo-hoops-earrings-silver&subid=kcb02-acc" }] },
+            { "id": "kcb-03", "title": "Front Slit Kurta x Flared Lounge Pants", "image": "/images/looks/kcb-03.jpg", "items": [{ "name": "Front Slit Printed Kurta", "brand": "Bewakoof", "price": "₹799", "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fwomen-kurtas&subid=kcb03-top" }, { "name": "Wide Leg Lounge Bottoms", "brand": "BlissClub", "price": "₹1,399", "affiliateUrl": "https://tjzuh.com/g/f7dkjuc7zj0be660c062519b939af8/?ulp=https%3A%2F%2Fblissclub.com%2F&subid=kcb03-bottom" }, { "name": "Silver Choker Necklace", "brand": "Salty", "price": "₹449", "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fcollections%2Fanti-tarnish-necklaces&subid=kcb03-acc" }] },
+            { "id": "kcb-04", "title": "Sleeveless Short Kurti x High-Waist Leggings", "image": "/images/looks/kcb-04.jpg", "items": [{ "name": "Sleeveless Printed Kurti", "brand": "Bewakoof", "price": "₹499", "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fwomen-kurtas&subid=kcb04-top" }, { "name": "High-Waist Ankle Leggings", "brand": "BlissClub", "price": "₹1,199", "affiliateUrl": "https://tjzuh.com/g/f7dkjuc7zj0be660c062519b939af8/?ulp=https%3A%2F%2Fblissclub.com%2F&subid=kcb04-bottom" }, { "name": "Stacked Silver Rings", "brand": "Salty", "price": "₹299", "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fcollections%2Frings&subid=kcb04-acc" }] },
+            { "id": "kcb-05", "title": "Mandarin Tunic x Straight Fit Trousers", "image": "/images/looks/kcb-05.jpg", "items": [{ "name": "Mandarin Collar Tunic", "brand": "Bewakoof", "price": "₹649", "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fwomen-kurtas&subid=kcb05-top" }, { "name": "Essential Straight Trousers", "brand": "BlissClub", "price": "₹1,499", "affiliateUrl": "https://tjzuh.com/g/f7dkjuc7zj0be660c062519b939af8/?ulp=https%3A%2F%2Fblissclub.com%2F&subid=kcb05-bottom" }, { "name": "Silver Drop Earrings", "brand": "Salty", "price": "₹349", "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fcollections%2Fsilver-earrings&subid=kcb05-acc" }] },
+            { "id": "kcb-06", "title": "Tiered Short Kurta x Flare Stretch Bottoms", "image": "/images/looks/kcb-06.jpg", "items": [{ "name": "Tiered Short Cotton Kurti", "brand": "Bewakoof", "price": "₹749", "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fwomen-kurtas&subid=kcb06-top" }, { "name": "Ultimate Flare Stretch Pants", "brand": "BlissClub", "price": "₹1,499", "affiliateUrl": "https://tjzuh.com/g/f7dkjuc7zj0be660c062519b939af8/?ulp=https%3A%2F%2Fblissclub.com%2F&subid=kcb06-bottom" }, { "name": "Silver Statement Cuff", "brand": "Salty", "price": "₹399", "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fcollections%2Fbracelets&subid=kcb06-acc" }] },
+            { "id": "kcb-07", "title": "Angrakha Tunic x Tapered Active Pants", "image": "/images/looks/kcb-07.jpg", "items": [{ "name": "Angrakha Short Tunic", "brand": "Bewakoof", "price": "₹849", "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fwomen-kurtas&subid=kcb07-top" }, { "name": "Tapered Active Trousers", "brand": "BlissClub", "price": "₹1,499", "affiliateUrl": "https://tjzuh.com/g/f7dkjuc7zj0be660c062519b939af8/?ulp=https%3A%2F%2Fblissclub.com%2F&subid=kcb07-bottom" }, { "name": "Geometric Silver Hoops", "brand": "Salty", "price": "₹299", "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fcollections%2Fhoops&subid=kcb07-acc" }] },
+            { "id": "kcb-08", "title": "Kaftan Style Kurti x Ankle Length Leggings", "image": "/images/looks/kcb-08.jpg", "items": [{ "name": "Cotton Kaftan Kurti", "brand": "Bewakoof", "price": "₹699", "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fwomen-kurtas&subid=kcb08-top" }, { "name": "Move All-Day Leggings", "brand": "BlissClub", "price": "₹1,199", "affiliateUrl": "https://tjzuh.com/g/f7dkjuc7zj0be660c062519b939af8/?ulp=https%3A%2F%2Fblissclub.com%2F&subid=kcb08-bottom" }, { "name": "Silver Pendant Chain", "brand": "Salty", "price": "₹349", "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fcollections%2Fanti-tarnish-necklaces&subid=kcb08-acc" }] },
+            { "id": "kcb-09", "title": "Indigo Short Kurti x Move All-Day Straight Pants", "image": "/images/looks/kcb-09.jpg", "items": [{ "name": "Indigo Short Cotton Kurti", "brand": "Bewakoof", "price": "₹599", "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fwomen-kurtas&subid=kcb09-top" }, { "name": "Straight Leg Trousers", "brand": "BlissClub", "price": "₹1,499", "affiliateUrl": "https://tjzuh.com/g/f7dkjuc7zj0be660c062519b939af8/?ulp=https%3A%2F%2Fblissclub.com%2F&subid=kcb09-bottom" }, { "name": "Silver Drop Earrings Set", "brand": "Salty", "price": "₹299", "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fcollections%2Fsilver-earrings&subid=kcb09-acc" }] },
+            { "id": "kcb-10", "title": "Block Print Tunic x Flare Trousers", "image": "/images/looks/kcb-10.jpg", "items": [{ "name": "Block Print Short Tunic", "brand": "Bewakoof", "price": "₹699", "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fwomen-kurtas&subid=kcb10-top" }, { "name": "Ultimate Flare Trousers", "brand": "BlissClub", "price": "₹1,599", "affiliateUrl": "https://tjzuh.com/g/f7dkjuc7zj0be660c062519b939af8/?ulp=https%3A%2F%2Fblissclub.com%2F&subid=kcb10-bottom" }, { "name": "Oxidized Silver Hoop Set", "brand": "Salty", "price": "₹349", "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fcollections%2Fhoops&subid=kcb10-acc" }] }
+          ]
+        },
+        {
+          "id": "minimalist-workwear",
+          "title": "Minimalist Workwear",
+          "looks": [
+            {
+              "id": "mw-01",
+              "title": "Solid Mandarin Kurta x Essential Trousers",
+              "image": "/images/looks/mw-01.jpg",
+              "items": [
+                { "name": "Solid Mandarin Neck Cotton Kurti", "brand": "Bewakoof", "price": "₹649", "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fwomen-kurtas&subid=mw01-top" },
+                { "name": "Move All-Day Straight Trousers", "brand": "BlissClub", "price": "₹1,499", "affiliateUrl": "https://tjzuh.com/g/f7dkjuc7zj0be660c062519b939af8/?ulp=https%3A%2F%2Fblissclub.com%2F&subid=mw01-bottom" },
+                { "name": "Anti-Tarnish Dainty Silver Chain", "brand": "Salty", "price": "₹399", "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fcollections%2Fanti-tarnish-necklaces&subid=mw01-acc" }
+              ]
+            },
+            { "id": "mw-02", "title": "Subtle Pattern Tunic x Tapered Stretch Pants", "image": "/images/looks/mw-02.jpg", "items": [{ "name": "Subtle Pattern Cotton Tunic", "brand": "Bewakoof", "price": "₹699", "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fwomen-kurtas&subid=mw02-top" }, { "name": "Tapered Active Trousers", "brand": "BlissClub", "price": "₹1,499", "affiliateUrl": "https://tjzuh.com/g/f7dkjuc7zj0be660c062519b939af8/?ulp=https%3A%2F%2Fblissclub.com%2F&subid=mw02-bottom" }, { "name": "Minimal Silver Studs", "brand": "Salty", "price": "₹249", "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fcollections%2Fsilver-earrings&subid=mw02-acc" }] },
+            { "id": "mw-03", "title": "Shirt Style Kurta x Straight Leg Trousers", "image": "/images/looks/mw-03.jpg", "items": [{ "name": "Shirt Collar Cotton Kurta", "brand": "Bewakoof", "price": "₹799", "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fwomen-kurtas&subid=mw03-top" }, { "name": "Move All-Day Trousers", "brand": "BlissClub", "price": "₹1,499", "affiliateUrl": "https://tjzuh.com/g/f7dkjuc7zj0be660c062519b939af8/?ulp=https%3A%2F%2Fblissclub.com%2F&subid=mw03-bottom" }, { "name": "Sleek Silver Bracelet", "brand": "Salty", "price": "₹349", "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fcollections%2Fbracelets&subid=mw03-acc" }] },
+            { "id": "mw-04", "title": "Black Cotton Kurti x Flare Stretch Pants", "image": "/images/looks/mw-04.jpg", "items": [{ "name": "Black Solid Cotton Kurti", "brand": "Bewakoof", "price": "₹599", "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fwomen-kurtas&subid=mw04-top" }, { "name": "Ultimate Flare Trousers", "brand": "BlissClub", "price": "₹1,599", "affiliateUrl": "https://tjzuh.com/g/f7dkjuc7zj0be660c062519b939af8/?ulp=https%3A%2F%2Fblissclub.com%2F&subid=mw04-bottom" }, { "name": "Gleam Halo Silver Hoops", "brand": "Salty", "price": "₹299", "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fproducts%2Fgleam-halo-hoops-earrings-silver&subid=mw04-acc" }] },
+            { "id": "mw-05", "title": "Beige Motif Kurti x Ankle Tights", "image": "/images/looks/mw-05.jpg", "items": [{ "name": "Beige Motif Short Kurta", "brand": "Bewakoof", "price": "₹649", "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fwomen-kurtas&subid=mw05-top" }, { "name": "Essential Ankle Leggings", "brand": "BlissClub", "price": "₹1,199", "affiliateUrl": "https://tjzuh.com/g/f7dkjuc7zj0be660c062519b939af8/?ulp=https%3A%2F%2Fblissclub.com%2F&subid=mw05-bottom" }, { "name": "Geometric Silver Earrings", "brand": "Salty", "price": "₹299", "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fcollections%2Fsilver-earrings&subid=mw05-acc" }] },
+            { "id": "mw-06", "title": "Navy Blue Kurti x Move All-Day Pants", "image": "/images/looks/mw-06.jpg", "items": [{ "name": "Navy Blue Solid Kurti", "brand": "Bewakoof", "price": "₹599", "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fwomen-kurtas&subid=mw06-top" }, { "name": "Move All-Day Straight Pants", "brand": "BlissClub", "price": "₹1,499", "affiliateUrl": "https://tjzuh.com/g/f7dkjuc7zj0be660c062519b939af8/?ulp=https%3A%2F%2Fblissclub.com%2F&subid=mw06-bottom" }, { "name": "Minimalist Pendant Chain", "brand": "Salty", "price": "₹349", "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fcollections%2Fanti-tarnish-necklaces&subid=mw06-acc" }] },
+            { "id": "mw-07", "title": "Striped Cotton Tunic x Tapered Trousers", "image": "/images/looks/mw-07.jpg", "items": [{ "name": "Striped Cotton Tunic Top", "brand": "Bewakoof", "price": "₹699", "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fwomen-kurtas&subid=mw07-top" }, { "name": "Tapered Active Trousers", "brand": "BlissClub", "price": "₹1,499", "affiliateUrl": "https://tjzuh.com/g/f7dkjuc7zj0be660c062519b939af8/?ulp=https%3A%2F%2Fblissclub.com%2F&subid=mw07-bottom" }, { "name": "Silver Ring Set", "brand": "Salty", "price": "₹249", "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fcollections%2Frings&subid=mw07-acc" }] },
+            { "id": "mw-08", "title": "White Boat Neck Kurti x Flare Leggings", "image": "/images/looks/mw-08.jpg", "items": [{ "name": "White Boat Neck Cotton Kurti", "brand": "Bewakoof", "price": "₹599", "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fwomen-kurtas&subid=mw08-top" }, { "name": "Ultimate Flare Leggings", "brand": "BlissClub", "price": "₹1,399", "affiliateUrl": "https://tjzuh.com/g/f7dkjuc7zj0be660c062519b939af8/?ulp=https%3A%2F%2Fblissclub.com%2F&subid=mw08-bottom" }, { "name": "Cascade Gleam Drop Earrings", "brand": "Salty", "price": "₹399", "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fproducts%2Fcascade-gleam-drop-earrings&subid=mw08-acc" }] },
+            { "id": "mw-09", "title": "Olive Green Kurta x Straight Fit Trousers", "image": "/images/looks/mw-09.jpg", "items": [{ "name": "Olive Green Cotton Kurta", "brand": "Bewakoof", "price": "₹649", "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fwomen-kurtas&subid=mw09-top" }, { "name": "Move All-Day Trousers", "brand": "BlissClub", "price": "₹1,499", "affiliateUrl": "https://tjzuh.com/g/f7dkjuc7zj0be660c062519b939af8/?ulp=https%3A%2F%2Fblissclub.com%2F&subid=mw09-bottom" }, { "name": "Small Silver Hoop Set", "brand": "Salty", "price": "₹249", "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fcollections%2Fhoops&subid=mw09-acc" }] },
+            { "id": "mw-10", "title": "Grey Tunic Top x Ankle Length Leggings", "image": "/images/looks/mw-10.jpg", "items": [{ "name": "Grey Cotton Tunic Top", "brand": "Bewakoof", "price": "₹599", "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fwomen-kurtas&subid=mw10-top" }, { "name": "Essential Ankle Leggings", "brand": "BlissClub", "price": "₹1,199", "affiliateUrl": "https://tjzuh.com/g/f7dkjuc7zj0be660c062519b939af8/?ulp=https%3A%2F%2Fblissclub.com%2F&subid=mw10-bottom" }, { "name": "Dainty Silver Bracelet", "brand": "Salty", "price": "₹299", "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fcollections%2Fbracelets&subid=mw10-acc" }] }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "jewelry-accessories",
+      "title": "Jewelry & Accessories",
+      "subcategories": [
+        {
+          "id": "oxidized-statement",
+          "title": "Oxidized & Statement Jewelry",
+          "looks": [
+            {
+              "id": "osj-01",
+              "title": "Silver Oxidized Statement Suite",
+              "image": "/images/looks/osj-01.jpg",
+              "items": [
+                { "name": "Cascade Gleam Drop Earrings", "brand": "Salty", "price": "₹399", "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fproducts%2Fcascade-gleam-drop-earrings&subid=osj01-item1" },
+                { "name": "Chunky Silver Choker", "brand": "Salty", "price": "₹499", "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fcollections%2Fanti-tarnish-necklaces&subid=osj01-item2" },
+                { "name": "Stacked Silver Ring Set", "brand": "Salty", "price": "₹299", "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fcollections%2Frings&subid=osj01-item3" }
+              ]
+            },
+            { "id": "osj-02", "title": "Traditional Jhumka & Bangles Pairing", "image": "/images/looks/osj-02.jpg", "items": [{ "name": "Chunky Silver Jhumkas", "brand": "Salty", "price": "₹399", "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fcollections%2Fsilver-earrings&subid=osj02-item1" }, { "name": "Silver Bangles Set", "brand": "Salty", "price": "₹349", "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fcollections%2Fbracelets&subid=osj02-item2" }] },
+            { "id": "osj-03", "title": "Boho Layered Coin Necklace Stack", "image": "/images/looks/osj-03.jpg", "items": [{ "name": "Coin Layered Silver Chain", "brand": "Salty", "price": "₹449", "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fcollections%2Fanti-tarnish-necklaces&subid=osj03-item1" }, { "name": "Gleam Halo Silver Hoops", "brand": "Salty", "price": "₹299", "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fproducts%2Fgleam-halo-hoops-earrings-silver&subid=osj03-item2" }] },
+            { "id": "osj-04", "title": "Feather Dangle Earrings & Statement Cuff", "image": "/images/looks/osj-04.jpg", "items": [{ "name": "Feather Silver Dangles", "brand": "Salty", "price": "₹299", "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fcollections%2Fsilver-earrings&subid=osj04-item1" }, { "name": "Silver Statement Cuff", "brand": "Salty", "price": "₹399", "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fcollections%2Fbracelets&subid=osj04-item2" }] },
+            { "id": "osj-05", "title": "Vintage Mirror Drop Earrings Stack", "image": "/images/looks/osj-05.jpg", "items": [{ "name": "Mirror Drop Silver Earrings", "brand": "Salty", "price": "₹399", "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fcollections%2Fsilver-earrings&subid=osj05-item1" }, { "name": "Vintage Silver Rings", "brand": "Salty", "price": "₹249", "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fcollections%2Frings&subid=osj05-item2" }] },
+            { "id": "osj-06", "title": "Chunky Hoop Earrings & Coin Anklet", "image": "/images/looks/osj-06.jpg", "items": [{ "name": "Chunky Silver Hoops", "brand": "Salty", "price": "₹349", "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fcollections%2Fhoops&subid=osj06-item1" }, { "name": "Silver Coin Anklet", "brand": "Salty", "price": "₹249", "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fcollections%2Ffull-catalogue&subid=osj06-item2" }] },
+            { "id": "osj-07", "title": "Geometric Statement Drop Earrings", "image": "/images/looks/osj-07.jpg", "items": [{ "name": "Geometric Silver Drops", "brand": "Salty", "price": "₹299", "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fcollections%2Fsilver-earrings&subid=osj07-item1" }, { "name": "Layered Silver Chain", "brand": "Salty", "price": "₹399", "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fcollections%2Fanti-tarnish-necklaces&subid=osj07-item2" }] },
+            { "id": "osj-08", "title": "Temple Style Drop Earrings Stack", "image": "/images/looks/osj-08.jpg", "items": [{ "name": "Temple Style Silver Drops", "brand": "Salty", "price": "₹449", "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fcollections%2Fsilver-earrings&subid=osj08-item1" }, { "name": "Stacked Silver Rings", "brand": "Salty", "price": "₹299", "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fcollections%2Frings&subid=osj08-item2" }] },
+            { "id": "osj-09", "title": "Tribal Silver Necklace & Hoops", "image": "/images/looks/osj-09.jpg", "items": [{ "name": "Tribal Silver Choker", "brand": "Salty", "price": "₹499", "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fcollections%2Fanti-tarnish-necklaces&subid=osj09-item1" }, { "name": "Silver Hoop Earrings", "brand": "Salty", "price": "₹249", "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fcollections%2Fhoops&subid=osj09-item2" }] },
+            { "id": "osj-10", "title": "Oxidized Cuff & Ring Combination", "image": "/images/looks/osj-10.jpg", "items": [{ "name": "Statement Silver Cuff", "brand": "Salty", "price": "₹399", "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fcollections%2Fbracelets&subid=osj10-item1" }, { "name": "Vintage Ring Set", "brand": "Salty", "price": "₹249", "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fcollections%2Frings&subid=osj10-item2" }] }
+          ]
+        },
+        {
+          "id": "contemporary-minimal",
+          "title": "Contemporary & Minimal",
+          "looks": [
+            {
+              "id": "cm-01",
+              "title": "18K Gold Plated Chain & Studs Set",
+              "image": "/images/looks/cm-01.jpg",
+              "items": [
+                { "name": "Anti-Tarnish Gold Pendant Chain", "brand": "Salty", "price": "₹499", "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fcollections%2Fanti-tarnish-necklaces&subid=cm01-item1" },
+                { "name": "Minimal Gold Stud Earrings", "brand": "Salty", "price": "₹249", "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fcollections%2Fsilver-earrings&subid=cm01-item2" }
+              ]
+            },
+            { "id": "cm-02", "title": "Sleek Tennis Bracelet & Ring Stack", "image": "/images/looks/cm-02.jpg", "items": [{ "name": "Minimalist Tennis Bracelet", "brand": "Salty", "price": "₹399", "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fcollections%2Fbracelets&subid=cm02-item1" }, { "name": "Slim Stacking Rings", "brand": "Salty", "price": "₹249", "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fcollections%2Frings&subid=cm02-item2" }] },
+            { "id": "cm-03", "title": "Minimalist Hoop & Delicate Layered Chain", "image": "/images/looks/cm-03.jpg", "items": [{ "name": "Gleam Halo Silver Hoops", "brand": "Salty", "price": "₹299", "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fproducts%2Fgleam-halo-hoops-earrings-silver&subid=cm03-item1" }, { "name": "Dainty Layered Chain", "brand": "Salty", "price": "₹349", "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fcollections%2Fanti-tarnish-necklaces&subid=cm03-item2" }] },
+            { "id": "cm-04", "title": "Pearl Accent Earrings & Minimal Chain", "image": "/images/looks/cm-04.jpg", "items": [{ "name": "Pearl Drop Earrings", "brand": "Salty", "price": "₹299", "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fcollections%2Fsilver-earrings&subid=cm04-item1" }, { "name": "Minimalist Gold Chain", "brand": "Salty", "price": "₹399", "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fcollections%2Fanti-tarnish-necklaces&subid=cm04-item2" }] },
+            { "id": "cm-05", "title": "Geometric Gold Hoops Stack", "image": "/images/looks/cm-05.jpg", "items": [{ "name": "Geometric Gold Hoops", "brand": "Salty", "price": "₹299", "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fcollections%2Fhoops&subid=cm05-item1" }, { "name": "Gold Stacking Ring", "brand": "Salty", "price": "₹249", "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fcollections%2Frings&subid=cm05-item2" }] },
+            { "id": "cm-06", "title": "Sleek Cuff Bracelet & Stud Set", "image": "/images/looks/cm-06.jpg", "items": [{ "name": "Sleek Gold Cuff", "brand": "Salty", "price": "₹349", "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fcollections%2Fbracelets&subid=cm06-item1" }, { "name": "Gold Ball Studs", "brand": "Salty", "price": "₹199", "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fcollections%2Fsilver-earrings&subid=cm06-item2" }] },
+            { "id": "cm-07", "title": "Multi-Strand Minimal Necklace", "image": "/images/looks/cm-07.jpg", "items": [{ "name": "Multi-Strand Delicate Chain", "brand": "Salty", "price": "₹449", "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fcollections%2Fanti-tarnish-necklaces&subid=cm07-item1" }, { "name": "Small Gold Hoops", "brand": "Salty", "price": "₹249", "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fcollections%2Fhoops&subid=cm07-item2" }] },
+            { "id": "cm-08", "title": "Dainty Solitaire Ring & Pendant", "image": "/images/looks/cm-08.jpg", "items": [{ "name": "Solitaire Crystal Ring", "brand": "Salty", "price": "₹299", "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fcollections%2Frings&subid=cm08-item1" }, { "name": "Crystal Pendant Chain", "brand": "Salty", "price": "₹399", "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fcollections%2Fanti-tarnish-necklaces&subid=cm08-item2" }] },
+            { "id": "cm-09", "title": "Square Hoop Earrings & Chain Bracelet", "image": "/images/looks/cm-09.jpg", "items": [{ "name": "Square Minimal Hoops", "brand": "Salty", "price": "₹299", "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fcollections%2Fhoops&subid=cm09-item1" }, { "name": "Fine Chain Bracelet", "brand": "Salty", "price": "₹299", "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fcollections%2Fbracelets&subid=cm09-item2" }] },
+            { "id": "cm-10", "title": "Layered Gold Choker Set", "image": "/images/looks/cm-10.jpg", "items": [{ "name": "Layered Minimal Gold Choker", "brand": "Salty", "price": "₹499", "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fcollections%2Fanti-tarnish-necklaces&subid=cm10-item1" }, { "name": "Matching Gold Studs", "brand": "Salty", "price": "₹199", "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fcollections%2Fsilver-earrings&subid=cm10-item2" }] }
+          ]
+        },
+        {
+          "id": "finishing-touches",
+          "title": "Finishing Touches & Frames",
+          "looks": [
+            {
+              "id": "ft-01",
+              "title": "Retro Rectangular Sunglasses & Hair Accessory Set",
+              "image": "/images/looks/ft-01.jpg",
+              "items": [
+                { "name": "Retro Rectangular Frame Sunglasses", "brand": "Salty", "price": "₹499", "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fcollections%2Ffull-catalogue%3Fpage%3D166&subid=ft01-item1" },
+                { "name": "Satin Hair Clip Set", "brand": "Salty", "price": "₹249", "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fcollections%2Ffull-catalogue&subid=ft01-item2" }
+              ]
+            },
+            { "id": "ft-02", "title": "Cat-Eye Sunglasses & Printed Scarf", "image": "/images/looks/ft-02.jpg", "items": [{ "name": "Cat-Eye Sunglasses", "brand": "Salty", "price": "₹599", "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fcollections%2Ffull-catalogue%3Fpage%3D166&subid=ft02-item1" }, { "name": "Silk Touch Printed Scarf", "brand": "Salty", "price": "₹399", "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fcollections%2Ffull-catalogue&subid=ft02-item2" }] },
+            { "id": "ft-03", "title": "Over-sized Aviators & Statement Belt", "image": "/images/looks/ft-03.jpg", "items": [{ "name": "Oversized Aviator Sunglasses", "brand": "Salty", "price": "₹549", "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fcollections%2Ffull-catalogue%3Fpage%3D166&subid=ft03-item1" }, { "name": "Sleek Waist Belt", "brand": "Salty", "price": "₹349", "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fcollections%2Ffull-catalogue&subid=ft03-item2" }] },
+            { "id": "ft-04", "title": "Tinted Square Sunglasses & Hair Accessories", "image": "/images/looks/ft-04.jpg", "items": [{ "name": "Tinted Square Sunglasses", "brand": "Salty", "price": "₹499", "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fcollections%2Ffull-catalogue%3Fpage%3D166&subid=ft04-item1" }, { "name": "Pearl Hair Pins Pack", "brand": "Salty", "price": "₹299", "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fcollections%2Ffull-catalogue&subid=ft04-item2" }] },
+            { "id": "ft-05", "title": "Clear Frame Glasses & Minimal Watch", "image": "/images/looks/ft-05.jpg", "items": [{ "name": "Clear Frame Fashion Glasses", "brand": "Salty", "price": "₹449", "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fcollections%2Ffull-catalogue%3Fpage%3D166&subid=ft05-item1" }, { "name": "Minimalist Mesh Watch", "brand": "Salty", "price": "₹899", "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fcollections%2Ffull-catalogue&subid=ft05-item2" }] },
+            { "id": "ft-06", "title": "Round Vintage Sunglasses & Hair Scrunchee Set", "image": "/images/looks/ft-06.jpg", "items": [{ "name": "Round Vintage Sunglasses", "brand": "Salty", "price": "₹499", "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fcollections%2Ffull-catalogue%3Fpage%3D166&subid=ft06-item1" }, { "name": "Satin Scrunchies Pack", "brand": "Salty", "price": "₹199", "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fcollections%2Ffull-catalogue&subid=ft06-item2" }] },
+            { "id": "ft-07", "title": "Tortoise Shell Frames & Leather Belt", "image": "/images/looks/ft-07.jpg", "items": [{ "name": "Tortoise Shell Sunglasses", "brand": "Salty", "price": "₹549", "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fcollections%2Ffull-catalogue%3Fpage%3D166&subid=ft07-item1" }, { "name": "Classic Tan Belt", "brand": "Salty", "price": "₹399", "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fcollections%2Ffull-catalogue&subid=ft07-item2" }] },
+            { "id": "ft-08", "title": "Metal Frame Sunglasses & Watch Set", "image": "/images/looks/ft-08.jpg", "items": [{ "name": "Gold Metal Frame Sunglasses", "brand": "Salty", "price": "₹599", "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fcollections%2Ffull-catalogue%3Fpage%3D166&subid=ft08-item1" }, { "name": "Gold Dial Metallic Watch", "brand": "Salty", "price": "₹999", "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fcollections%2Ffull-catalogue&subid=ft08-item2" }] },
+            { "id": "ft-09", "title": "Black Rimmed Glasses & Scarf Combo", "image": "/images/looks/ft-09.jpg", "items": [{ "name": "Black Rimmed Retro Glasses", "brand": "Salty", "price": "₹449", "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fcollections%2Ffull-catalogue%3Fpage%3D166&subid=ft09-item1" }, { "name": "Printed Neck Scarf", "brand": "Salty", "price": "₹299", "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fcollections%2Ffull-catalogue&subid=ft09-item2" }] },
+            { "id": "ft-10", "title": "Chic Sunglasses & Hair Band Combo", "image": "/images/looks/ft-10.jpg", "items": [{ "name": "Gradient Tint Sunglasses", "brand": "Salty", "price": "₹499", "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fcollections%2Ffull-catalogue%3Fpage%3D166&subid=ft010-item1" }, { "name": "Padded Velvet Hair Band", "brand": "Salty", "price": "₹249", "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fcollections%2Ffull-catalogue&subid=ft010-item2" }] }
+          ]
+        }
+      ]
+    }
+  ]
+}
+</file>
+
+<file path="src/pages/categories/[category].astro">
+---
+import Layout from '../../layouts/Layout.astro';
+import products from '../../data/products.json';
+
+export async function getStaticPaths() {
+  const taxonomy = [
+    {
+      id: "indo-western",
+      title: "Indo-Western Fusion",
+      description: "Traditional Indian prints & silhouettes blended with modern western cuts.",
+    },
+    {
+      id: "desi-casual",
+      title: "Desi Casual & Everyday",
+      description: "High-comfort daily office, college, and casual ethnic wear.",
+    },
+    {
+      id: "jewelry-accessories",
+      title: "Jewelry & Accessories",
+      description: "High-impulse traditional statement jewelry, watches & styling essentials.",
+    }
+  ];
+
+  return taxonomy.map((cat) => {
+    const matchingProducts = products.filter(
+      (item) => item.category?.toLowerCase() === cat.id.toLowerCase()
+    );
+
+    return {
+      params: { category: cat.id },
+      props: { categoryData: cat, products: matchingProducts },
+    };
+  });
+}
+
+const { categoryData, products: categoryProducts } = Astro.props;
+---
+
+<Layout title={`${categoryData.title} | DesiFit`}>
+  <main class="max-w-7xl mx-auto px-4 py-8 font-sans">
+    <h1 class="text-3xl font-bold text-gray-900 mb-2">{categoryData.title}</h1>
+    <p class="text-gray-600 mb-8">{categoryData.description}</p>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {categoryProducts && categoryProducts.length > 0 ? (
+        categoryProducts.map((item) => (
+          <div class="border border-gray-200 rounded-xl p-4 bg-white shadow-sm flex flex-col justify-between">
+            <div>
+              {item.image && (
+                <img 
+                  src={item.image} 
+                  alt={item.name || item.title} 
+                  class="w-full h-64 object-cover rounded-lg mb-4" 
+                />
+              )}
+              <h2 class="font-semibold text-lg text-gray-800">{item.name || item.title}</h2>
+              {item.brand && <p class="text-xs text-indigo-600 font-medium mt-1">{item.brand}</p>}
+              {item.price && <p class="text-gray-700 font-bold mt-2">₹{item.price}</p>}
+            </div>
+            {item.affiliateUrl && (
+              <a 
+                href={item.affiliateUrl} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                class="mt-4 block text-center bg-indigo-600 text-white font-medium py-2 px-4 rounded-lg hover:bg-indigo-700 transition"
+              >
+                Shop Fit &rarr;
+              </a>
+            )}
+          </div>
+        ))
+      ) : (
+        <p class="text-gray-500 col-span-3">No products found for this category yet.</p>
+      )}
+    </div>
+  </main>
+</Layout>
+</file>
+
+<file path="src/pages/categories.astro">
+---
+import Layout from '../layouts/Layout.astro';
+
+const taxonomy = [
+  {
+    id: "indo-western",
+    title: "Indo-Western Fusion",
+    description: "Traditional Indian prints & silhouettes blended with modern western cuts.",
+    heroMerchant: "Bewakoof + BlissClub + Salty",
+    subcategories: [
+      { id: "short-kurtis-denim", name: "Short Kurtis & Denim", count: 10 },
+      { id: "fusion-layering", name: "Fusion Sets & Layering", count: 10 },
+      { id: "boho-streetwear", name: "Boho Streetwear", count: 10 }
+    ]
+  },
+  {
+    id: "desi-casual",
+    title: "Desi Casual & Everyday",
+    description: "High-comfort daily office, college, and casual ethnic wear.",
+    heroMerchant: "Bewakoof + BlissClub",
+    subcategories: [
+      { id: "daily-cotton-kurtas", name: "Daily Cotton Kurtas", count: 10 },
+      { id: "kurti-comfort-bottoms", name: "Kurti & Comfort Bottoms", count: 10 },
+      { id: "minimalist-workwear", name: "Minimalist Workwear", count: 10 }
+    ]
+  },
+  {
+    id: "jewelry-accessories",
+    title: "Jewelry & Accessories",
+    description: "High-impulse traditional statement jewelry, watches & styling essentials.",
+    heroMerchant: "Salty",
+    subcategories: [
+      { id: "oxidized-statement", name: "Oxidized & Statement Jewelry", count: 10 },
+      { id: "contemporary-minimal", name: "Contemporary & Minimal", count: 10 },
+      { id: "finishing-touches", name: "Finishing Touches & Frames", count: 10 }
+    ]
+  }
+];
+---
+
+<Layout title="Categories | DesiFit">
+  <main class="max-w-7xl mx-auto px-4 py-8 font-sans">
+    <h1 class="text-3xl font-bold text-gray-900 mb-2">Explore Desi Lookbooks</h1>
+    <p class="text-gray-600 mb-8">Curated Indian aesthetic fits with instant affiliate shop links.</p>
+
+    <div class="space-y-12">
+      {taxonomy.map((cat) => (
+        <section class="border border-gray-200 rounded-xl p-6 bg-white shadow-sm">
+          <div class="flex justify-between items-start mb-4">
+            <div>
+              <h2 class="text-2xl font-semibold text-gray-800">{cat.title}</h2>
+              <p class="text-sm text-gray-500 mt-1">{cat.description}</p>
+            </div>
+            <span class="text-xs bg-indigo-50 text-indigo-700 px-3 py-1 rounded-full font-medium">
+              {cat.heroMerchant}
+            </span>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
+            {cat.subcategories.map((sub) => (
+              <a 
+                href={`/categories/${cat.id}`} 
+                class="group block p-4 border border-gray-100 rounded-lg bg-gray-50 hover:bg-indigo-50 hover:border-indigo-200 transition-all duration-200"
+              >
+                <div class="flex justify-between items-center">
+                  <span class="font-medium text-gray-700 group-hover:text-indigo-900">{sub.name}</span>
+                  <span class="text-xs text-gray-400 group-hover:text-indigo-600">{sub.count} Fits &rarr;</span>
+                </div>
+              </a>
+            ))}
+          </div>
+        </section>
+      ))}
+    </div>
+  </main>
+</Layout>
+</file>
+
+<file path="src/pages/index.astro">
+---
+import Layout from '../layouts/Layout.astro';
+import products from '../data/products.json';
+
+// Grab up to 3 featured items from products.json for the homepage preview
+const featuredProducts = products.slice(0, 3);
+---
+
+<Layout title="DesiFit | Modern South Asian Fashion & Lookbook">
+  <main class="max-w-7xl mx-auto px-4 py-8 font-sans">
+    
+    <!-- Hero Section -->
+    <section class="text-center py-12 px-4 bg-gray-50 rounded-2xl mb-12 border border-gray-100">
+      <span class="text-xs font-bold uppercase tracking-wider text-indigo-600 bg-indigo-50 px-3 py-1 rounded-full">
+        Curated Style Guide
+      </span>
+      <h1 class="text-3xl md:text-5xl font-extrabold text-gray-900 my-4 leading-tight">
+        Elevate Your Wardrobe with Modern Desi Elegance
+      </h1>
+      <p class="text-base md:text-lg text-gray-600 max-w-2xl mx-auto mb-8 leading-relaxed">
+        Discover handpicked ethnic wear, fusion silhouettes, and statement accessories tailored for modern everyday style.
+      </p>
+      <div class="flex gap-4 justify-center flex-wrap">
+        <a 
+          href="/categories/indo-western" 
+          class="bg-gray-900 text-white px-6 py-3 rounded-lg font-semibold hover:bg-gray-800 transition shadow-sm"
+        >
+          Explore Indo-Western &rarr;
+        </a>
+        <a 
+          href="/categories/desi-casual" 
+          class="bg-white text-gray-900 border border-gray-300 px-6 py-3 rounded-lg font-semibold hover:bg-gray-50 transition"
+        >
+          Shop Desi Casual
+        </a>
+      </div>
+    </section>
+
+    <!-- Category Quick Links -->
+    <section class="mb-14">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6 text-center">Browse by Category</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        
+        <a href="/categories/indo-western" class="group block text-decoration-none">
+          <div class="border border-gray-200 rounded-xl p-6 text-center bg-white shadow-sm hover:border-indigo-300 hover:shadow-md transition">
+            <div class="text-3xl mb-2">💃</div>
+            <h3 class="text-xl font-bold text-gray-900 mb-1 group-hover:text-indigo-600 transition">Indo-Western Fusion</h3>
+            <p class="text-sm text-gray-500">Short Kurtis, Fusion Sets & Boho Wear</p>
+          </div>
+        </a>
+
+        <a href="/categories/desi-casual" class="group block text-decoration-none">
+          <div class="border border-gray-200 rounded-xl p-6 text-center bg-white shadow-sm hover:border-indigo-300 hover:shadow-md transition">
+            <div class="text-3xl mb-2">✨</div>
+            <h3 class="text-xl font-bold text-gray-900 mb-1 group-hover:text-indigo-600 transition">Desi Casual & Everyday</h3>
+            <p class="text-sm text-gray-500">Daily Cotton Kurtas & Workwear</p>
+          </div>
+        </a>
+
+        <a href="/categories/jewelry-accessories" class="group block text-decoration-none">
+          <div class="border border-gray-200 rounded-xl p-6 text-center bg-white shadow-sm hover:border-indigo-300 hover:shadow-md transition">
+            <div class="text-3xl mb-2">💍</div>
+            <h3 class="text-xl font-bold text-gray-900 mb-1 group-hover:text-indigo-600 transition">Jewelry & Accessories</h3>
+            <p class="text-sm text-gray-500">Oxidized Statements & Minimal Jewelry</p>
+          </div>
+        </a>
+
+      </div>
+    </section>
+
+    <!-- Featured Trends Grid -->
+    <section>
+      <div class="flex justify-between items-center mb-6">
+        <h2 class="text-2xl font-bold text-gray-900">Featured Looks</h2>
+        <a href="/categories" class="text-sm font-semibold text-indigo-600 hover:text-indigo-800">
+          View All Categories &rarr;
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {featuredProducts.map((product) => (
+          <article class="border border-gray-200 rounded-xl overflow-hidden bg-white shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="relative w-full h-80 bg-gray-50">
+                {product.image && (
+                  <img 
+                    src={product.image} 
+                    alt={product.name || product.title} 
+                    class="w-full h-full object-cover" 
+                  />
+                )}
+                {product.brand && (
+                  <span class="absolute top-3 left-3 bg-gray-900 text-white text-xs font-semibold px-2.5 py-1 rounded-full uppercase tracking-wider">
+                    {product.brand}
+                  </span>
+                )}
+              </div>
+              <div class="p-4">
+                <h3 class="font-semibold text-lg text-gray-800 line-clamp-1">{product.name || product.title}</h3>
+                {product.price && <p class="text-gray-900 font-bold mt-1">₹{product.price}</p>}
+              </div>
+            </div>
+
+            <div class="p-4 pt-0">
+              {product.affiliateUrl && (
+                <a 
+                  href={product.affiliateUrl} 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  class="block text-center bg-indigo-600 text-white font-medium py-2.5 px-4 rounded-lg hover:bg-indigo-700 transition"
+                >
+                  Shop This Look &rarr;
+                </a>
+              )}
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+
+  </main>
+</Layout>
+</file>
+
+<file path="src/layouts/Layout.astro">
+<!doctype html>
+<html lang="en">
+	<head>
+		<!-- Google tag (gtag.js) -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=G-GB549ENN8E"></script>
+		<script is:inline>
+  		 window.dataLayer = window.dataLayer || [];
+ 		 function gtag(){dataLayer.push(arguments);}
+ 		 gtag('js', new Date());
+
+  		 gtag('config', 'G-GB549ENN8E');
+		</script>
+
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" href="/favicon.ico" />
+		<meta name="generator" content={Astro.generator} />
+		
+		<!-- Primary Meta Tags -->
+		<title>DesiFit | Modern South Asian Fashion & Activewear</title>
+		<!-- Impact Verification Tag -->
+		<meta name='impact-site-verification' value='8a09de15-26bb-452e-9a91-77688b390138'>
+		<meta name="title" content="DesiFit | Modern South Asian Fashion & Activewear" />
+		<meta name="description" content="Curated South Asian ethnic wear, fusion silhouettes, and activewear tailored for modern lifestyle & fitness." />
+
+		<meta name="mitgo-verification" content="e6f56535-e820-4ae2-a0ee-3a1688da48da" />
+
+		<!-- Open Graph / Facebook / WhatsApp -->
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content="https://desifit.com/" />
+		<meta property="og:title" content="DesiFit | Modern South Asian Fashion & Activewear" />
+		<meta property="og:description" content="Curated South Asian ethnic wear, fusion silhouettes, and activewear tailored for modern lifestyle & fitness." />
+		<meta property="og:image" content="https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=1200&q=80" />
+
+		<!-- Twitter -->
+		<meta property="twitter:card" content="summary_large_image" />
+		<meta property="twitter:url" content="https://desifit.com/" />
+		<meta property="twitter:title" content="DesiFit | Modern South Asian Fashion & Activewear" />
+		<meta property="twitter:description" content="Curated South Asian ethnic wear, fusion silhouettes, and activewear tailored for modern lifestyle & fitness." />
+		<meta property="twitter:image" content="https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=1200&q=80" />
+	</head>
+	<body>
+		<!-- Global Top Navigation Header -->
+		<header style="border-bottom: 1px solid #eee; background: #fff; position: sticky; top: 0; z-index: 100;">
+			<div style="max-width: 1000px; margin: 0 auto; padding: 1rem 1.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+				<a href="/" style="font-size: 1.5rem; font-weight: 800; letter-spacing: -0.5px; color: #111; text-decoration: none;">
+					DesiFit<span style="color: #e63946;">.</span>
+				</a>
+				<nav style="display: flex; gap: 1.5rem; font-weight: 600; font-size: 0.95rem;">
+					<a href="/ethnic" style="color: #333; text-decoration: none;">Ethnic</a>
+					<a href="/fusion" style="color: #333; text-decoration: none;">Fusion</a>
+					<a href="/active" style="color: #333; text-decoration: none;">Activewear</a>
+				</nav>
+			</div>
+		</header>
+
+		<!-- Centered Main Content Wrapper -->
+		<main style="max-width: 1000px; margin: 0 auto; padding: 2rem 1.5rem; min-height: 70vh;">
+			<slot />
+		</main>
+
+		<!-- Global Footer -->
+		<footer style="text-align: center; padding: 2rem 1rem; margin-top: 3rem; border-top: 1px solid #eee; font-family: system-ui, sans-serif;">
+			<p style="margin-bottom: 0.5rem; color: #666;">&copy; 2026 DesiFit. All rights reserved.</p>
+			<nav>
+				<a href="/disclosure" style="margin: 0 10px; color: #111; text-decoration: none;">Affiliate Disclosure</a> | 
+				<a href="/privacy" style="margin: 0 10px; color: #111; text-decoration: none;">Privacy Policy</a> | 
+				<a href="/contact" style="margin: 0 10px; color: #111; text-decoration: none;">Contact Us</a>
+			</nav>
+		</footer>
+	</body>
+</html>
+
+<style>
+	html,
+	body {
+		margin: 0;
+		padding: 0;
+		font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+		color: #222;
+		background-color: #fff;
+	}
+</style>
+</file>
+
+</files>
