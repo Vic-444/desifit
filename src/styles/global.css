@@ -1,1 +1,100 @@
 @import "tailwindcss";
+
+@theme {
+  --font-display: "Syne", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  --color-ink: #171411;
+  --color-ink-soft: #3a342e;
+  --color-paper: #f6f3ef;
+  --color-paper-2: #efe8df;
+  --color-line: #ddd4c8;
+  --color-accent: #e63946;
+  --color-accent-deep: #b72b36;
+  --color-sand: #c4a484;
+  --color-sage: #5f6f5a;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  color: var(--color-ink);
+  background: var(--color-paper);
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.animate-rise {
+  animation: rise-in 0.7s ease-out both;
+}
+
+.animate-fade {
+  animation: fade-in 0.9s ease-out both;
+}
+
+.delay-1 { animation-delay: 0.12s; }
+.delay-2 { animation-delay: 0.24s; }
+.delay-3 { animation-delay: 0.36s; }
+
+.look-card {
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.look-card:hover {
+  transform: translateY(-4px);
+}
+
+.prose-legal h1 {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+.prose-legal h2,
+.prose-legal h3 {
+  font-family: var(--font-display);
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.prose-legal p,
+.prose-legal li {
+  line-height: 1.7;
+  color: var(--color-ink-soft);
+}
+
+.prose-legal a {
+  color: var(--color-accent-deep);
+  text-decoration: underline;
+}

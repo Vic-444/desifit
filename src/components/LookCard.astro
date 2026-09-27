@@ -1,0 +1,48 @@
+---
+interface Item {
+  name: string;
+  brand: string;
+  price: string;
+  affiliateUrl: string;
+  imageUrl?: string;
+  role?: string;
+}
+
+interface Props {
+  id: string;
+  title: string;
+  image: string;
+  items: Item[];
+  href?: string;
+}
+
+const { id, title, image, items, href = `/looks/${id}` } = Astro.props;
+const brands = [...new Set(items.map((i) => i.brand))].join(" · ");
+---
+
+<article class="look-card overflow-hidden rounded-2xl border border-line bg-white shadow-[0_10px_30px_rgba(23,20,17,0.04)]">
+  <a href={href} class="block">
+    <div class="relative aspect-[4/5] overflow-hidden bg-paper-2">
+      <img
+        src={image}
+        alt={title}
+        class="h-full w-full object-cover transition duration-500 hover:scale-[1.03]"
+        loading="lazy"
+        referrerpolicy="no-referrer"
+      />
+    </div>
+    <div class="space-y-2 p-4">
+      <p class="text-xs font-semibold uppercase tracking-[0.14em] text-sand">{brands}</p>
+      <h3 class="font-display text-lg font-bold leading-snug text-ink">{title}</h3>
+      <p class="text-sm text-ink-soft">{items.length} shoppable pieces</p>
+    </div>
+  </a>
+  <div class="border-t border-line px-4 py-3">
+    <a
+      href={href}
+      class="inline-flex text-sm font-semibold text-accent-deep transition hover:text-accent"
+    >
+      Open look →
+    </a>
+  </div>
+</article>
