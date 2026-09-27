@@ -1,0 +1,40 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+import LookCard from "../../../components/LookCard.astro";
+import data from "../../../data/looks.json";
+
+export function getStaticPaths() {
+  return data.categories.flatMap((cat) =>
+    cat.subcategories.map((sub) => ({
+      params: { category: cat.id, subcategory: sub.id },
+      props: { category: cat, subcategory: sub },
+    }))
+  );
+}
+
+const { category, subcategory } = Astro.props;
+---
+
+<Layout
+  title={`${subcategory.title} | ${category.title} | DesiFit`}
+  description={subcategory.description}
+>
+  <main class="mx-auto max-w-6xl px-4 py-12 md:px-6">
+    <div class="flex flex-wrap items-center gap-2 text-sm text-ink-soft">
+      <a href="/categories" class="font-semibold text-accent-deep">Lookbooks</a>
+      <span>/</span>
+      <a href={`/categories/${category.id}`} class="font-semibold text-accent-deep">{category.title}</a>
+    </div>
+    <h1 class="mt-4 font-display text-4xl font-bold text-ink md:text-5xl">{subcategory.title}</h1>
+    <p class="mt-3 max-w-2xl text-ink-soft">{subcategory.description}</p>
+    <p class="mt-2 text-sm font-semibold uppercase tracking-[0.14em] text-sand">
+      {subcategory.looks.length} curated looks
+    </p>
+
+    <div class="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      {subcategory.looks.map((look) => (
+        <LookCard id={look.id} title={look.title} image={look.image} items={look.items} />
+      ))}
+    </div>
+  </main>
+</Layout>

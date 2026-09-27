@@ -1,77 +1,48 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import products from '../../data/products.json';
+import Layout from "../../layouts/Layout.astro";
+import LookCard from "../../components/LookCard.astro";
+import data from "../../data/looks.json";
 
-export async function getStaticPaths() {
-  const taxonomy = [
-    {
-      id: "indo-western",
-      title: "Indo-Western Fusion",
-      description: "Traditional Indian prints & silhouettes blended with modern western cuts.",
-    },
-    {
-      id: "desi-casual",
-      title: "Desi Casual & Everyday",
-      description: "High-comfort daily office, college, and casual ethnic wear.",
-    },
-    {
-      id: "jewelry-accessories",
-      title: "Jewelry & Accessories",
-      description: "High-impulse traditional statement jewelry, watches & styling essentials.",
-    }
-  ];
-
-  return taxonomy.map((cat) => {
-    const matchingProducts = products.filter(
-      (item) => item.category?.toLowerCase() === cat.id.toLowerCase()
-    );
-
-    return {
-      params: { category: cat.id },
-      props: { categoryData: cat, products: matchingProducts },
-    };
-  });
+export function getStaticPaths() {
+  return data.categories.map((cat) => ({
+    params: { category: cat.id },
+    props: { category: cat },
+  }));
 }
 
-const { categoryData, products: categoryProducts } = Astro.props;
+const { category } = Astro.props;
+const previewLooks = category.subcategories.flatMap((sub) =>
+  sub.looks.slice(0, 2).map((look) => look)
+);
 ---
 
-<Layout title={`${categoryData.title} | DesiFit`}>
-  <main class="max-w-7xl mx-auto px-4 py-8 font-sans">
-    <h1 class="text-3xl font-bold text-gray-900 mb-2">{categoryData.title}</h1>
-    <p class="text-gray-600 mb-8">{categoryData.description}</p>
+<Layout title={`${category.title} | DesiFit`} description={category.description}>
+  <main class="mx-auto max-w-6xl px-4 py-12 md:px-6">
+    <a href="/categories" class="text-sm font-semibold text-accent-deep">← All lookbooks</a>
+    <h1 class="mt-4 font-display text-4xl font-bold text-ink md:text-5xl">{category.title}</h1>
+    <p class="mt-3 max-w-2xl text-ink-soft">{category.description}</p>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      {categoryProducts && categoryProducts.length > 0 ? (
-        categoryProducts.map((item) => (
-          <div class="border border-gray-200 rounded-xl p-4 bg-white shadow-sm flex flex-col justify-between">
-            <div>
-              {item.image && (
-                <img 
-                  src={item.image} 
-                  alt={item.name || item.title} 
-                  class="w-full h-64 object-cover rounded-lg mb-4" 
-                />
-              )}
-              <h2 class="font-semibold text-lg text-gray-800">{item.name || item.title}</h2>
-              {item.brand && <p class="text-xs text-indigo-600 font-medium mt-1">{item.brand}</p>}
-              {item.price && <p class="text-gray-700 font-bold mt-2">₹{item.price}</p>}
-            </div>
-            {item.affiliateUrl && (
-              <a 
-                href={item.affiliateUrl} 
-                target="_blank" 
-                rel="noopener noreferrer"
-                class="mt-4 block text-center bg-indigo-600 text-white font-medium py-2 px-4 rounded-lg hover:bg-indigo-700 transition"
-              >
-                Shop Fit &rarr;
-              </a>
-            )}
-          </div>
-        ))
-      ) : (
-        <p class="text-gray-500 col-span-3">No products found for this category yet.</p>
-      )}
-    </div>
+    <section class="mt-10 grid gap-4 md:grid-cols-3">
+      {category.subcategories.map((sub) => (
+        <a
+          href={`/categories/${category.id}/${sub.id}`}
+          class="rounded-3xl border border-line bg-white p-5 transition hover:-translate-y-0.5 hover:border-accent/40"
+        >
+          <p class="text-xs font-semibold uppercase tracking-[0.14em] text-sand">{sub.looks.length} looks</p>
+          <h2 class="mt-2 font-display text-xl font-bold text-ink">{sub.title}</h2>
+          <p class="mt-2 text-sm text-ink-soft">{sub.description}</p>
+          <span class="mt-4 inline-block text-sm font-semibold text-accent-deep">Open lookbook →</span>
+        </a>
+      ))}
+    </section>
+
+    <section class="mt-14">
+      <h2 class="font-display text-2xl font-bold text-ink">Preview looks</h2>
+      <div class="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        {previewLooks.map((look) => (
+          <LookCard id={look.id} title={look.title} image={look.image} items={look.items} />
+        ))}
+      </div>
+    </section>
   </main>
 </Layout>

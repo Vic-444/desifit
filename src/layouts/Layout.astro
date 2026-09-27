@@ -1,84 +1,108 @@
+---
+import "../styles/global.css";
+import data from "../data/looks.json";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "DesiFit | Curated Desi Fashion Lookbooks",
+  description = "Shop curated Indo-Western, desi casual, and accessory looks with real product deep links from Bewakoof, BlissClub, and Salty.",
+} = Astro.props;
+
+const navCategories = data.categories;
+---
+
 <!doctype html>
 <html lang="en">
-	<head>
-		<!-- Google tag (gtag.js) -->
-		<script async src="https://www.googletagmanager.com/gtag/js?id=G-GB549ENN8E"></script>
-		<script is:inline>
-  		 window.dataLayer = window.dataLayer || [];
- 		 function gtag(){dataLayer.push(arguments);}
- 		 gtag('js', new Date());
+  <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GB549ENN8E"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag("js", new Date());
+      gtag("config", "G-GB549ENN8E");
+    </script>
 
-  		 gtag('config', 'G-GB549ENN8E');
-		</script>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+    <meta name="mitgo-verification" content="e6f56535-e820-4ae2-a0ee-3a1688da48da" />
 
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="generator" content={Astro.generator} />
-		
-		<!-- Primary Meta Tags -->
-		<title>DesiFit | Modern South Asian Fashion & Activewear</title>
-		<!-- Impact Verification Tag -->
-		<meta name='impact-site-verification' value='8a09de15-26bb-452e-9a91-77688b390138'>
-		<meta name="title" content="DesiFit | Modern South Asian Fashion & Activewear" />
-		<meta name="description" content="Curated South Asian ethnic wear, fusion silhouettes, and activewear tailored for modern lifestyle & fitness." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://desifit.com/" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content="https://desifit.com/og-default.svg" />
 
-		<meta name="mitgo-verification" content="e6f56535-e820-4ae2-a0ee-3a1688da48da" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
 
-		<!-- Open Graph / Facebook / WhatsApp -->
-		<meta property="og:type" content="website" />
-		<meta property="og:url" content="https://desifit.com/" />
-		<meta property="og:title" content="DesiFit | Modern South Asian Fashion & Activewear" />
-		<meta property="og:description" content="Curated South Asian ethnic wear, fusion silhouettes, and activewear tailored for modern lifestyle & fitness." />
-		<meta property="og:image" content="https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=1200&q=80" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Syne:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="min-h-screen flex flex-col">
+    <header class="sticky top-0 z-50 border-b border-line/80 bg-paper/90 backdrop-blur-md">
+      <div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3 md:px-6">
+        <a href="/" class="font-display text-2xl font-extrabold tracking-tight text-ink md:text-[1.75rem]">
+          DesiFit<span class="text-accent">.</span>
+        </a>
+        <nav class="hidden items-center gap-5 text-sm font-semibold text-ink-soft md:flex">
+          {navCategories.map((cat) => (
+            <a href={`/categories/${cat.id}`} class="transition hover:text-accent">
+              {cat.title.split(" ")[0]}
+            </a>
+          ))}
+          <a href="/categories" class="rounded-full bg-ink px-3 py-1.5 text-paper transition hover:bg-accent">
+            Lookbooks
+          </a>
+        </nav>
+        <a href="/categories" class="text-sm font-semibold text-accent md:hidden">Lookbooks</a>
+      </div>
+    </header>
 
-		<!-- Twitter -->
-		<meta property="twitter:card" content="summary_large_image" />
-		<meta property="twitter:url" content="https://desifit.com/" />
-		<meta property="twitter:title" content="DesiFit | Modern South Asian Fashion & Activewear" />
-		<meta property="twitter:description" content="Curated South Asian ethnic wear, fusion silhouettes, and activewear tailored for modern lifestyle & fitness." />
-		<meta property="twitter:image" content="https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=1200&q=80" />
-	</head>
-	<body>
-		<!-- Global Top Navigation Header -->
-		<header style="border-bottom: 1px solid #eee; background: #fff; position: sticky; top: 0; z-index: 100;">
-			<div style="max-width: 1000px; margin: 0 auto; padding: 1rem 1.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
-				<a href="/" style="font-size: 1.5rem; font-weight: 800; letter-spacing: -0.5px; color: #111; text-decoration: none;">
-					DesiFit<span style="color: #e63946;">.</span>
-				</a>
-				<nav style="display: flex; gap: 1.5rem; font-weight: 600; font-size: 0.95rem;">
-					<a href="/ethnic" style="color: #333; text-decoration: none;">Ethnic</a>
-					<a href="/fusion" style="color: #333; text-decoration: none;">Fusion</a>
-					<a href="/active" style="color: #333; text-decoration: none;">Activewear</a>
-				</nav>
-			</div>
-		</header>
+    <div class="flex-1">
+      <slot />
+    </div>
 
-		<!-- Centered Main Content Wrapper -->
-		<main style="max-width: 1000px; margin: 0 auto; padding: 2rem 1.5rem; min-height: 70vh;">
-			<slot />
-		</main>
-
-		<!-- Global Footer -->
-		<footer style="text-align: center; padding: 2rem 1rem; margin-top: 3rem; border-top: 1px solid #eee; font-family: system-ui, sans-serif;">
-			<p style="margin-bottom: 0.5rem; color: #666;">&copy; 2026 DesiFit. All rights reserved.</p>
-			<nav>
-				<a href="/disclosure" style="margin: 0 10px; color: #111; text-decoration: none;">Affiliate Disclosure</a> | 
-				<a href="/privacy" style="margin: 0 10px; color: #111; text-decoration: none;">Privacy Policy</a> | 
-				<a href="/contact" style="margin: 0 10px; color: #111; text-decoration: none;">Contact Us</a>
-			</nav>
-		</footer>
-	</body>
+    <footer class="mt-16 border-t border-line bg-ink text-paper">
+      <div class="mx-auto grid max-w-6xl gap-8 px-4 py-12 md:grid-cols-[1.4fr_1fr] md:px-6">
+        <div>
+          <p class="font-display text-3xl font-bold">DesiFit<span class="text-accent">.</span></p>
+          <p class="mt-3 max-w-md text-sm leading-relaxed text-paper/70">
+            Curated Indo-Western, everyday desi, and accessory lookbooks — shoppable with real merchant deep links.
+          </p>
+        </div>
+        <div class="grid grid-cols-2 gap-6 text-sm">
+          <div class="space-y-2">
+            <p class="font-semibold uppercase tracking-wider text-paper/50">Explore</p>
+            <a class="block text-paper/85 hover:text-accent" href="/categories">All categories</a>
+            {navCategories.map((cat) => (
+              <a class="block text-paper/85 hover:text-accent" href={`/categories/${cat.id}`}>{cat.title}</a>
+            ))}
+          </div>
+          <div class="space-y-2">
+            <p class="font-semibold uppercase tracking-wider text-paper/50">Legal</p>
+            <a class="block text-paper/85 hover:text-accent" href="/disclosure">Affiliate disclosure</a>
+            <a class="block text-paper/85 hover:text-accent" href="/privacy">Privacy</a>
+            <a class="block text-paper/85 hover:text-accent" href="/contact">Contact</a>
+          </div>
+        </div>
+      </div>
+      <div class="border-t border-white/10 px-4 py-4 text-center text-xs text-paper/50 md:px-6">
+        © {new Date().getFullYear()} DesiFit. As an Admitad affiliate, we may earn from qualifying purchases.
+      </div>
+    </footer>
+  </body>
 </html>
-
-<style>
-	html,
-	body {
-		margin: 0;
-		padding: 0;
-		font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-		color: #222;
-		background-color: #fff;
-	}
-</style>

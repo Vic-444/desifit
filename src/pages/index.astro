@@ -1,122 +1,110 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import products from '../data/products.json';
+import Layout from "../layouts/Layout.astro";
+import LookCard from "../components/LookCard.astro";
+import data from "../data/looks.json";
 
-// Grab up to 3 featured items from products.json for the homepage preview
-const featuredProducts = products.slice(0, 3);
+const featured = data.categories.flatMap((cat) =>
+  cat.subcategories.flatMap((sub) =>
+    sub.looks.slice(0, 1).map((look) => ({
+      ...look,
+      categoryTitle: cat.title,
+      categoryId: cat.id,
+      subcategoryId: sub.id,
+    }))
+  )
+).slice(0, 6);
+
+const heroImage =
+  data.categories[0]?.subcategories[0]?.looks[0]?.image ||
+  "/images/looks/skd-01.svg";
 ---
 
-<Layout title="DesiFit | Modern South Asian Fashion & Lookbook">
-  <main class="max-w-7xl mx-auto px-4 py-8 font-sans">
-    
-    <!-- Hero Section -->
-    <section class="text-center py-12 px-4 bg-gray-50 rounded-2xl mb-12 border border-gray-100">
-      <span class="text-xs font-bold uppercase tracking-wider text-indigo-600 bg-indigo-50 px-3 py-1 rounded-full">
-        Curated Style Guide
-      </span>
-      <h1 class="text-3xl md:text-5xl font-extrabold text-gray-900 my-4 leading-tight">
-        Elevate Your Wardrobe with Modern Desi Elegance
-      </h1>
-      <p class="text-base md:text-lg text-gray-600 max-w-2xl mx-auto mb-8 leading-relaxed">
-        Discover handpicked ethnic wear, fusion silhouettes, and statement accessories tailored for modern everyday style.
+<Layout>
+  <section class="relative min-h-[88vh] overflow-hidden bg-ink text-paper">
+    <img
+      src={heroImage}
+      alt=""
+      class="absolute inset-0 h-full w-full object-cover opacity-45 animate-fade"
+      referrerpolicy="no-referrer"
+    />
+    <div class="absolute inset-0 bg-gradient-to-r from-ink via-ink/80 to-ink/35"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(230,57,70,0.28),transparent_42%)]"></div>
+
+    <div class="relative mx-auto flex min-h-[88vh] max-w-6xl flex-col justify-end px-4 pb-16 pt-28 md:px-6 md:pb-20">
+      <p class="animate-rise font-display text-5xl font-extrabold tracking-tight md:text-7xl lg:text-8xl">
+        DesiFit<span class="text-accent">.</span>
       </p>
-      <div class="flex gap-4 justify-center flex-wrap">
-        <a 
-          href="/categories/indo-western" 
-          class="bg-gray-900 text-white px-6 py-3 rounded-lg font-semibold hover:bg-gray-800 transition shadow-sm"
+      <h1 class="animate-rise delay-1 mt-4 max-w-2xl font-display text-2xl font-semibold leading-tight text-paper/95 md:text-4xl">
+        Curated desi looks. Real products. One click to shop.
+      </h1>
+      <p class="animate-rise delay-2 mt-4 max-w-xl text-base leading-relaxed text-paper/75 md:text-lg">
+        Indo-Western, everyday ethnic, and accessories — handpicked outfits with deep links to Bewakoof, BlissClub, and Salty.
+      </p>
+      <div class="animate-rise delay-3 mt-8 flex flex-wrap gap-3">
+        <a
+          href="/categories/indo-western"
+          class="rounded-full bg-accent px-6 py-3 text-sm font-bold text-white transition hover:bg-accent-deep"
         >
-          Explore Indo-Western &rarr;
+          Browse Indo-Western
         </a>
-        <a 
-          href="/categories/desi-casual" 
-          class="bg-white text-gray-900 border border-gray-300 px-6 py-3 rounded-lg font-semibold hover:bg-gray-50 transition"
+        <a
+          href="/categories"
+          class="rounded-full border border-paper/40 px-6 py-3 text-sm font-bold text-paper transition hover:bg-paper/10"
         >
-          Shop Desi Casual
+          All lookbooks
         </a>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Category Quick Links -->
-    <section class="mb-14">
-      <h2 class="text-2xl font-bold text-gray-900 mb-6 text-center">Browse by Category</h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        
-        <a href="/categories/indo-western" class="group block text-decoration-none">
-          <div class="border border-gray-200 rounded-xl p-6 text-center bg-white shadow-sm hover:border-indigo-300 hover:shadow-md transition">
-            <div class="text-3xl mb-2">💃</div>
-            <h3 class="text-xl font-bold text-gray-900 mb-1 group-hover:text-indigo-600 transition">Indo-Western Fusion</h3>
-            <p class="text-sm text-gray-500">Short Kurtis, Fusion Sets & Boho Wear</p>
-          </div>
+  <section class="mx-auto max-w-6xl px-4 py-16 md:px-6">
+    <div class="mb-8 max-w-2xl">
+      <h2 class="font-display text-3xl font-bold text-ink md:text-4xl">Three worlds. Ninety looks.</h2>
+      <p class="mt-3 text-ink-soft">Each look is a curated outfit with shoppable pieces — not category dumps.</p>
+    </div>
+    <div class="grid gap-5 md:grid-cols-3">
+      {data.categories.map((cat, idx) => (
+        <a
+          href={`/categories/${cat.id}`}
+          class:list={[
+            "group relative overflow-hidden rounded-3xl border border-line p-6 transition hover:-translate-y-1",
+            idx === 0 ? "bg-ink text-paper" : "bg-white text-ink",
+          ]}
+        >
+          <p class="text-xs font-semibold uppercase tracking-[0.16em] opacity-60">
+            {cat.subcategories.length} subcategories
+          </p>
+          <h3 class="mt-3 font-display text-2xl font-bold">{cat.title}</h3>
+          <p class:list={["mt-3 text-sm leading-relaxed", idx === 0 ? "text-paper/70" : "text-ink-soft"]}>
+            {cat.description}
+          </p>
+          <span class:list={["mt-6 inline-block text-sm font-semibold", idx === 0 ? "text-accent" : "text-accent-deep"]}>
+            Explore →
+          </span>
         </a>
+      ))}
+    </div>
+  </section>
 
-        <a href="/categories/desi-casual" class="group block text-decoration-none">
-          <div class="border border-gray-200 rounded-xl p-6 text-center bg-white shadow-sm hover:border-indigo-300 hover:shadow-md transition">
-            <div class="text-3xl mb-2">✨</div>
-            <h3 class="text-xl font-bold text-gray-900 mb-1 group-hover:text-indigo-600 transition">Desi Casual & Everyday</h3>
-            <p class="text-sm text-gray-500">Daily Cotton Kurtas & Workwear</p>
-          </div>
-        </a>
-
-        <a href="/categories/jewelry-accessories" class="group block text-decoration-none">
-          <div class="border border-gray-200 rounded-xl p-6 text-center bg-white shadow-sm hover:border-indigo-300 hover:shadow-md transition">
-            <div class="text-3xl mb-2">💍</div>
-            <h3 class="text-xl font-bold text-gray-900 mb-1 group-hover:text-indigo-600 transition">Jewelry & Accessories</h3>
-            <p class="text-sm text-gray-500">Oxidized Statements & Minimal Jewelry</p>
-          </div>
-        </a>
-
+  <section class="border-y border-line bg-paper-2/60">
+    <div class="mx-auto max-w-6xl px-4 py-16 md:px-6">
+      <div class="mb-8 flex items-end justify-between gap-4">
+        <div>
+          <h2 class="font-display text-3xl font-bold text-ink">Featured looks</h2>
+          <p class="mt-2 text-ink-soft">A taste from each lookbook.</p>
+        </div>
+        <a href="/categories" class="hidden text-sm font-semibold text-accent-deep md:inline">View all →</a>
       </div>
-    </section>
-
-    <!-- Featured Trends Grid -->
-    <section>
-      <div class="flex justify-between items-center mb-6">
-        <h2 class="text-2xl font-bold text-gray-900">Featured Looks</h2>
-        <a href="/categories" class="text-sm font-semibold text-indigo-600 hover:text-indigo-800">
-          View All Categories &rarr;
-        </a>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {featuredProducts.map((product) => (
-          <article class="border border-gray-200 rounded-xl overflow-hidden bg-white shadow-sm flex flex-col justify-between">
-            <div>
-              <div class="relative w-full h-80 bg-gray-50">
-                {product.image && (
-                  <img 
-                    src={product.image} 
-                    alt={product.name || product.title} 
-                    class="w-full h-full object-cover" 
-                  />
-                )}
-                {product.brand && (
-                  <span class="absolute top-3 left-3 bg-gray-900 text-white text-xs font-semibold px-2.5 py-1 rounded-full uppercase tracking-wider">
-                    {product.brand}
-                  </span>
-                )}
-              </div>
-              <div class="p-4">
-                <h3 class="font-semibold text-lg text-gray-800 line-clamp-1">{product.name || product.title}</h3>
-                {product.price && <p class="text-gray-900 font-bold mt-1">₹{product.price}</p>}
-              </div>
-            </div>
-
-            <div class="p-4 pt-0">
-              {product.affiliateUrl && (
-                <a 
-                  href={product.affiliateUrl} 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  class="block text-center bg-indigo-600 text-white font-medium py-2.5 px-4 rounded-lg hover:bg-indigo-700 transition"
-                >
-                  Shop This Look &rarr;
-                </a>
-              )}
-            </div>
-          </article>
+      <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        {featured.map((look) => (
+          <LookCard
+            id={look.id}
+            title={look.title}
+            image={look.image}
+            items={look.items}
+          />
         ))}
       </div>
-    </section>
-
-  </main>
+    </div>
+  </section>
 </Layout>
