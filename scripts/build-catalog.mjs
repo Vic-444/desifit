@@ -754,71 +754,53 @@ async function enrichImages(catalogData) {
 }
 
 /**
- * Give every look a unique grid/card image when possible.
- * Prefers each look's own item photos (top → bottom → acc).
- * Looks that can't get a free single image get a 2-up card pair
- * so they still read as distinct in lookbook grids.
+ * Unique card images within each lookbook grid, preferring tops.
+ * Apparel lookbooks (kurtis/tops + bottoms) should read as top-led,
+ * not a wall of denim — so first item photos win when unique in-grid.
+ * Cross-lookbook repeats of a shared product photo are OK; within a
+ * lookbook every card stays visually distinct.
  */
 function assignUniqueCardImages(catalogData) {
-  const looks = [];
+  let topCount = 0;
+  let splitCount = 0;
+  let lookCount = 0;
+
   for (const cat of catalogData.categories) {
     for (const sub of cat.subcategories) {
-      for (const lk of sub.looks) {
-        const candidates = lk.items.map((it) => it.imageUrl).filter(Boolean);
-        looks.push({ lk, candidates: [...new Set(candidates)] });
+      const rows = sub.looks.map((lk) => {
+        const imgs = lk.items.map((it) => it.imageUrl).filter(Boolean);
+        return { lk, top: imgs[0] || "", rest: imgs.slice(1), all: imgs };
+      });
+      const used = new Set();
+
+      for (const row of rows) {
+        delete row.lk.cardImageSecondary;
+        lookCount++;
+        if (row.top && !used.has(row.top)) {
+          row.lk.cardImage = row.top;
+          used.add(row.top);
+          topCount++;
+          continue;
+        }
+        const alt = row.rest.find((img) => img && !used.has(img));
+        if (alt) {
+          row.lk.cardImage = alt;
+          used.add(alt);
+          continue;
+        }
+        const primary = row.all[0] || row.lk.image;
+        const secondary = row.all.find((img) => img && img !== primary) || "";
+        row.lk.cardImage = primary;
+        if (secondary) {
+          row.lk.cardImageSecondary = secondary;
+          splitCount++;
+        }
       }
-    }
-  }
-
-  const pairImg = new Map(); // image -> look index
-  const pairLook = new Map(); // look index -> image
-
-  function dfs(u, seen) {
-    for (const img of looks[u].candidates) {
-      if (seen.has(img)) continue;
-      seen.add(img);
-      const takenBy = pairImg.get(img);
-      if (takenBy === undefined || dfs(takenBy, seen)) {
-        pairImg.set(img, u);
-        pairLook.set(u, img);
-        return true;
-      }
-    }
-    return false;
-  }
-
-  const order = looks
-    .map((_, i) => i)
-    .sort((a, b) => looks[a].candidates.length - looks[b].candidates.length || a - b);
-
-  for (const u of order) {
-    if (!pairLook.has(u)) dfs(u, new Set());
-  }
-
-  let splitCount = 0;
-  for (let i = 0; i < looks.length; i++) {
-    const { lk, candidates } = looks[i];
-    delete lk.cardImageSecondary;
-
-    if (pairLook.has(i)) {
-      lk.cardImage = pairLook.get(i);
-      continue;
-    }
-
-    // No exclusive single image left — use a 2-up card so the grid
-    // tile still looks different from neighboring look cards.
-    const primary = candidates[0] || lk.image;
-    const secondary = candidates.find((img) => img && img !== primary) || "";
-    lk.cardImage = primary;
-    if (secondary) {
-      lk.cardImageSecondary = secondary;
-      splitCount++;
     }
   }
 
   console.log(
-    `Card images: ${pairLook.size}/${looks.length} unique singles` +
-      (splitCount ? `, ${splitCount} split cards` : "")
+    `Card images: ${lookCount} looks, ${topCount} tops, ${splitCount} splits (per-lookbook, tops-first)`
   );
 }
 
