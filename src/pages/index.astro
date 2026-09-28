@@ -3,16 +3,68 @@ import Layout from "../layouts/Layout.astro";
 import LookCard from "../components/LookCard.astro";
 import data from "../data/looks.json";
 
-const featured = data.categories.flatMap((cat) =>
-  cat.subcategories.flatMap((sub) =>
-    sub.looks.slice(0, 1).map((look) => ({
-      ...look,
-      categoryTitle: cat.title,
-      categoryId: cat.id,
-      subcategoryId: sub.id,
-    }))
-  )
-).slice(0, 6);
+/** Pick up to `count` featured looks with unique card images.
+ *  Prefers the first look in each subcategory; if that image was
+ *  already used (same shared top), fall back to another item photo
+ *  in the look, then try later looks in the same subcategory. */
+function pickFeatured(count = 6) {
+  const usedImages = new Set<string>();
+  const featured: Array<{
+    id: string;
+    title: string;
+    image: string;
+    items: (typeof data.categories)[0]["subcategories"][0]["looks"][0]["items"];
+    categoryTitle: string;
+    categoryId: string;
+    subcategoryId: string;
+  }> = [];
+
+  for (const cat of data.categories) {
+    for (const sub of cat.subcategories) {
+      if (featured.length >= count) break;
+
+      let picked:
+        | {
+            id: string;
+            title: string;
+            image: string;
+            items: (typeof sub.looks)[0]["items"];
+          }
+        | undefined;
+
+      for (const look of sub.looks) {
+        if (look.image && !usedImages.has(look.image)) {
+          picked = { ...look, image: look.image };
+          break;
+        }
+        const alt = look.items.find(
+          (item) => item.imageUrl && !usedImages.has(item.imageUrl)
+        );
+        if (alt?.imageUrl) {
+          picked = { ...look, image: alt.imageUrl };
+          break;
+        }
+      }
+
+      if (!picked && sub.looks[0]) {
+        picked = { ...sub.looks[0], image: sub.looks[0].image };
+      }
+      if (!picked?.image) continue;
+
+      usedImages.add(picked.image);
+      featured.push({
+        ...picked,
+        categoryTitle: cat.title,
+        categoryId: cat.id,
+        subcategoryId: sub.id,
+      });
+    }
+  }
+
+  return featured;
+}
+
+const featured = pickFeatured(6);
 
 const heroImage =
   data.categories[0]?.subcategories[0]?.looks[0]?.image ||
