@@ -26,13 +26,32 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-a {
-  color: inherit;
-}
-
 img {
   max-width: 100%;
   height: auto;
+}
+
+/* Explicit CTA style — do not rely on text-* utilities on <a>,
+   which lost to Tailwind preflight a { color: inherit } in practice. */
+.shop-cta {
+  display: inline-flex;
+  width: fit-content;
+  align-items: center;
+  border-radius: 9999px;
+  background: var(--color-ink);
+  color: #fff;
+  padding: 0.4rem 0.85rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  line-height: 1.2;
+  text-decoration: none;
+  transition: background-color 0.15s ease;
+}
+
+.shop-cta:hover,
+.shop-cta:focus-visible {
+  background: var(--color-accent);
+  color: #fff;
 }
 
 .font-display {
