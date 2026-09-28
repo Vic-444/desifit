@@ -40,7 +40,13 @@ const previewLooks = category.subcategories.flatMap((sub) =>
       <h2 class="font-display text-2xl font-bold text-ink">Preview looks</h2>
       <div class="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {previewLooks.map((look) => (
-          <LookCard id={look.id} title={look.title} image={look.image} items={look.items} />
+          <LookCard
+            id={look.id}
+            title={look.title}
+            image={look.cardImage || look.image}
+            imageSecondary={look.cardImageSecondary}
+            items={look.items}
+          />
         ))}
       </div>
     </section>

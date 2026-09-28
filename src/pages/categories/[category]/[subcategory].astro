@@ -33,7 +33,13 @@ const { category, subcategory } = Astro.props;
 
     <div class="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
       {subcategory.looks.map((look) => (
-        <LookCard id={look.id} title={look.title} image={look.image} items={look.items} />
+        <LookCard
+          id={look.id}
+          title={look.title}
+          image={look.cardImage || look.image}
+          imageSecondary={look.cardImageSecondary}
+          items={look.items}
+        />
       ))}
     </div>
   </main>

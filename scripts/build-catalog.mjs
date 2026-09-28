@@ -737,6 +737,7 @@ async function enrichImages(catalogData) {
         }
         const firstWithImage = lk.items.find((it) => it.imageUrl);
         if (firstWithImage) {
+          // Hero / detail image stays the primary product shot
           lk.image = firstWithImage.imageUrl;
           lk.imageSource = "merchant";
         } else {
@@ -748,6 +749,77 @@ async function enrichImages(catalogData) {
       }
     }
   }
+
+  assignUniqueCardImages(catalogData);
+}
+
+/**
+ * Give every look a unique grid/card image when possible.
+ * Prefers each look's own item photos (top → bottom → acc).
+ * Looks that can't get a free single image get a 2-up card pair
+ * so they still read as distinct in lookbook grids.
+ */
+function assignUniqueCardImages(catalogData) {
+  const looks = [];
+  for (const cat of catalogData.categories) {
+    for (const sub of cat.subcategories) {
+      for (const lk of sub.looks) {
+        const candidates = lk.items.map((it) => it.imageUrl).filter(Boolean);
+        looks.push({ lk, candidates: [...new Set(candidates)] });
+      }
+    }
+  }
+
+  const pairImg = new Map(); // image -> look index
+  const pairLook = new Map(); // look index -> image
+
+  function dfs(u, seen) {
+    for (const img of looks[u].candidates) {
+      if (seen.has(img)) continue;
+      seen.add(img);
+      const takenBy = pairImg.get(img);
+      if (takenBy === undefined || dfs(takenBy, seen)) {
+        pairImg.set(img, u);
+        pairLook.set(u, img);
+        return true;
+      }
+    }
+    return false;
+  }
+
+  const order = looks
+    .map((_, i) => i)
+    .sort((a, b) => looks[a].candidates.length - looks[b].candidates.length || a - b);
+
+  for (const u of order) {
+    if (!pairLook.has(u)) dfs(u, new Set());
+  }
+
+  let splitCount = 0;
+  for (let i = 0; i < looks.length; i++) {
+    const { lk, candidates } = looks[i];
+    delete lk.cardImageSecondary;
+
+    if (pairLook.has(i)) {
+      lk.cardImage = pairLook.get(i);
+      continue;
+    }
+
+    // No exclusive single image left — use a 2-up card so the grid
+    // tile still looks different from neighboring look cards.
+    const primary = candidates[0] || lk.image;
+    const secondary = candidates.find((img) => img && img !== primary) || "";
+    lk.cardImage = primary;
+    if (secondary) {
+      lk.cardImageSecondary = secondary;
+      splitCount++;
+    }
+  }
+
+  console.log(
+    `Card images: ${pairLook.size}/${looks.length} unique singles` +
+      (splitCount ? `, ${splitCount} split cards` : "")
+  );
 }
 
 const outDir = join(root, "src/data");
