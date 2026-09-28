@@ -49,7 +49,8 @@
                   "role": "acc"
                 }
               ],
-              "imageSource": "merchant"
+              "imageSource": "merchant",
+              "cardImage": "https://images.bewakoof.com/original/women-s-dark-grey-wide-leg-cargo-jeans-646614-1751451805-1.jpg"
             },
             {
               "id": "skd-02",
@@ -84,7 +85,8 @@
                   "role": "acc"
                 }
               ],
-              "imageSource": "merchant"
+              "imageSource": "merchant",
+              "cardImage": "https://images.bewakoof.com/original/women-s-maroon-printed-high-low-kurti-318107-1656187639-1.jpg"
             },
             {
               "id": "skd-03",
@@ -119,7 +121,8 @@
                   "role": "acc"
                 }
               ],
-              "imageSource": "merchant"
+              "imageSource": "merchant",
+              "cardImage": "https://images.bewakoof.com/original/women-s-light-blue-washed-wide-leg-cargo-jeans-646613-1745924767-1.jpg"
             },
             {
               "id": "skd-04",
@@ -154,7 +157,8 @@
                   "role": "acc"
                 }
               ],
-              "imageSource": "merchant"
+              "imageSource": "merchant",
+              "cardImage": "https://images.bewakoof.com/original/women-s-dark-blue-washed-wide-leg-cargo-jeans-646617-1745924762-1.jpg"
             },
             {
               "id": "skd-05",
@@ -189,7 +193,8 @@
                   "role": "acc"
                 }
               ],
-              "imageSource": "merchant"
+              "imageSource": "merchant",
+              "cardImage": "https://images.bewakoof.com/original/women-s-blue-washed-straight-fit-jeans-625164-1751441179-1.jpg"
             },
             {
               "id": "skd-06",
@@ -224,7 +229,8 @@
                   "role": "acc"
                 }
               ],
-              "imageSource": "merchant"
+              "imageSource": "merchant",
+              "cardImage": "https://images.bewakoof.com/original/women-s-jet-black-bootcut-jeans-646017-1741766939-1.jpg"
             },
             {
               "id": "skd-07",
@@ -259,7 +265,8 @@
                   "role": "acc"
                 }
               ],
-              "imageSource": "merchant"
+              "imageSource": "merchant",
+              "cardImage": "https://images.bewakoof.com/original/women-s-black-wide-leg-cargo-jeans-646618-1741348491-1.jpg"
             },
             {
               "id": "skd-08",
@@ -294,7 +301,8 @@
                   "role": "acc"
                 }
               ],
-              "imageSource": "merchant"
+              "imageSource": "merchant",
+              "cardImage": "https://images.bewakoof.com/original/women-s-jet-black-washed-flared-korean-jeans-662161-1754915131-1.jpg"
             },
             {
               "id": "skd-09",
@@ -329,7 +337,8 @@
                   "role": "acc"
                 }
               ],
-              "imageSource": "merchant"
+              "imageSource": "merchant",
+              "cardImage": "https://images.bewakoof.com/original/women-s-black-baggy-straight-fit-jeans-625162-1751441145-1.jpg"
             },
             {
               "id": "skd-10",
@@ -364,7 +373,8 @@
                   "role": "acc"
                 }
               ],
-              "imageSource": "merchant"
+              "imageSource": "merchant",
+              "cardImage": "https://images.bewakoof.com/original/women-s-blue-flared-washed-korean-jeans-662205-1752560900-1.jpg"
             }
           ]
         },
@@ -406,7 +416,8 @@
                   "role": "acc"
                 }
               ],
-              "imageSource": "merchant"
+              "imageSource": "merchant",
+              "cardImage": "https://blissclub.com/cdn/shop/files/ultimate-flare-pants-1409249.png?v=1781851151&width=2048"
             },
             {
               "id": "fl-02",
@@ -441,7 +452,8 @@
                   "role": "acc"
                 }
               ],
-              "imageSource": "merchant"
+              "imageSource": "merchant",
+              "cardImage": "https://blissclub.com/cdn/shop/files/ultimate-straight-pants-4405509.jpg?v=1781851215&width=2048"
             },
             {
               "id": "fl-03",
@@ -476,7 +488,8 @@
                   "role": "acc"
                 }
               ],
-              "imageSource": "merchant"
+              "imageSource": "merchant",
+              "cardImage": "https://images.bewakoof.com/original/women-s-navy-printed-sleeveless-kurti-dress-318397-1656152400-1.jpg"
             },
             {
               "id": "fl-04",
@@ -511,7 +524,8 @@
                   "role": "acc"
                 }
               ],
-              "imageSource": "merchant"
+              "imageSource": "merchant",
+              "cardImage": "https://images.bewakoof.com/original/women-s-cotton-swiss-dot-dobby-sleeveless-classic-blue-kurta-with-belt-tie-up-321806-1656167245-1.jpg"
             },
             {
               "id": "fl-05",
@@ -546,7 +560,8 @@
                   "role": "acc"
                 }
               ],
-              "imageSource": "merchant"
+              "imageSource": "merchant",
+              "cardImage": "https://blissclub.com/cdn/shop/files/airmelt-flare-pants-lite-6877722.jpg?v=1781848839&width=2048"
             },
             {
               "id": "fl-06",
@@ -581,7 +596,8 @@
                   "role": "acc"
                 }
               ],
-              "imageSource": "merchant"
+              "imageSource": "merchant",
+              "cardImage": "https://blissclub.com/cdn/shop/files/werk-it-flare-pants-6408586.jpg?v=1781851214&width=2048"
             },
             {
               "id": "fl-07",
@@ -616,7 +632,8 @@
                   "role": "acc"
                 }
               ],
-              "imageSource": "merchant"
+              "imageSource": "merchant",
+              "cardImage": "https://images.bewakoof.com/original/women-s-jet-black-embroidered-slim-fit-acid-wash-short-top-684704-1760689901-1.jpg"
             },
             {
               "id": "fl-08",
@@ -651,7 +668,8 @@
                   "role": "acc"
                 }
               ],
-              "imageSource": "merchant"
+              "imageSource": "merchant",
+              "cardImage": "https://images.bewakoof.com/original/women-s-skipper-blue-blossom-graphic-printed-top-662758-1744194890-1.jpg"
             },
             {
               "id": "fl-09",
@@ -686,7 +704,8 @@
                   "role": "acc"
                 }
               ],
-              "imageSource": "merchant"
+              "imageSource": "merchant",
+              "cardImage": "https://blissclub.com/cdn/shop/files/cloud-korean-pants-4637434.jpg?v=1781848466&width=2048"
             },
             {
               "id": "fl-10",
@@ -721,7 +740,8 @@
                   "role": "acc"
                 }
               ],
-              "imageSource": "merchant"
+              "imageSource": "merchant",
+              "cardImage": "https://images.bewakoof.com/original/women-s-black-parachute-short-top-633547-1721135153-1.jpg"
             }
           ]
         },
@@ -763,7 +783,8 @@
                   "role": "acc"
                 }
               ],
-              "imageSource": "merchant"
+              "imageSource": "merchant",
+              "cardImage": "https://images.bewakoof.com/original/women-aop-oversize-t-shirt-3-580366-1682421809-1.JPG"
             },
             {
               "id": "bs-02",
@@ -798,7 +819,8 @@
                   "role": "acc"
                 }
               ],
-              "imageSource": "merchant"
+              "imageSource": "merchant",
+              "cardImage": "https://images.bewakoof.com/original/women-s-black-powered-by-noodles-graphic-printed-oversized-crop-t-shirt-634095-1716287917-1.jpg"
             },
             {
               "id": "bs-03",
@@ -833,7 +855,8 @@
                   "role": "acc"
                 }
               ],
-              "imageSource": "merchant"
+              "imageSource": "merchant",
+              "cardImage": "https://images.bewakoof.com/original/women-s-black-whats-doc-graphic-printed-oversized-crop-t-shirt-635575-1749541081-1.jpg"
             },
             {
               "id": "bs-04",
@@ -868,7 +891,8 @@
                   "role": "acc"
                 }
               ],
-              "imageSource": "merchant"
+              "imageSource": "merchant",
+              "cardImage": "https://images.bewakoof.com/original/women-s-blue-white-all-over-printed-oversized-crop-shirt-628186-1754911817-1.jpg"
             },
             {
               "id": "bs-05",
@@ -903,7 +927,8 @@
                   "role": "acc"
                 }
               ],
-              "imageSource": "merchant"
+              "imageSource": "merchant",
+              "cardImage": "https://images.bewakoof.com/original/women-s-black-rick-n-monty-chats-graphic-printed-oversized-short-top-636811-1737527327-1.jpg"
             },
             {
               "id": "bs-06",
@@ -938,7 +963,8 @@
                   "role": "acc"
                 }
               ],
-              "imageSource": "merchant"
+              "imageSource": "merchant",
+              "cardImage": "https://images.bewakoof.com/original/women-s-brown-mickey-graphic-printed-oversized-cropped-shirt-617291-1718803041-1.jpg"
             },
             {
               "id": "bs-07",
@@ -973,7 +999,8 @@
                   "role": "acc"
                 }
               ],
-              "imageSource": "merchant"
+              "imageSource": "merchant",
+              "cardImage": "https://images.bewakoof.com/original/women-s-white-lead-typography-oversized-crop-shirt-628169-1755668796-1.jpg"
             },
             {
               "id": "bs-08",
@@ -1008,7 +1035,8 @@
                   "role": "acc"
                 }
               ],
-              "imageSource": "merchant"
+              "imageSource": "merchant",
+              "cardImage": "https://images.bewakoof.com/original/women-s-green-thrill-seeker-snoopy-graphic-printed-oversized-short-top-634019-1718173099-1.jpg"
             },
             {
               "id": "bs-09",
@@ -1043,7 +1071,8 @@
                   "role": "acc"
                 }
               ],
-              "imageSource": "merchant"
+              "imageSource": "merchant",
+              "cardImage": "https://salty.co.in/cdn/shop/files/ES15208-S_Main_20_282_29.jpg?v=1788442852"
             },
             {
               "id": "bs-10",
@@ -1078,7 +1107,8 @@
                   "role": "acc"
                 }
               ],
-              "imageSource": "merchant"
+              "imageSource": "merchant",
+              "cardImage": "https://salty.co.in/cdn/shop/files/ES15035-S_Main2.jpg?v=1784899058"
             }
           ]
         }
@@ -1127,7 +1157,8 @@
                   "role": "acc"
                 }
               ],
-              "imageSource": "merchant"
+              "imageSource": "merchant",
+              "cardImage": "https://images.bewakoof.com/original/women-s-printed-short-kurta-364684-1656151141-1.jpg"
             },
             {
               "id": "dck-02",
@@ -1162,7 +1193,8 @@
                   "role": "acc"
                 }
               ],
-              "imageSource": "merchant"
+              "imageSource": "merchant",
+              "cardImage": "https://blissclub.com/cdn/shop/products/groove-in-cotton-leggings-1297360.jpg?v=1781851215&width=2048"
             },
             {
               "id": "dck-03",
@@ -1197,7 +1229,8 @@
                   "role": "acc"
                 }
               ],
-              "imageSource": "merchant"
+              "imageSource": "merchant",
+              "cardImage": "https://salty.co.in/cdn/shop/files/NS14039-S_MAIN_202_c66c7cc3-218c-4f91-a293-8114d8cb6b01.jpg?v=1773423227"
             },
             {
               "id": "dck-04",
@@ -1232,7 +1265,8 @@
                   "role": "acc"
                 }
               ],
-              "imageSource": "merchant"
+              "imageSource": "merchant",
+              "cardImage": "https://salty.co.in/cdn/shop/files/Image_20260803093353_2994_62.jpg?v=1788443855"
             },
             {
               "id": "dck-05",
@@ -1267,7 +1301,8 @@
                   "role": "acc"
                 }
               ],
-              "imageSource": "merchant"
+              "imageSource": "merchant",
+              "cardImage": "https://blissclub.com/cdn/shop/files/ampm-cotton-flare-pants-tall-7845703.jpg?v=1781849614&width=2048"
             },
             {
               "id": "dck-06",
@@ -1302,7 +1337,8 @@
                   "role": "acc"
                 }
               ],
-              "imageSource": "merchant"
+              "imageSource": "merchant",
+              "cardImage": "https://salty.co.in/cdn/shop/files/BS14709-S_MAIN2.jpg?v=1789683964"
             },
             {
               "id": "dck-07",
@@ -1337,7 +1373,8 @@
                   "role": "acc"
                 }
               ],
-              "imageSource": "merchant"
+              "imageSource": "merchant",
+              "cardImage": "https://blissclub.com/cdn/shop/files/the-groove-in-cotton-flare-pants-8823349.jpg?v=1781849987&width=2048"
             },
             {
               "id": "dck-08",
@@ -1372,7 +1409,8 @@
                   "role": "acc"
                 }
               ],
-              "imageSource": "merchant"
+              "imageSource": "merchant",
+              "cardImage": "https://salty.co.in/cdn/shop/files/ES15215-S_MAIN.png?v=1788443808"
             },
             {
               "id": "dck-09",
@@ -1407,7 +1445,8 @@
                   "role": "acc"
                 }
               ],
-              "imageSource": "merchant"
+              "imageSource": "merchant",
+              "cardImage": "https://salty.co.in/cdn/shop/files/NS12475_model.png?v=1781797705"
             },
             {
               "id": "dck-10",
@@ -1442,7 +1481,8 @@
                   "role": "acc"
                 }
               ],
-              "imageSource": "merchant"
+              "imageSource": "merchant",
+              "cardImage": "https://blissclub.com/cdn/shop/files/ultimate-palazzo-pants-2805346.jpg?v=1781849677&width=2048"
             }
           ]
         },
@@ -1484,7 +1524,8 @@
                   "role": "acc"
                 }
               ],
-              "imageSource": "merchant"
+              "imageSource": "merchant",
+              "cardImage": "https://images.bewakoof.com/original/women-s-printed-short-kurta-364686-1656140136-1.jpg"
             },
             {
               "id": "kcb-02",
@@ -1519,7 +1560,8 @@
                   "role": "acc"
                 }
               ],
-              "imageSource": "merchant"
+              "imageSource": "merchant",
+              "cardImage": "https://salty.co.in/cdn/shop/files/ES15193-S_MAIN2.png?v=1788443579"
             },
             {
               "id": "kcb-03",
@@ -1554,7 +1596,8 @@
                   "role": "acc"
                 }
               ],
-              "imageSource": "merchant"
+              "imageSource": "merchant",
+              "cardImage": "https://blissclub.com/cdn/shop/files/test-product-color-hide-2800051.jpg?v=1781848754&width=2048"
             },
             {
               "id": "kcb-04",
@@ -1589,7 +1632,8 @@
                   "role": "acc"
                 }
               ],
-              "imageSource": "merchant"
+              "imageSource": "merchant",
+              "cardImage": "https://blissclub.com/cdn/shop/files/ultimate_straight_pants_-_lite_-_wahida_white_cloud_s.jpg?v=1786696607&width=2048"
             },
             {
               "id": "kcb-05",
@@ -1624,7 +1668,8 @@
                   "role": "acc"
                 }
               ],
-              "imageSource": "merchant"
+              "imageSource": "merchant",
+              "cardImage": "https://blissclub.com/cdn/shop/files/ultimate-leggings-5251885.jpg?v=1781851995&width=2048"
             },
             {
               "id": "kcb-06",
@@ -1659,7 +1704,8 @@
                   "role": "acc"
                 }
               ],
-              "imageSource": "merchant"
+              "imageSource": "merchant",
+              "cardImage": "https://salty.co.in/cdn/shop/files/Deep-Sea-Spark-Earrings-Salty-226369794.jpg?v=1785246717"
             },
             {
               "id": "kcb-07",
@@ -1694,7 +1740,8 @@
                   "role": "acc"
                 }
               ],
-              "imageSource": "merchant"
+              "imageSource": "merchant",
+              "cardImage": "https://salty.co.in/cdn/shop/files/Falling-In-Love-Silver-Necklace-Salty-224624333.jpg?v=1779648970"
             },
             {
               "id": "kcb-08",
@@ -1729,7 +1776,8 @@
                   "role": "acc"
                 }
               ],
-              "imageSource": "merchant"
+              "imageSource": "merchant",
+              "cardImage": "https://blissclub.com/cdn/shop/files/ampm-cotton-straight-pants-tall-6980727.jpg?v=1781849536&width=2048"
             },
             {
               "id": "kcb-09",
@@ -1764,7 +1812,8 @@
                   "role": "acc"
                 }
               ],
-              "imageSource": "merchant"
+              "imageSource": "merchant",
+              "cardImage": "https://images.bewakoof.com/original/women-white-plain-crop-t-shirt-571204-1682421651-1.JPG"
             },
             {
               "id": "kcb-10",
@@ -1799,7 +1848,8 @@
                   "role": "acc"
                 }
               ],
-              "imageSource": "merchant"
+              "imageSource": "merchant",
+              "cardImage": "https://blissclub.com/cdn/shop/files/ultimate-sculpt-wide-legged-pants-1819974.jpg?v=1781849551&width=2048"
             }
           ]
         },
@@ -1841,7 +1891,8 @@
                   "role": "acc"
                 }
               ],
-              "imageSource": "merchant"
+              "imageSource": "merchant",
+              "cardImage": "https://images.bewakoof.com/original/617332_2026-02-25t09-07-04_1.jpg"
             },
             {
               "id": "mw-02",
@@ -1876,7 +1927,8 @@
                   "role": "acc"
                 }
               ],
-              "imageSource": "merchant"
+              "imageSource": "merchant",
+              "cardImage": "https://images.bewakoof.com/original/women-s-black-slim-fit-t-shirt-232388-1755668844-1.jpg"
             },
             {
               "id": "mw-03",
@@ -1911,7 +1963,8 @@
                   "role": "acc"
                 }
               ],
-              "imageSource": "merchant"
+              "imageSource": "merchant",
+              "cardImage": "https://blissclub.com/cdn/shop/files/work-to-wine-twill-wide-leg-flare-pants-2848841.jpg?v=1781849618&width=2048"
             },
             {
               "id": "mw-04",
@@ -1946,7 +1999,8 @@
                   "role": "acc"
                 }
               ],
-              "imageSource": "merchant"
+              "imageSource": "merchant",
+              "cardImage": "https://images.bewakoof.com/original/women-s-black-oversized-crop-shirt-617279-1755669094-1.jpg"
             },
             {
               "id": "mw-05",
@@ -1981,7 +2035,8 @@
                   "role": "acc"
                 }
               ],
-              "imageSource": "merchant"
+              "imageSource": "merchant",
+              "cardImage": "https://blissclub.com/cdn/shop/files/barebutter-straight-pants-2338681.jpg?v=1781849536&width=2048"
             },
             {
               "id": "mw-06",
@@ -2016,7 +2071,8 @@
                   "role": "acc"
                 }
               ],
-              "imageSource": "merchant"
+              "imageSource": "merchant",
+              "cardImage": "https://blissclub.com/cdn/shop/files/cloud-box-pleated-korean-pant-3283940.jpg?v=1781848396&width=2048"
             },
             {
               "id": "mw-07",
@@ -2051,7 +2107,8 @@
                   "role": "acc"
                 }
               ],
-              "imageSource": "merchant"
+              "imageSource": "merchant",
+              "cardImage": "https://images.bewakoof.com/original/women-s-sleevelesss-ethnic-kurti-403805-1656182466-1.jpg"
             },
             {
               "id": "mw-08",
@@ -2086,7 +2143,9 @@
                   "role": "acc"
                 }
               ],
-              "imageSource": "merchant"
+              "imageSource": "merchant",
+              "cardImage": "https://images.bewakoof.com/original/women-s-jet-black-embroidered-slim-fit-acid-wash-short-top-684704-1760689901-1.jpg",
+              "cardImageSecondary": "https://blissclub.com/cdn/shop/files/ampm-cotton-straight-pants-tall-6980727.jpg?v=1781849536&width=2048"
             },
             {
               "id": "mw-09",
@@ -2121,7 +2180,9 @@
                   "role": "acc"
                 }
               ],
-              "imageSource": "merchant"
+              "imageSource": "merchant",
+              "cardImage": "https://images.bewakoof.com/original/women-s-white-lead-typography-oversized-crop-shirt-628169-1755668796-1.jpg",
+              "cardImageSecondary": "https://blissclub.com/cdn/shop/files/ultimate_straight_pants_-_lite_-_wahida_white_cloud_s.jpg?v=1786696607&width=2048"
             },
             {
               "id": "mw-10",
@@ -2156,7 +2217,8 @@
                   "role": "acc"
                 }
               ],
-              "imageSource": "merchant"
+              "imageSource": "merchant",
+              "cardImage": "https://blissclub.com/cdn/shop/files/work-to-wine-twill-straight-pants-3661635.jpg?v=1781849618&width=2048"
             }
           ]
         }
@@ -2205,7 +2267,9 @@
                   "role": "item3"
                 }
               ],
-              "imageSource": "merchant"
+              "imageSource": "merchant",
+              "cardImage": "https://salty.co.in/cdn/shop/files/Image_20260803093353_2994_62.jpg?v=1788443855",
+              "cardImageSecondary": "https://salty.co.in/cdn/shop/files/NS12475_model.png?v=1781797705"
             },
             {
               "id": "osj-02",
@@ -2231,7 +2295,8 @@
                   "role": "item2"
                 }
               ],
-              "imageSource": "merchant"
+              "imageSource": "merchant",
+              "cardImage": "https://salty.co.in/cdn/shop/files/NS12273-S_model.jpg?v=1773425279"
             },
             {
               "id": "osj-03",
@@ -2257,7 +2322,8 @@
                   "role": "item2"
                 }
               ],
-              "imageSource": "merchant"
+              "imageSource": "merchant",
+              "cardImage": "https://salty.co.in/cdn/shop/files/Zenith-Cascade-Drop-Earrings-Salty-226364849.png?v=1785233693"
             },
             {
               "id": "osj-04",
@@ -2283,7 +2349,8 @@
                   "role": "item2"
                 }
               ],
-              "imageSource": "merchant"
+              "imageSource": "merchant",
+              "cardImage": "https://salty.co.in/cdn/shop/files/Traditional-Evil-Eye-Bangle-Salty-224676872.jpg?v=1779649623"
             },
             {
               "id": "osj-05",
@@ -2309,7 +2376,8 @@
                   "role": "item2"
                 }
               ],
-              "imageSource": "merchant"
+              "imageSource": "merchant",
+              "cardImage": "https://salty.co.in/cdn/shop/files/MB1S0098-BK_Model1.png?v=1782200864"
             },
             {
               "id": "osj-06",
@@ -2335,7 +2403,8 @@
                   "role": "item2"
                 }
               ],
-              "imageSource": "merchant"
+              "imageSource": "merchant",
+              "cardImage": "https://salty.co.in/cdn/shop/files/ES15040-S_Main_20_282_29.jpg?v=1784899104"
             },
             {
               "id": "osj-07",
@@ -2361,7 +2430,8 @@
                   "role": "item2"
                 }
               ],
-              "imageSource": "merchant"
+              "imageSource": "merchant",
+              "cardImage": "https://salty.co.in/cdn/shop/files/ES15036-S_Main2_p8lin7.jpg?v=1784899249"
             },
             {
               "id": "osj-08",
@@ -2387,7 +2457,8 @@
                   "role": "item2"
                 }
               ],
-              "imageSource": "merchant"
+              "imageSource": "merchant",
+              "cardImage": "https://salty.co.in/cdn/shop/files/ES15062-S-BU_Main2.jpg?v=1784898911"
             },
             {
               "id": "osj-09",
@@ -2413,7 +2484,8 @@
                   "role": "item2"
                 }
               ],
-              "imageSource": "merchant"
+              "imageSource": "merchant",
+              "cardImage": "https://salty.co.in/cdn/shop/files/ES15060-S-PK_Main2.jpg?v=1784898959"
             },
             {
               "id": "osj-10",
@@ -2439,7 +2511,8 @@
                   "role": "item2"
                 }
               ],
-              "imageSource": "merchant"
+              "imageSource": "merchant",
+              "cardImage": "https://salty.co.in/cdn/shop/files/ES15061-S_Main2.jpg?v=1784898936"
             }
           ]
         },
@@ -2472,7 +2545,8 @@
                   "role": "item2"
                 }
               ],
-              "imageSource": "merchant"
+              "imageSource": "merchant",
+              "cardImage": "https://salty.co.in/cdn/shop/files/correct_20mp_20NS14121-G_MODEL3_20_281_29.jpg?v=1773354959"
             },
             {
               "id": "cm-02",
@@ -2498,7 +2572,8 @@
                   "role": "item2"
                 }
               ],
-              "imageSource": "merchant"
+              "imageSource": "merchant",
+              "cardImage": "https://salty.co.in/cdn/shop/files/MB1S0978-S_White_20_281_29.jpg?v=1773396192"
             },
             {
               "id": "cm-03",
@@ -2524,7 +2599,8 @@
                   "role": "item2"
                 }
               ],
-              "imageSource": "merchant"
+              "imageSource": "merchant",
+              "cardImage": "https://salty.co.in/cdn/shop/files/SilverEleganceNecklace_1_bfdd7491-d4c1-4786-a47c-51f55cade5ea.jpg?v=1773377636"
             },
             {
               "id": "cm-04",
@@ -2550,7 +2626,8 @@
                   "role": "item2"
                 }
               ],
-              "imageSource": "merchant"
+              "imageSource": "merchant",
+              "cardImage": "https://salty.co.in/cdn/shop/files/Classic-Chic-Golden-Necklace-Salty-223495619.jpg?v=1773371815"
             },
             {
               "id": "cm-05",
@@ -2576,7 +2653,8 @@
                   "role": "item2"
                 }
               ],
-              "imageSource": "merchant"
+              "imageSource": "merchant",
+              "cardImage": "https://salty.co.in/cdn/shop/files/NS14001-G_Model_1772357d-a593-40c8-b676-f49c4bb53b56.jpg?v=1773367449"
             },
             {
               "id": "cm-06",
@@ -2602,7 +2680,8 @@
                   "role": "item2"
                 }
               ],
-              "imageSource": "merchant"
+              "imageSource": "merchant",
+              "cardImage": "https://salty.co.in/cdn/shop/files/NS14000-G.jpg?v=1773414884"
             },
             {
               "id": "cm-07",
@@ -2628,7 +2707,8 @@
                   "role": "item2"
                 }
               ],
-              "imageSource": "merchant"
+              "imageSource": "merchant",
+              "cardImage": "https://salty.co.in/cdn/shop/files/ES15084-S_Main2.jpg?v=1784898838"
             },
             {
               "id": "cm-08",
@@ -2654,7 +2734,8 @@
                   "role": "item2"
                 }
               ],
-              "imageSource": "merchant"
+              "imageSource": "merchant",
+              "cardImage": "https://salty.co.in/cdn/shop/files/RS14938-G-WH_Main.jpg?v=1785409961"
             },
             {
               "id": "cm-09",
@@ -2680,7 +2761,8 @@
                   "role": "item2"
                 }
               ],
-              "imageSource": "merchant"
+              "imageSource": "merchant",
+              "cardImage": "https://salty.co.in/cdn/shop/files/Pure-Pearls-Hoops-Salty-156910716.jpg?v=1773370090"
             },
             {
               "id": "cm-10",
@@ -2715,7 +2797,9 @@
                   "role": "item3"
                 }
               ],
-              "imageSource": "merchant"
+              "imageSource": "merchant",
+              "cardImage": "https://salty.co.in/cdn/shop/files/SilverEleganceNecklace_1_bfdd7491-d4c1-4786-a47c-51f55cade5ea.jpg?v=1773377636",
+              "cardImageSecondary": "https://salty.co.in/cdn/shop/files/ES15193-S_MAIN2.png?v=1788443579"
             }
           ]
         },
@@ -2748,7 +2832,8 @@
                   "role": "item2"
                 }
               ],
-              "imageSource": "merchant"
+              "imageSource": "merchant",
+              "cardImage": "https://salty.co.in/cdn/shop/files/Salty-6080171.jpg?v=1773424827"
             },
             {
               "id": "ft-02",
@@ -2774,7 +2859,8 @@
                   "role": "item2"
                 }
               ],
-              "imageSource": "merchant"
+              "imageSource": "merchant",
+              "cardImage": "https://salty.co.in/cdn/shop/files/SG0005-BK-BK-ALPHA__20_281_292.jpg?v=1779832848"
             },
             {
               "id": "ft-03",
@@ -2800,7 +2886,8 @@
                   "role": "item2"
                 }
               ],
-              "imageSource": "merchant"
+              "imageSource": "merchant",
+              "cardImage": "https://salty.co.in/cdn/shop/files/RS12399_Main4.jpg?v=1785449585"
             },
             {
               "id": "ft-04",
@@ -2826,7 +2913,8 @@
                   "role": "item2"
                 }
               ],
-              "imageSource": "merchant"
+              "imageSource": "merchant",
+              "cardImage": "https://salty.co.in/cdn/shop/files/Jade-Wink-Brown-Rectangular-Sunglasses-Salty-221909486.jpg?v=1773398754"
             },
             {
               "id": "ft-05",
@@ -2852,7 +2940,8 @@
                   "role": "item2"
                 }
               ],
-              "imageSource": "merchant"
+              "imageSource": "merchant",
+              "cardImage": "https://salty.co.in/cdn/shop/files/SG0084-BK-BK-ALPHA_MODEL.png?v=1789422618"
             },
             {
               "id": "ft-06",
@@ -2878,7 +2967,8 @@
                   "role": "item2"
                 }
               ],
-              "imageSource": "merchant"
+              "imageSource": "merchant",
+              "cardImage": "https://salty.co.in/cdn/shop/files/Frost-Hue-Sunglasses-Salty-221912477.jpg?v=1773379783"
             },
             {
               "id": "ft-07",
@@ -2904,7 +2994,8 @@
                   "role": "item2"
                 }
               ],
-              "imageSource": "merchant"
+              "imageSource": "merchant",
+              "cardImage": "https://salty.co.in/cdn/shop/files/SG0030-G-BR_MODEL_20_281_29.png?v=1788994029"
             },
             {
               "id": "ft-08",
@@ -2930,7 +3021,8 @@
                   "role": "item2"
                 }
               ],
-              "imageSource": "merchant"
+              "imageSource": "merchant",
+              "cardImage": "https://salty.co.in/cdn/shop/files/SG0001-BK-BK_model.jpg?v=1773416818"
             },
             {
               "id": "ft-09",
@@ -2956,7 +3048,8 @@
                   "role": "item2"
                 }
               ],
-              "imageSource": "merchant"
+              "imageSource": "merchant",
+              "cardImage": "https://salty.co.in/cdn/shop/files/SG0036-BK-BK-ALPHA_MODEL.png?v=1789423298"
             },
             {
               "id": "ft-10",
@@ -2982,7 +3075,8 @@
                   "role": "item2"
                 }
               ],
-              "imageSource": "merchant"
+              "imageSource": "merchant",
+              "cardImage": "https://salty.co.in/cdn/shop/files/SG0048-BK-BR_Model.jpg?v=1773390165"
             }
           ]
         }

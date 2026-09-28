@@ -12,24 +12,44 @@ interface Props {
   id: string;
   title: string;
   image: string;
+  imageSecondary?: string;
   items: Item[];
   href?: string;
 }
 
-const { id, title, image, items, href = `/looks/${id}` } = Astro.props;
+const { id, title, image, imageSecondary, items, href = `/looks/${id}` } = Astro.props;
 const brands = [...new Set(items.map((i) => i.brand))].join(" · ");
 ---
 
 <article class="look-card overflow-hidden rounded-2xl border border-line bg-white shadow-[0_10px_30px_rgba(23,20,17,0.04)]">
   <a href={href} class="block">
     <div class="relative aspect-[4/5] overflow-hidden bg-paper-2">
-      <img
-        src={image}
-        alt={title}
-        class="h-full w-full object-cover transition duration-500 hover:scale-[1.03]"
-        loading="lazy"
-        referrerpolicy="no-referrer"
-      />
+      {imageSecondary ? (
+        <div class="grid h-full grid-cols-2">
+          <img
+            src={image}
+            alt=""
+            class="h-full w-full object-cover transition duration-500 group-hover:scale-[1.03]"
+            loading="lazy"
+            referrerpolicy="no-referrer"
+          />
+          <img
+            src={imageSecondary}
+            alt=""
+            class="h-full w-full object-cover transition duration-500 group-hover:scale-[1.03]"
+            loading="lazy"
+            referrerpolicy="no-referrer"
+          />
+        </div>
+      ) : (
+        <img
+          src={image}
+          alt={title}
+          class="h-full w-full object-cover transition duration-500 hover:scale-[1.03]"
+          loading="lazy"
+          referrerpolicy="no-referrer"
+        />
+      )}
     </div>
     <div class="space-y-2 p-4">
       <p class="text-xs font-semibold uppercase tracking-[0.14em] text-sand">{brands}</p>
