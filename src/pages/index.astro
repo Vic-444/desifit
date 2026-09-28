@@ -3,24 +3,28 @@ import Layout from "../layouts/Layout.astro";
 import LookCard from "../components/LookCard.astro";
 import data from "../data/looks.json";
 
-/** One look from each subcategory (card images are uniquified in the catalog). */
-const featured = data.categories
-  .flatMap((cat) =>
-    cat.subcategories.map((sub) => {
-      const look = sub.looks[0];
-      if (!look) return null;
-      return {
-        ...look,
-        image: look.cardImage || look.image,
-        imageSecondary: look.cardImageSecondary,
-        categoryTitle: cat.title,
-        categoryId: cat.id,
-        subcategoryId: sub.id,
-      };
-    })
+/** Hand-picked Featured looks (homepage). */
+const FEATURED_LOOK_IDS = ["skd-01", "fl-04", "dck-07", "kcb-04", "cm-01", "ft-03"] as const;
+
+const lookById = new Map(
+  data.categories.flatMap((cat) =>
+    cat.subcategories.flatMap((sub) =>
+      sub.looks.map((look) => [
+        look.id,
+        {
+          ...look,
+          image: look.cardImage || look.image,
+          imageSecondary: look.cardImageSecondary,
+          categoryTitle: cat.title,
+          categoryId: cat.id,
+          subcategoryId: sub.id,
+        },
+      ])
+    )
   )
-  .filter(Boolean)
-  .slice(0, 6);
+);
+
+const featured = FEATURED_LOOK_IDS.map((id) => lookById.get(id)).filter(Boolean);
 
 const heroImage =
   data.categories[0]?.subcategories[0]?.looks[0]?.image ||
