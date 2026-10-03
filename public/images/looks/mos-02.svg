@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="1000" viewBox="0 0 800 1000">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#171411"/>
+      <stop offset="55%" stop-color="#2c2620"/>
+      <stop offset="100%" stop-color="#e63946"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="1000" fill="url(#g)"/>
+  <circle cx="640" cy="180" r="160" fill="#f6f3ef" fill-opacity="0.08"/>
+  <circle cx="120" cy="820" r="220" fill="#c4a484" fill-opacity="0.16"/>
+  <text x="48" y="120" fill="#f6f3ef" font-family="Georgia, serif" font-size="42" font-weight="700">DesiFit</text>
+  <text x="48" y="180" fill="#c4a484" font-family="system-ui,sans-serif" font-size="18" letter-spacing="3">MEN'S STUDIO</text>
+  <foreignObject x="48" y="420" width="700" height="280">
+    <div xmlns="http://www.w3.org/1999/xhtml" style="color:#f6f3ef;font-family:Georgia,serif;font-size:34px;line-height:1.25;font-weight:600;">Grey Cargo Shirt × Black Nylon Parachute</div>
+  </foreignObject>
+  <text x="48" y="920" fill="#c4a484" font-family="system-ui,sans-serif" font-size="18">Bewakoof</text>
+</svg>
