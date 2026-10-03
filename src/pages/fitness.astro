@@ -1,0 +1,218 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const foods = [
+  { name: "Roti (1 whole wheat, plain)", calories: "85 kcal" },
+  { name: "Paratha (1 plain, shallow fried)", calories: "260 kcal" },
+  { name: "Chapati with ghee (1)", calories: "120 kcal" },
+  { name: "Poha (1 plate / 200g)", calories: "250 kcal" },
+  { name: "Upma (1 plate / 200g)", calories: "230 kcal" },
+  { name: "Idli (2 pieces with sambar)", calories: "160 kcal" },
+  { name: "Masala Dosa (1 medium)", calories: "350 kcal" },
+  { name: "Plain Dosa (1 medium)", calories: "180 kcal" },
+  { name: "White Rice (1 cup cooked)", calories: "205 kcal" },
+  { name: "Jeera Rice (1 cup)", calories: "240 kcal" },
+  { name: "Chicken Biryani (1 plate / 300g)", calories: "480 kcal" },
+  { name: "Veg Biryani (1 plate / 300g)", calories: "400 kcal" },
+  { name: "Rajma (1 katori / 150g)", calories: "180 kcal" },
+  { name: "Chana Masala (1 katori / 150g)", calories: "165 kcal" },
+  { name: "Dal Makhani (1 katori / 150g)", calories: "150 kcal" },
+  { name: "Tarka Dal (1 katori / 150g)", calories: "110 kcal" },
+  { name: "Palak Paneer (1 katori / 150g)", calories: "190 kcal" },
+  { name: "Paneer Tikka (1 portion / 4 cubes)", calories: "220 kcal" },
+  { name: "Chicken Tikka (1 portion / 150g)", calories: "180 kcal" },
+  { name: "Butter Chicken (1 katori / 150g)", calories: "290 kcal" },
+  { name: "Samosa (1 medium size)", calories: "250 kcal" },
+  { name: "Pakora (4 pieces)", calories: "220 kcal" },
+  { name: "Chai with milk & sugar (1 cup)", calories: "90 kcal" },
+  { name: "Filter coffee with milk (1 cup)", calories: "70 kcal" },
+  { name: "Lassi sweet (1 glass)", calories: "220 kcal" },
+  { name: "Gulab Jamun (1 piece)", calories: "150 kcal" },
+  { name: "Jalebi (2 pieces)", calories: "300 kcal" },
+  { name: "Fruit chaat (1 bowl)", calories: "120 kcal" },
+];
+---
+
+<Layout
+  title="Fitness Studio | DesiFit"
+  description="DesiFit Fitness Studio — BMI calculator and Desi Food Calorie Index for everyday South Asian lifestyle tracking."
+>
+  <main>
+    <section class="relative overflow-hidden bg-ink text-paper">
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_15%_20%,rgba(230,57,70,0.32),transparent_45%)]"></div>
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_85%_80%,rgba(196,164,132,0.18),transparent_40%)]"></div>
+      <div class="relative mx-auto max-w-6xl px-4 py-16 md:px-6 md:py-20">
+        <p class="animate-rise text-xs font-semibold uppercase tracking-[0.2em] text-sand">Fitness Studio</p>
+        <h1 class="animate-rise delay-1 mt-3 font-display text-4xl font-extrabold tracking-tight md:text-6xl">
+          Move with the day.<span class="text-accent"> Know the numbers.</span>
+        </h1>
+        <p class="animate-rise delay-2 mt-4 max-w-2xl text-base leading-relaxed text-paper/75 md:text-lg">
+          A lean tools wing for DesiFit — BMI check and a searchable Desi food calorie index. No supplements. No clinical advice.
+        </p>
+        <div class="animate-rise delay-3 mt-8 flex flex-wrap gap-3">
+          <a href="#bmi" class="rounded-full bg-accent px-5 py-2.5 text-sm font-bold text-white transition hover:bg-accent-deep">
+            BMI calculator
+          </a>
+          <a href="#calories" class="rounded-full border border-paper/40 px-5 py-2.5 text-sm font-bold text-paper transition hover:bg-paper/10">
+            Calorie index
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="mx-auto grid max-w-6xl gap-8 px-4 py-14 md:grid-cols-2 md:px-6">
+      <article id="bmi" class="scroll-mt-24 rounded-3xl border border-line bg-white p-6 md:p-8">
+        <h2 class="font-display text-2xl font-bold text-ink md:text-3xl">BMI Calculator</h2>
+        <p class="mt-2 text-sm text-ink-soft">Quick lifestyle check using weight (kg) and height (cm).</p>
+
+        <form id="bmi-form" class="mt-8 space-y-5">
+          <label class="block">
+            <span class="mb-2 block text-sm font-semibold text-ink">Weight (kg)</span>
+            <input
+              id="weight"
+              name="weight"
+              type="number"
+              min="30"
+              max="200"
+              step="0.1"
+              placeholder="e.g. 70"
+              class="w-full rounded-xl border border-line bg-paper px-4 py-3 text-ink outline-none transition focus:border-accent"
+              required
+            />
+          </label>
+          <label class="block">
+            <span class="mb-2 block text-sm font-semibold text-ink">Height (cm)</span>
+            <input
+              id="height"
+              name="height"
+              type="number"
+              min="100"
+              max="250"
+              step="0.1"
+              placeholder="e.g. 175"
+              class="w-full rounded-xl border border-line bg-paper px-4 py-3 text-ink outline-none transition focus:border-accent"
+              required
+            />
+          </label>
+          <button
+            type="submit"
+            class="w-full rounded-full bg-ink px-5 py-3 text-sm font-bold text-paper transition hover:bg-accent"
+          >
+            Calculate BMI
+          </button>
+        </form>
+
+        <div id="bmi-result" class="mt-5 hidden rounded-2xl px-4 py-4 text-center text-sm font-bold" role="status" aria-live="polite"></div>
+      </article>
+
+      <article id="calories" class="scroll-mt-24 rounded-3xl border border-line bg-white p-6 md:p-8">
+        <h2 class="font-display text-2xl font-bold text-ink md:text-3xl">Desi Food Calorie Index</h2>
+        <p class="mt-2 text-sm text-ink-soft">Search everyday South Asian staples — approximate lifestyle reference values.</p>
+
+        <label class="mt-8 block">
+          <span class="sr-only">Search foods</span>
+          <input
+            id="food-search"
+            type="search"
+            placeholder="Search food (e.g. roti, biryani, chai)..."
+            class="w-full rounded-xl border border-line bg-paper px-4 py-3 text-ink outline-none transition focus:border-accent"
+          />
+        </label>
+
+        <ul id="food-list" class="mt-4 max-h-[360px] list-none overflow-y-auto rounded-2xl border border-line p-0">
+          {foods.map((food) => (
+            <li class="food-item flex items-center justify-between gap-3 border-b border-line px-4 py-3 last:border-b-0" data-name={food.name.toLowerCase()}>
+              <span class="text-sm font-medium text-ink">{food.name}</span>
+              <span class="shrink-0 text-sm font-bold text-accent">{food.calories}</span>
+            </li>
+          ))}
+        </ul>
+        <p id="food-empty" class="mt-3 hidden text-sm text-ink-soft">No foods match that search.</p>
+      </article>
+    </section>
+
+    <section class="border-y border-line bg-paper-2/70">
+      <div class="mx-auto flex max-w-6xl flex-col gap-4 px-4 py-12 md:flex-row md:items-center md:justify-between md:px-6">
+        <div>
+          <h2 class="font-display text-2xl font-bold text-ink">Explore lookbooks</h2>
+          <p class="mt-2 max-w-xl text-sm text-ink-soft">
+            Tools aren’t a dead end — browse women’s and men’s curated outfits when you’re ready to shop the look.
+          </p>
+        </div>
+        <div class="flex flex-wrap gap-3">
+          <a href="/categories" class="rounded-full bg-ink px-5 py-2.5 text-sm font-bold text-paper transition hover:bg-accent">
+            Women’s lookbooks
+          </a>
+          <a href="/categories/mens" class="rounded-full border border-ink/20 px-5 py-2.5 text-sm font-bold text-ink transition hover:border-accent hover:text-accent">
+            Men’s studio
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <p class="mx-auto max-w-3xl px-4 py-10 text-center text-xs leading-relaxed text-ink-soft md:px-6">
+      <strong class="text-ink">Not medical advice.</strong>
+      BMI and calorie figures are general lifestyle estimates for everyday reference only.
+      DesiFit does not offer or promote ingestible supplements or clinical guidance.
+    </p>
+  </main>
+
+  <script>
+    const form = document.getElementById("bmi-form");
+    const resultBox = document.getElementById("bmi-result");
+    const search = document.getElementById("food-search");
+    const empty = document.getElementById("food-empty");
+
+    form?.addEventListener("submit", (event) => {
+      event.preventDefault();
+      if (!(resultBox instanceof HTMLElement)) return;
+
+      const weightEl = document.getElementById("weight");
+      const heightEl = document.getElementById("height");
+      const weight = parseFloat(weightEl instanceof HTMLInputElement ? weightEl.value : "");
+      const heightCm = parseFloat(heightEl instanceof HTMLInputElement ? heightEl.value : "");
+      const height = heightCm / 100;
+
+      if (!weight || !height || weight <= 0 || height <= 0) {
+        resultBox.className =
+          "mt-5 rounded-2xl px-4 py-4 text-center text-sm font-bold bg-red-50 text-accent-deep";
+        resultBox.textContent = "Please enter valid numbers.";
+        return;
+      }
+
+      const bmi = (weight / (height * height)).toFixed(1);
+      let category = "";
+      let classes = "";
+
+      if (Number(bmi) < 18.5) {
+        category = "Underweight";
+        classes = "bg-amber-50 text-amber-800";
+      } else if (Number(bmi) < 25) {
+        category = "Normal Weight";
+        classes = "bg-emerald-50 text-emerald-800";
+      } else if (Number(bmi) < 30) {
+        category = "Overweight";
+        classes = "bg-amber-50 text-amber-800";
+      } else {
+        category = "Obese";
+        classes = "bg-red-50 text-accent-deep";
+      }
+
+      resultBox.className = `mt-5 rounded-2xl px-4 py-4 text-center text-sm font-bold ${classes}`;
+      resultBox.textContent = `Your BMI: ${bmi} (${category})`;
+    });
+
+    search?.addEventListener("input", () => {
+      const query = search.value.trim().toLowerCase();
+      const items = document.querySelectorAll(".food-item");
+      let visible = 0;
+      items.forEach((item) => {
+        const name = item.getAttribute("data-name") || "";
+        const show = !query || name.includes(query);
+        item.classList.toggle("hidden", !show);
+        if (show) visible += 1;
+      });
+      if (empty) empty.classList.toggle("hidden", visible > 0);
+    });
+  </script>
+</Layout>

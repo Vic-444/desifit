@@ -3,20 +3,36 @@ import Layout from "../layouts/Layout.astro";
 import LookCard from "../components/LookCard.astro";
 import data from "../data/looks.json";
 
-const featured = data.categories.flatMap((cat) =>
-  cat.subcategories.flatMap((sub) =>
-    sub.looks.slice(0, 1).map((look) => ({
-      ...look,
-      categoryTitle: cat.title,
-      categoryId: cat.id,
-      subcategoryId: sub.id,
-    }))
+const womenCategories = data.categories.filter((c) => c.studio !== "men");
+const mensCategory = data.categories.find((c) => c.id === "mens");
+
+const featuredWomen = womenCategories
+  .flatMap((cat) =>
+    cat.subcategories.flatMap((sub) =>
+      sub.looks.slice(0, 1).map((look) => ({
+        ...look,
+      }))
+    )
   )
-).slice(0, 6);
+  .slice(0, 4);
+
+const featuredMen = (mensCategory?.subcategories || [])
+  .flatMap((sub) => sub.looks.slice(0, 1))
+  .slice(0, 2);
+
+const featured = [...featuredWomen, ...featuredMen];
 
 const heroImage =
-  data.categories[0]?.subcategories[0]?.looks[0]?.image ||
+  womenCategories[0]?.subcategories[0]?.looks[0]?.image ||
   "/images/looks/skd-01.svg";
+
+const womenLookCount = womenCategories.reduce(
+  (n, cat) => n + cat.subcategories.reduce((m, sub) => m + sub.looks.length, 0),
+  0
+);
+const menLookCount = mensCategory
+  ? mensCategory.subcategories.reduce((m, sub) => m + sub.looks.length, 0)
+  : 0;
 ---
 
 <Layout>
@@ -35,23 +51,23 @@ const heroImage =
         DesiFit<span class="text-accent">.</span>
       </p>
       <h1 class="animate-rise delay-1 mt-4 max-w-2xl font-display text-2xl font-semibold leading-tight text-paper/95 md:text-4xl">
-        Curated desi looks. Real products. One click to shop.
+        Fashion lookbooks. A fitness door. One lifestyle site.
       </h1>
       <p class="animate-rise delay-2 mt-4 max-w-xl text-base leading-relaxed text-paper/75 md:text-lg">
-        Indo-Western, everyday ethnic, and accessories — handpicked outfits with deep links to Bewakoof, BlissClub, and Salty.
+        Curated women’s and men’s outfits with real merchant deep links — plus lean BMI and Desi calorie tools when that’s why you came.
       </p>
       <div class="animate-rise delay-3 mt-8 flex flex-wrap gap-3">
         <a
-          href="/categories/indo-western"
+          href="/categories"
           class="rounded-full bg-accent px-6 py-3 text-sm font-bold text-white transition hover:bg-accent-deep"
         >
-          Browse Indo-Western
+          Browse lookbooks
         </a>
         <a
-          href="/categories"
+          href="/fitness"
           class="rounded-full border border-paper/40 px-6 py-3 text-sm font-bold text-paper transition hover:bg-paper/10"
         >
-          All lookbooks
+          Fitness studio
         </a>
       </div>
     </div>
@@ -59,52 +75,94 @@ const heroImage =
 
   <section class="mx-auto max-w-6xl px-4 py-16 md:px-6">
     <div class="mb-8 max-w-2xl">
-      <h2 class="font-display text-3xl font-bold text-ink md:text-4xl">Three worlds. Ninety looks.</h2>
-      <p class="mt-3 text-ink-soft">Each look is a curated outfit with shoppable pieces — not category dumps.</p>
+      <h2 class="font-display text-3xl font-bold text-ink md:text-4xl">Three doors. Pick your intent.</h2>
+      <p class="mt-3 text-ink-soft">Women’s fashion, men’s fashion, or fitness tools — no forced CTAs for the wrong visitor.</p>
     </div>
     <div class="grid gap-5 md:grid-cols-3">
-      {data.categories.map((cat, idx) => (
-        <a
-          href={`/categories/${cat.id}`}
-          class:list={[
-            "group relative overflow-hidden rounded-3xl border border-line p-6 transition hover:-translate-y-1",
-            idx === 0 ? "bg-ink text-paper" : "bg-white text-ink",
-          ]}
-        >
-          <p class="text-xs font-semibold uppercase tracking-[0.16em] opacity-60">
-            {cat.subcategories.length} subcategories
-          </p>
-          <h3 class="mt-3 font-display text-2xl font-bold">{cat.title}</h3>
-          <p class:list={["mt-3 text-sm leading-relaxed", idx === 0 ? "text-paper/70" : "text-ink-soft"]}>
-            {cat.description}
-          </p>
-          <span class:list={["mt-6 inline-block text-sm font-semibold", idx === 0 ? "text-accent" : "text-accent-deep"]}>
-            Explore →
-          </span>
-        </a>
-      ))}
+      <a
+        href="/categories"
+        class="group relative overflow-hidden rounded-3xl border border-line bg-ink p-6 text-paper transition hover:-translate-y-1"
+      >
+        <p class="text-xs font-semibold uppercase tracking-[0.16em] opacity-60">{womenLookCount} looks</p>
+        <h3 class="mt-3 font-display text-2xl font-bold">Women</h3>
+        <p class="mt-3 text-sm leading-relaxed text-paper/70">
+          Indo-Western, desi casual, and accessories — the core shoppable studio.
+        </p>
+        <span class="mt-6 inline-block text-sm font-semibold text-accent">Enter studio →</span>
+      </a>
+      <a
+        href="/categories/mens"
+        class="group relative overflow-hidden rounded-3xl border border-line bg-white p-6 text-ink transition hover:-translate-y-1"
+      >
+        <p class="text-xs font-semibold uppercase tracking-[0.16em] text-sand">{menLookCount} looks</p>
+        <h3 class="mt-3 font-display text-2xl font-bold">Men</h3>
+        <p class="mt-3 text-sm leading-relaxed text-ink-soft">
+          Thin-start Bewakoof lookbooks — tees & denim, oversized street, ethnic casual.
+        </p>
+        <span class="mt-6 inline-block text-sm font-semibold text-accent-deep">Enter studio →</span>
+      </a>
+      <a
+        href="/fitness"
+        class="group relative overflow-hidden rounded-3xl border border-line bg-paper-2 p-6 text-ink transition hover:-translate-y-1"
+      >
+        <p class="text-xs font-semibold uppercase tracking-[0.16em] text-sand">Tools</p>
+        <h3 class="mt-3 font-display text-2xl font-bold">Fitness</h3>
+        <p class="mt-3 text-sm leading-relaxed text-ink-soft">
+          BMI calculator and Desi Food Calorie Index — lifestyle reference, not medical advice.
+        </p>
+        <span class="mt-6 inline-block text-sm font-semibold text-accent-deep">Open tools →</span>
+      </a>
     </div>
   </section>
 
   <section class="border-y border-line bg-paper-2/60">
     <div class="mx-auto max-w-6xl px-4 py-16 md:px-6">
-      <div class="mb-8 flex items-end justify-between gap-4">
-        <div>
-          <h2 class="font-display text-3xl font-bold text-ink">Featured looks</h2>
-          <p class="mt-2 text-ink-soft">A taste from each lookbook.</p>
-        </div>
-        <a href="/categories" class="hidden text-sm font-semibold text-accent-deep md:inline">View all →</a>
+      <div class="mb-8 max-w-2xl">
+        <h2 class="font-display text-3xl font-bold text-ink md:text-4xl">Women’s worlds</h2>
+        <p class="mt-3 text-ink-soft">Each look is a curated outfit with shoppable pieces — not category dumps.</p>
       </div>
-      <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-        {featured.map((look) => (
-          <LookCard
-            id={look.id}
-            title={look.title}
-            image={look.image}
-            items={look.items}
-          />
+      <div class="grid gap-5 md:grid-cols-3">
+        {womenCategories.map((cat, idx) => (
+          <a
+            href={`/categories/${cat.id}`}
+            class:list={[
+              "group relative overflow-hidden rounded-3xl border border-line p-6 transition hover:-translate-y-1",
+              idx === 0 ? "bg-ink text-paper" : "bg-white text-ink",
+            ]}
+          >
+            <p class="text-xs font-semibold uppercase tracking-[0.16em] opacity-60">
+              {cat.subcategories.length} subcategories
+            </p>
+            <h3 class="mt-3 font-display text-2xl font-bold">{cat.title}</h3>
+            <p class:list={["mt-3 text-sm leading-relaxed", idx === 0 ? "text-paper/70" : "text-ink-soft"]}>
+              {cat.description}
+            </p>
+            <span class:list={["mt-6 inline-block text-sm font-semibold", idx === 0 ? "text-accent" : "text-accent-deep"]}>
+              Explore →
+            </span>
+          </a>
         ))}
       </div>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-6xl px-4 py-16 md:px-6">
+    <div class="mb-8 flex items-end justify-between gap-4">
+      <div>
+        <h2 class="font-display text-3xl font-bold text-ink">Featured looks</h2>
+        <p class="mt-2 text-ink-soft">A taste from women’s lookbooks and the men’s thin start.</p>
+      </div>
+      <a href="/categories" class="hidden text-sm font-semibold text-accent-deep md:inline">View all →</a>
+    </div>
+    <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      {featured.map((look) => (
+        <LookCard
+          id={look.id}
+          title={look.title}
+          image={look.image}
+          items={look.items}
+        />
+      ))}
     </div>
   </section>
 </Layout>
