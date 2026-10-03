@@ -2,15 +2,113 @@
 import Layout from "../layouts/Layout.astro";
 ---
 
-<Layout title="Contact | DesiFit">
-  <main class="prose-legal mx-auto max-w-3xl px-4 py-12 md:px-6">
-    <h1>Contact Us</h1>
-    <p>Questions, feedback, or partnership ideas — we would love to hear from you.</p>
-    <h3>Get in touch</h3>
-    <ul>
-      <li><strong>Email:</strong> <a href="mailto:hello@desifit.com">hello@desifit.com</a></li>
-      <li><strong>Website:</strong> <a href="https://desifit.com">desifit.com</a></li>
-    </ul>
-    <p>We aim to reply within 24–48 business hours.</p>
+<Layout
+  title="Contact | DesiFit"
+  description="Contact the DesiFit Team — questions, feedback, or partnership ideas."
+>
+  <main class="mx-auto max-w-3xl px-4 py-12 md:px-6">
+    <p class="text-xs font-semibold uppercase tracking-[0.18em] text-sand">Contact</p>
+    <h1 class="mt-3 font-display text-4xl font-bold text-ink md:text-5xl">Say hello</h1>
+    <p class="mt-4 text-ink-soft">
+      Questions, feedback, or partnership ideas — the DesiFit Team reads every message. We aim to reply within 24–48
+      business hours.
+    </p>
+
+    <div class="mt-10 grid gap-8 md:grid-cols-[1.2fr_0.8fr]">
+      <form
+        id="contact-form"
+        class="space-y-5 rounded-3xl border border-line bg-white p-6 md:p-8"
+        action="https://formsubmit.co/hello@desifit.com"
+        method="POST"
+      >
+        <!-- FormSubmit helpers: https://formsubmit.co -->
+        <input type="hidden" name="_subject" value="DesiFit contact form" />
+        <input type="hidden" name="_captcha" value="false" />
+        <input type="hidden" name="_template" value="table" />
+        <input type="text" name="_honey" class="hidden" tabindex="-1" autocomplete="off" aria-hidden="true" />
+        <input type="hidden" name="_next" value="https://desifit.com/contact/?sent=1" />
+
+        <label class="block">
+          <span class="mb-2 block text-sm font-semibold text-ink">Name</span>
+          <input
+            type="text"
+            name="name"
+            required
+            maxlength="120"
+            class="w-full rounded-xl border border-line bg-paper px-4 py-3 text-ink outline-none transition focus:border-accent"
+            placeholder="Your name"
+          />
+        </label>
+
+        <label class="block">
+          <span class="mb-2 block text-sm font-semibold text-ink">Email</span>
+          <input
+            type="email"
+            name="email"
+            required
+            maxlength="200"
+            class="w-full rounded-xl border border-line bg-paper px-4 py-3 text-ink outline-none transition focus:border-accent"
+            placeholder="you@example.com"
+          />
+        </label>
+
+        <label class="block">
+          <span class="mb-2 block text-sm font-semibold text-ink">Message</span>
+          <textarea
+            name="message"
+            required
+            rows="5"
+            maxlength="4000"
+            class="w-full resize-y rounded-xl border border-line bg-paper px-4 py-3 text-ink outline-none transition focus:border-accent"
+            placeholder="How can we help?"
+          ></textarea>
+        </label>
+
+        <button
+          type="submit"
+          class="w-full rounded-full bg-ink px-5 py-3 text-sm font-bold text-paper transition hover:bg-accent"
+        >
+          Send message
+        </button>
+
+        <p id="sent-note" class="hidden rounded-2xl bg-emerald-50 px-4 py-3 text-sm font-semibold text-emerald-800">
+          Thanks — your message is on its way. We’ll get back to you soon.
+        </p>
+        <p class="text-xs leading-relaxed text-ink-soft">
+          Submissions are emailed to the DesiFit Team. First use of the form may require a one-time confirmation click in
+          the inbox for <a class="underline" href="mailto:hello@desifit.com">hello@desifit.com</a>.
+        </p>
+      </form>
+
+      <aside class="space-y-5">
+        <div class="rounded-3xl border border-line bg-paper-2/70 p-6">
+          <h2 class="font-display text-xl font-bold text-ink">Email</h2>
+          <p class="mt-2 text-sm text-ink-soft">Prefer to write us directly?</p>
+          <a
+            href="mailto:hello@desifit.com"
+            class="mt-4 inline-block text-sm font-bold text-accent-deep underline"
+          >
+            hello@desifit.com
+          </a>
+        </div>
+        <div class="rounded-3xl border border-line bg-white p-6">
+          <h2 class="font-display text-xl font-bold text-ink">About DesiFit</h2>
+          <p class="mt-2 text-sm text-ink-soft">
+            Curated lookbooks and a lean fitness studio — run by the DesiFit Team.
+          </p>
+          <a href="/about" class="mt-4 inline-block text-sm font-semibold text-accent-deep">
+            Read about us →
+          </a>
+        </div>
+      </aside>
+    </div>
   </main>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    if (params.get("sent") === "1") {
+      const note = document.getElementById("sent-note");
+      if (note) note.classList.remove("hidden");
+    }
+  </script>
 </Layout>

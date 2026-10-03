@@ -19,9 +19,10 @@ Mobile-first lifestyle site for India traffic. Visitors browse curated women’s
 | `/categories/[category]/[subcategory]` | 10-look lookbook grid |
 | `/looks/[id]` | Look detail with shoppable item deep links |
 | `/fitness` | Fitness studio (BMI + calorie index) |
+| `/about` | About DesiFit / DesiFit Team |
+| `/contact` | Contact form + email |
 | `/disclosure` | Affiliate disclosure |
 | `/privacy` | Privacy policy |
-| `/contact` | Contact |
 
 ## Data
 - Fashion: `src/data/looks.json` (women + men; `studio` field tags `women` / `men`)
