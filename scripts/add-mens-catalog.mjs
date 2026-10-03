@@ -161,43 +161,74 @@ function placeholderSvg(lk) {
 </svg>`;
 }
 
-async function fetchOgImage(url) {
+/**
+ * Bewakoof blocks plain HTTP scrapes (403). Use a real Chromium session via
+ * playwright-core when available; fall back to SVG placeholders otherwise.
+ */
+async function fetchOgImageWithBrowser(urls) {
+  const cache = new Map();
+  let chromium;
   try {
-    const res = await fetch(url, {
-      headers: {
-        "User-Agent":
-          "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-        Accept: "text/html,application/xhtml+xml",
-      },
-      signal: AbortSignal.timeout(12000),
-    });
-    if (!res.ok) return "";
-    const html = await res.text();
-    const m =
-      html.match(/property=["']og:image["']\s+content=["']([^"']+)["']/i) ||
-      html.match(/content=["']([^"']+)["']\s+property=["']og:image["']/i);
-    return m ? m[1].replace(/^http:\/\//, "https://") : "";
+    ({ chromium } = await import("playwright-core"));
   } catch {
-    return "";
+    console.warn("playwright-core not installed — men's images will be placeholders.");
+    console.warn("Install with: npm i -D playwright-core  (Chrome system binary is fine)");
+    for (const url of urls) cache.set(url, "");
+    return cache;
   }
+
+  const { existsSync } = await import("node:fs");
+  const chrome =
+    process.env.CHROME_PATH ||
+    ["/usr/bin/google-chrome-stable", "/usr/bin/google-chrome", "/usr/bin/chromium"].find((p) =>
+      existsSync(p)
+    );
+
+  const browser = await chromium.launch({
+    headless: true,
+    executablePath: chrome,
+    args: ["--no-sandbox", "--disable-dev-shm-usage"],
+  });
+  const page = await browser.newPage();
+  let i = 0;
+  for (const url of urls) {
+    i++;
+    process.stdout.write(`\r  ${i}/${urls.size}`);
+    try {
+      await page.goto(url, { waitUntil: "domcontentloaded", timeout: 45000 });
+      await page.waitForTimeout(1500);
+      let og = await page.locator('meta[property="og:image"]').getAttribute("content");
+      if (!og) {
+        const imgs = await page.$$eval("img", (els) =>
+          els
+            .map((e) => e.src)
+            .filter((s) => s.includes("images.bewakoof.com"))
+        );
+        og = (imgs.find((s) => s.includes("/original/")) || imgs[0] || "").replace(
+          "/t96/",
+          "/original/"
+        );
+      }
+      cache.set(url, og ? og.replace(/^http:\/\//, "https://") : "");
+    } catch {
+      cache.set(url, "");
+    }
+  }
+  console.log("");
+  await browser.close();
+  return cache;
 }
 
 async function enrichMens(category) {
-  const cache = new Map();
   const urls = new Set();
   for (const sub of category.subcategories) {
     for (const lk of sub.looks) {
       for (const it of lk.items) urls.add(it.productUrl);
     }
   }
-  console.log(`Enriching men's images for ${urls.size} product URLs...`);
-  let i = 0;
-  for (const url of urls) {
-    i++;
-    process.stdout.write(`\r  ${i}/${urls.size}`);
-    cache.set(url, await fetchOgImage(url));
-  }
-  console.log("\nDone.");
+  console.log(`Enriching men's images for ${urls.size} product URLs (browser)...`);
+  const cache = await fetchOgImageWithBrowser(urls);
+  console.log(`Got ${[...cache.values()].filter(Boolean).length}/${urls.size} merchant images.`);
 
   mkdirSync(join(root, "public/images/looks"), { recursive: true });
 
@@ -206,7 +237,8 @@ async function enrichMens(category) {
       for (const it of lk.items) {
         it.imageUrl = cache.get(it.productUrl) || "";
       }
-      const first = lk.items.find((it) => it.imageUrl);
+      const top = lk.items.find((it) => it.role === "top" && it.imageUrl);
+      const first = top || lk.items.find((it) => it.imageUrl);
       if (first) {
         lk.image = first.imageUrl;
         lk.imageSource = "merchant";
