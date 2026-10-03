@@ -1,6 +1,5 @@
 ---
 import "../styles/global.css";
-import data from "../data/looks.json";
 
 interface Props {
   title?: string;
@@ -8,11 +7,15 @@ interface Props {
 }
 
 const {
-  title = "DesiFit | Curated Desi Fashion Lookbooks",
-  description = "Shop curated Indo-Western, desi casual, and accessory looks with real product deep links from Bewakoof, BlissClub, and Salty.",
+  title = "DesiFit | Fashion Lookbooks & Fitness Studio",
+  description = "Curated women’s and men’s desi fashion lookbooks plus a lean fitness studio with BMI and Desi food calorie tools.",
 } = Astro.props;
 
-const navCategories = data.categories;
+const studios = [
+  { label: "Women", href: "/categories" },
+  { label: "Men", href: "/categories/mens" },
+  { label: "Fitness", href: "/fitness" },
+];
 ---
 
 <!doctype html>
@@ -59,16 +62,19 @@ const navCategories = data.categories;
           DesiFit<span class="text-accent">.</span>
         </a>
         <nav class="hidden items-center gap-5 text-sm font-semibold text-ink-soft md:flex">
-          {navCategories.map((cat) => (
-            <a href={`/categories/${cat.id}`} class="transition hover:text-accent">
-              {cat.title.split(" ")[0]}
+          {studios.map((s) => (
+            <a href={s.href} class="transition hover:text-accent">
+              {s.label}
             </a>
           ))}
           <a href="/categories" class="rounded-full bg-ink px-3 py-1.5 text-paper transition hover:bg-accent">
             Lookbooks
           </a>
         </nav>
-        <a href="/categories" class="text-sm font-semibold text-accent md:hidden">Lookbooks</a>
+        <div class="flex items-center gap-3 md:hidden">
+          <a href="/fitness" class="text-sm font-semibold text-ink-soft">Fitness</a>
+          <a href="/categories" class="text-sm font-semibold text-accent">Lookbooks</a>
+        </div>
       </div>
     </header>
 
@@ -81,16 +87,16 @@ const navCategories = data.categories;
         <div>
           <p class="font-display text-3xl font-bold">DesiFit<span class="text-accent">.</span></p>
           <p class="mt-3 max-w-md text-sm leading-relaxed text-paper/70">
-            Curated Indo-Western, everyday desi, and accessory lookbooks — shoppable with real merchant deep links.
+            Women’s and men’s curated lookbooks, plus a lean fitness studio — lifestyle doors with real shoppable pieces where it matters.
           </p>
         </div>
         <div class="grid grid-cols-2 gap-6 text-sm">
           <div class="space-y-2">
-            <p class="font-semibold uppercase tracking-wider text-paper/50">Explore</p>
-            <a class="block text-paper/85 hover:text-accent" href="/categories">All categories</a>
-            {navCategories.map((cat) => (
-              <a class="block text-paper/85 hover:text-accent" href={`/categories/${cat.id}`}>{cat.title}</a>
-            ))}
+            <p class="font-semibold uppercase tracking-wider text-paper/50">Studios</p>
+            <a class="block text-paper/85 hover:text-accent" href="/categories">Women</a>
+            <a class="block text-paper/85 hover:text-accent" href="/categories/mens">Men</a>
+            <a class="block text-paper/85 hover:text-accent" href="/fitness">Fitness</a>
+            <a class="block text-paper/85 hover:text-accent" href="/categories">All lookbooks</a>
           </div>
           <div class="space-y-2">
             <p class="font-semibold uppercase tracking-wider text-paper/50">Legal</p>

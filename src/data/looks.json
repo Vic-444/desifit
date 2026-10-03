@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-27",
+  "generatedAt": "2026-10-03",
   "merchants": {
     "Bewakoof": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/",
     "BlissClub": "https://tjzuh.com/g/f7dkjuc7zj0be660c062519b939af8/",
@@ -1112,7 +1112,8 @@
             }
           ]
         }
-      ]
+      ],
+      "studio": "women"
     },
     {
       "id": "desi-casual",
@@ -2220,7 +2221,8 @@
             }
           ]
         }
-      ]
+      ],
+      "studio": "women"
     },
     {
       "id": "jewelry-accessories",
@@ -3073,6 +3075,816 @@
               ],
               "imageSource": "merchant",
               "cardImage": "https://salty.co.in/cdn/shop/files/Salty-6080113_4h7i3p.jpg?v=1773362542"
+            }
+          ]
+        }
+      ],
+      "studio": "women"
+    },
+    {
+      "id": "mens",
+      "title": "Men's Studio",
+      "description": "Lean men's lookbooks — casual tees, oversized street layers, and short kurtas paired with real Bewakoof bottoms.",
+      "studio": "men",
+      "subcategories": [
+        {
+          "id": "tees-denim",
+          "title": "Tees & Denim",
+          "description": "Everyday graphic and plain tees with baggy denim and cargo jeans.",
+          "looks": [
+            {
+              "id": "mtd-01",
+              "title": "Black Oversized Tee × Ash Grey Cargo Jeans",
+              "image": "/images/looks/mtd-01.svg",
+              "items": [
+                {
+                  "name": "Men's Black Oversized T-shirt",
+                  "brand": "Bewakoof",
+                  "price": "₹699",
+                  "productUrl": "https://www.bewakoof.com/p/men-black-plain-plain-t-shirt",
+                  "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fp%2Fmen-black-plain-plain-t-shirt&subid=mtd01-top",
+                  "imageUrl": "",
+                  "role": "top"
+                },
+                {
+                  "name": "Men's Ash Grey Baggy Fit Washed Cargo Jeans",
+                  "brand": "Bewakoof",
+                  "price": "₹1,699",
+                  "productUrl": "https://www.bewakoof.com/p/mens-grey-washed-straight-fit-cargo-jeans-grey",
+                  "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fp%2Fmens-grey-washed-straight-fit-cargo-jeans-grey&subid=mtd01-bottom",
+                  "imageUrl": "",
+                  "role": "bottom"
+                }
+              ],
+              "imageSource": "placeholder"
+            },
+            {
+              "id": "mtd-02",
+              "title": "Sun-Kissed Green Tee × Dark Blue Cargo Jeans",
+              "image": "/images/looks/mtd-02.svg",
+              "items": [
+                {
+                  "name": "Men's Sun-Kissed Green T-shirt",
+                  "brand": "Bewakoof",
+                  "price": "₹499",
+                  "productUrl": "https://www.bewakoof.com/p/plain-half-sleeves-t-shirt-men-green-78",
+                  "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fp%2Fplain-half-sleeves-t-shirt-men-green-78&subid=mtd02-top",
+                  "imageUrl": "",
+                  "role": "top"
+                },
+                {
+                  "name": "Men's Dark Blue Baggy Fit Washed Cargo Jeans",
+                  "brand": "Bewakoof",
+                  "price": "₹889",
+                  "productUrl": "https://www.bewakoof.com/p/mens-indigo-blue-washed-straight-fit-cargo-jeans-indigo-12",
+                  "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fp%2Fmens-indigo-blue-washed-straight-fit-cargo-jeans-indigo-12&subid=mtd02-bottom",
+                  "imageUrl": "",
+                  "role": "bottom"
+                }
+              ],
+              "imageSource": "placeholder"
+            },
+            {
+              "id": "mtd-03",
+              "title": "White Oversized Tee × Beige Carpenter Jeans",
+              "image": "/images/looks/mtd-03.svg",
+              "items": [
+                {
+                  "name": "Men's White Oversized T-shirt",
+                  "brand": "Bewakoof",
+                  "price": "₹499",
+                  "productUrl": "https://www.bewakoof.com/p/white-half-sleeve-relaxed-fit-t-shirt",
+                  "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fp%2Fwhite-half-sleeve-relaxed-fit-t-shirt&subid=mtd03-top",
+                  "imageUrl": "",
+                  "role": "top"
+                },
+                {
+                  "name": "Men's Beige Baggy Fit Cargo Carpenter Jeans",
+                  "brand": "Bewakoof",
+                  "price": "₹1,499",
+                  "productUrl": "https://www.bewakoof.com/p/mens-beige-straight-fit-jeans-beigee",
+                  "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fp%2Fmens-beige-straight-fit-jeans-beigee&subid=mtd03-bottom",
+                  "imageUrl": "",
+                  "role": "bottom"
+                }
+              ],
+              "imageSource": "placeholder"
+            },
+            {
+              "id": "mtd-04",
+              "title": "Arctic Green Tee × Blue Baggy Cargo",
+              "image": "/images/looks/mtd-04.svg",
+              "items": [
+                {
+                  "name": "Men's Green Oversized T-shirt",
+                  "brand": "Bewakoof",
+                  "price": "₹509",
+                  "productUrl": "https://www.bewakoof.com/p/mens-arctic-solid-t-shirt",
+                  "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fp%2Fmens-arctic-solid-t-shirt&subid=mtd04-top",
+                  "imageUrl": "",
+                  "role": "top"
+                },
+                {
+                  "name": "Men's Blue Baggy Oversized Cargo Pants",
+                  "brand": "Bewakoof",
+                  "price": "₹1,299",
+                  "productUrl": "https://www.bewakoof.com/p/mens-blue-oversized-cargo-pants",
+                  "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fp%2Fmens-blue-oversized-cargo-pants&subid=mtd04-bottom",
+                  "imageUrl": "",
+                  "role": "bottom"
+                }
+              ],
+              "imageSource": "placeholder"
+            },
+            {
+              "id": "mtd-05",
+              "title": "Most Wanted Brown Tee × Ash Grey Cargo Jeans",
+              "image": "/images/looks/mtd-05.svg",
+              "items": [
+                {
+                  "name": "Men's Brown Most Wanted Graphic Oversized T-shirt",
+                  "brand": "Bewakoof",
+                  "price": "₹799",
+                  "productUrl": "https://www.bewakoof.com/p/mens-brown-most-wanted-graphic-printed-oversized-t-shirt",
+                  "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fp%2Fmens-brown-most-wanted-graphic-printed-oversized-t-shirt&subid=mtd05-top",
+                  "imageUrl": "",
+                  "role": "top"
+                },
+                {
+                  "name": "Men's Ash Grey Baggy Fit Washed Cargo Jeans",
+                  "brand": "Bewakoof",
+                  "price": "₹1,699",
+                  "productUrl": "https://www.bewakoof.com/p/mens-grey-washed-straight-fit-cargo-jeans-grey",
+                  "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fp%2Fmens-grey-washed-straight-fit-cargo-jeans-grey&subid=mtd05-bottom",
+                  "imageUrl": "",
+                  "role": "bottom"
+                }
+              ],
+              "imageSource": "placeholder"
+            },
+            {
+              "id": "mtd-06",
+              "title": "Fakinit Brown Tee × Dark Blue Cargo Jeans",
+              "image": "/images/looks/mtd-06.svg",
+              "items": [
+                {
+                  "name": "Men's Brown Fakinit Graphic Oversized T-shirt",
+                  "brand": "Bewakoof",
+                  "price": "₹499",
+                  "productUrl": "https://www.bewakoof.com/p/mens-brown-fakinit-graphic-printed-oversized-t-shirt",
+                  "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fp%2Fmens-brown-fakinit-graphic-printed-oversized-t-shirt&subid=mtd06-top",
+                  "imageUrl": "",
+                  "role": "top"
+                },
+                {
+                  "name": "Men's Dark Blue Baggy Fit Washed Cargo Jeans",
+                  "brand": "Bewakoof",
+                  "price": "₹889",
+                  "productUrl": "https://www.bewakoof.com/p/mens-indigo-blue-washed-straight-fit-cargo-jeans-indigo-12",
+                  "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fp%2Fmens-indigo-blue-washed-straight-fit-cargo-jeans-indigo-12&subid=mtd06-bottom",
+                  "imageUrl": "",
+                  "role": "bottom"
+                }
+              ],
+              "imageSource": "placeholder"
+            },
+            {
+              "id": "mtd-07",
+              "title": "Sonu Brown Tee × Beige Carpenter Jeans",
+              "image": "/images/looks/mtd-07.svg",
+              "items": [
+                {
+                  "name": "Men's Brown Sonu Graphic Oversized T-shirt",
+                  "brand": "Bewakoof",
+                  "price": "₹499",
+                  "productUrl": "https://www.bewakoof.com/p/men-printed-oversized-t-shirt-70",
+                  "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fp%2Fmen-printed-oversized-t-shirt-70&subid=mtd07-top",
+                  "imageUrl": "",
+                  "role": "top"
+                },
+                {
+                  "name": "Men's Beige Baggy Fit Cargo Carpenter Jeans",
+                  "brand": "Bewakoof",
+                  "price": "₹1,499",
+                  "productUrl": "https://www.bewakoof.com/p/mens-beige-straight-fit-jeans-beigee",
+                  "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fp%2Fmens-beige-straight-fit-jeans-beigee&subid=mtd07-bottom",
+                  "imageUrl": "",
+                  "role": "bottom"
+                }
+              ],
+              "imageSource": "placeholder"
+            },
+            {
+              "id": "mtd-08",
+              "title": "Black Oversized Tee × Blue Baggy Cargo",
+              "image": "/images/looks/mtd-08.svg",
+              "items": [
+                {
+                  "name": "Men's Black Oversized T-shirt",
+                  "brand": "Bewakoof",
+                  "price": "₹699",
+                  "productUrl": "https://www.bewakoof.com/p/men-black-plain-plain-t-shirt",
+                  "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fp%2Fmen-black-plain-plain-t-shirt&subid=mtd08-top",
+                  "imageUrl": "",
+                  "role": "top"
+                },
+                {
+                  "name": "Men's Blue Baggy Oversized Cargo Pants",
+                  "brand": "Bewakoof",
+                  "price": "₹1,299",
+                  "productUrl": "https://www.bewakoof.com/p/mens-blue-oversized-cargo-pants",
+                  "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fp%2Fmens-blue-oversized-cargo-pants&subid=mtd08-bottom",
+                  "imageUrl": "",
+                  "role": "bottom"
+                }
+              ],
+              "imageSource": "placeholder"
+            },
+            {
+              "id": "mtd-09",
+              "title": "White Oversized Tee × Ash Grey Cargo Jeans",
+              "image": "/images/looks/mtd-09.svg",
+              "items": [
+                {
+                  "name": "Men's White Oversized T-shirt",
+                  "brand": "Bewakoof",
+                  "price": "₹499",
+                  "productUrl": "https://www.bewakoof.com/p/white-half-sleeve-relaxed-fit-t-shirt",
+                  "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fp%2Fwhite-half-sleeve-relaxed-fit-t-shirt&subid=mtd09-top",
+                  "imageUrl": "",
+                  "role": "top"
+                },
+                {
+                  "name": "Men's Ash Grey Baggy Fit Washed Cargo Jeans",
+                  "brand": "Bewakoof",
+                  "price": "₹1,699",
+                  "productUrl": "https://www.bewakoof.com/p/mens-grey-washed-straight-fit-cargo-jeans-grey",
+                  "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fp%2Fmens-grey-washed-straight-fit-cargo-jeans-grey&subid=mtd09-bottom",
+                  "imageUrl": "",
+                  "role": "bottom"
+                }
+              ],
+              "imageSource": "placeholder"
+            },
+            {
+              "id": "mtd-10",
+              "title": "Sun-Kissed Green Tee × Beige Carpenter Jeans",
+              "image": "/images/looks/mtd-10.svg",
+              "items": [
+                {
+                  "name": "Men's Sun-Kissed Green T-shirt",
+                  "brand": "Bewakoof",
+                  "price": "₹499",
+                  "productUrl": "https://www.bewakoof.com/p/plain-half-sleeves-t-shirt-men-green-78",
+                  "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fp%2Fplain-half-sleeves-t-shirt-men-green-78&subid=mtd10-top",
+                  "imageUrl": "",
+                  "role": "top"
+                },
+                {
+                  "name": "Men's Beige Baggy Fit Cargo Carpenter Jeans",
+                  "brand": "Bewakoof",
+                  "price": "₹1,499",
+                  "productUrl": "https://www.bewakoof.com/p/mens-beige-straight-fit-jeans-beigee",
+                  "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fp%2Fmens-beige-straight-fit-jeans-beigee&subid=mtd10-bottom",
+                  "imageUrl": "",
+                  "role": "bottom"
+                }
+              ],
+              "imageSource": "placeholder"
+            }
+          ]
+        },
+        {
+          "id": "oversized-street",
+          "title": "Oversized & Street",
+          "description": "Cargo shirts, acid-wash graphics, and parachute / baggy cargos.",
+          "looks": [
+            {
+              "id": "mos-01",
+              "title": "Jet Black Cargo Shirt × Black Tapered Cargo",
+              "image": "/images/looks/mos-01.svg",
+              "items": [
+                {
+                  "name": "Men's Jet Black Oversized Cargo Shirt",
+                  "brand": "Bewakoof",
+                  "price": "₹1,299",
+                  "productUrl": "https://www.bewakoof.com/p/mens-jet-black-badge-printed-oversized-shirt-men",
+                  "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fp%2Fmens-jet-black-badge-printed-oversized-shirt-men&subid=mos01-top",
+                  "imageUrl": "",
+                  "role": "top"
+                },
+                {
+                  "name": "Men's Jet Black Tapered Fit Cargo Pants",
+                  "brand": "Bewakoof",
+                  "price": "₹1,039",
+                  "productUrl": "https://www.bewakoof.com/p/mens-jet-black-oversized-cargo-pants-jet-black",
+                  "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fp%2Fmens-jet-black-oversized-cargo-pants-jet-black&subid=mos01-bottom",
+                  "imageUrl": "",
+                  "role": "bottom"
+                }
+              ],
+              "imageSource": "placeholder"
+            },
+            {
+              "id": "mos-02",
+              "title": "Grey Cargo Shirt × Black Nylon Parachute",
+              "image": "/images/looks/mos-02.svg",
+              "items": [
+                {
+                  "name": "Men's Grey Oversized Cargo Shirt",
+                  "brand": "Bewakoof",
+                  "price": "₹1,299",
+                  "productUrl": "https://www.bewakoof.com/p/mens-grey-oversized-cargo-shirt",
+                  "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fp%2Fmens-grey-oversized-cargo-shirt&subid=mos02-top",
+                  "imageUrl": "",
+                  "role": "top"
+                },
+                {
+                  "name": "Men's Jet Black Nylon Cargo Parachute Pants",
+                  "brand": "Bewakoof",
+                  "price": "₹1,299",
+                  "productUrl": "https://www.bewakoof.com/p/mens-jet-black-cargo-pants-jet-black",
+                  "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fp%2Fmens-jet-black-cargo-pants-jet-black&subid=mos02-bottom",
+                  "imageUrl": "",
+                  "role": "bottom"
+                }
+              ],
+              "imageSource": "placeholder"
+            },
+            {
+              "id": "mos-03",
+              "title": "Green Textured Shirt × Black Baggy Cargo",
+              "image": "/images/looks/mos-03.svg",
+              "items": [
+                {
+                  "name": "Men's Green Textured Oversized Shirt",
+                  "brand": "Bewakoof",
+                  "price": "₹1,019",
+                  "productUrl": "https://www.bewakoof.com/p/mens-green-textured-oversized-shirt",
+                  "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fp%2Fmens-green-textured-oversized-shirt&subid=mos03-top",
+                  "imageUrl": "",
+                  "role": "top"
+                },
+                {
+                  "name": "Men's Jet Black Baggy Oversized Cargo Pants",
+                  "brand": "Bewakoof",
+                  "price": "₹1,429",
+                  "productUrl": "https://www.bewakoof.com/p/mens-jet-black-oversized-plus-size-cargo-pants-jet-black",
+                  "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fp%2Fmens-jet-black-oversized-plus-size-cargo-pants-jet-black&subid=mos03-bottom",
+                  "imageUrl": "",
+                  "role": "bottom"
+                }
+              ],
+              "imageSource": "placeholder"
+            },
+            {
+              "id": "mos-04",
+              "title": "Cream Typography Shirt × Blue Baggy Cargo",
+              "image": "/images/looks/mos-04.svg",
+              "items": [
+                {
+                  "name": "Men's Cream Typography Oversized Shirt",
+                  "brand": "Bewakoof",
+                  "price": "₹1,399",
+                  "productUrl": "https://www.bewakoof.com/p/mens-cream-printed-oversized-shirt-cream",
+                  "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fp%2Fmens-cream-printed-oversized-shirt-cream&subid=mos04-top",
+                  "imageUrl": "",
+                  "role": "top"
+                },
+                {
+                  "name": "Men's Blue Baggy Oversized Cargo Pants",
+                  "brand": "Bewakoof",
+                  "price": "₹1,299",
+                  "productUrl": "https://www.bewakoof.com/p/mens-blue-oversized-cargo-pants",
+                  "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fp%2Fmens-blue-oversized-cargo-pants&subid=mos04-bottom",
+                  "imageUrl": "",
+                  "role": "bottom"
+                }
+              ],
+              "imageSource": "placeholder"
+            },
+            {
+              "id": "mos-05",
+              "title": "Gara Brown Shirt × Ash Grey Cargo Jeans",
+              "image": "/images/looks/mos-05.svg",
+              "items": [
+                {
+                  "name": "Men's Brown Gara Graphic Oversized Shirt",
+                  "brand": "Bewakoof",
+                  "price": "₹710",
+                  "productUrl": "https://www.bewakoof.com/p/mens-gara-shirt-brown-graphic-printed-oversized-shirt",
+                  "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fp%2Fmens-gara-shirt-brown-graphic-printed-oversized-shirt&subid=mos05-top",
+                  "imageUrl": "",
+                  "role": "top"
+                },
+                {
+                  "name": "Men's Ash Grey Baggy Fit Washed Cargo Jeans",
+                  "brand": "Bewakoof",
+                  "price": "₹1,699",
+                  "productUrl": "https://www.bewakoof.com/p/mens-grey-washed-straight-fit-cargo-jeans-grey",
+                  "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fp%2Fmens-grey-washed-straight-fit-cargo-jeans-grey&subid=mos05-bottom",
+                  "imageUrl": "",
+                  "role": "bottom"
+                }
+              ],
+              "imageSource": "placeholder"
+            },
+            {
+              "id": "mos-06",
+              "title": "Moana Skipper Blue Tee × Navy Cargo Shorts",
+              "image": "/images/looks/mos-06.svg",
+              "items": [
+                {
+                  "name": "Men's Skipper Blue Moana Oversized Acid Wash T-shirt",
+                  "brand": "Bewakoof",
+                  "price": "₹649",
+                  "productUrl": "https://www.bewakoof.com/p/mens-skipper-blue-moana-graphic-printed-oversized-plus-size-acid-wash-t-shirt-skipper-blue",
+                  "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fp%2Fmens-skipper-blue-moana-graphic-printed-oversized-plus-size-acid-wash-t-shirt-skipper-blue&subid=mos06-top",
+                  "imageUrl": "",
+                  "role": "top"
+                },
+                {
+                  "name": "Men's Navy Blue Oversized Cargo Shorts",
+                  "brand": "Bewakoof",
+                  "price": "₹799",
+                  "productUrl": "https://www.bewakoof.com/p/mens-blue-oversized-cargo-shorts",
+                  "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fp%2Fmens-blue-oversized-cargo-shorts&subid=mos06-bottom",
+                  "imageUrl": "",
+                  "role": "bottom"
+                }
+              ],
+              "imageSource": "placeholder"
+            },
+            {
+              "id": "mos-07",
+              "title": "Jet Black Cargo Shirt × Black Nylon Parachute",
+              "image": "/images/looks/mos-07.svg",
+              "items": [
+                {
+                  "name": "Men's Jet Black Oversized Cargo Shirt",
+                  "brand": "Bewakoof",
+                  "price": "₹1,299",
+                  "productUrl": "https://www.bewakoof.com/p/mens-jet-black-badge-printed-oversized-shirt-men",
+                  "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fp%2Fmens-jet-black-badge-printed-oversized-shirt-men&subid=mos07-top",
+                  "imageUrl": "",
+                  "role": "top"
+                },
+                {
+                  "name": "Men's Jet Black Nylon Cargo Parachute Pants",
+                  "brand": "Bewakoof",
+                  "price": "₹1,299",
+                  "productUrl": "https://www.bewakoof.com/p/mens-jet-black-cargo-pants-jet-black",
+                  "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fp%2Fmens-jet-black-cargo-pants-jet-black&subid=mos07-bottom",
+                  "imageUrl": "",
+                  "role": "bottom"
+                }
+              ],
+              "imageSource": "placeholder"
+            },
+            {
+              "id": "mos-08",
+              "title": "Grey Cargo Shirt × Black Baggy Cargo",
+              "image": "/images/looks/mos-08.svg",
+              "items": [
+                {
+                  "name": "Men's Grey Oversized Cargo Shirt",
+                  "brand": "Bewakoof",
+                  "price": "₹1,299",
+                  "productUrl": "https://www.bewakoof.com/p/mens-grey-oversized-cargo-shirt",
+                  "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fp%2Fmens-grey-oversized-cargo-shirt&subid=mos08-top",
+                  "imageUrl": "",
+                  "role": "top"
+                },
+                {
+                  "name": "Men's Jet Black Baggy Oversized Cargo Pants",
+                  "brand": "Bewakoof",
+                  "price": "₹1,429",
+                  "productUrl": "https://www.bewakoof.com/p/mens-jet-black-oversized-plus-size-cargo-pants-jet-black",
+                  "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fp%2Fmens-jet-black-oversized-plus-size-cargo-pants-jet-black&subid=mos08-bottom",
+                  "imageUrl": "",
+                  "role": "bottom"
+                }
+              ],
+              "imageSource": "placeholder"
+            },
+            {
+              "id": "mos-09",
+              "title": "Green Textured Shirt × Navy Cargo Shorts",
+              "image": "/images/looks/mos-09.svg",
+              "items": [
+                {
+                  "name": "Men's Green Textured Oversized Shirt",
+                  "brand": "Bewakoof",
+                  "price": "₹1,019",
+                  "productUrl": "https://www.bewakoof.com/p/mens-green-textured-oversized-shirt",
+                  "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fp%2Fmens-green-textured-oversized-shirt&subid=mos09-top",
+                  "imageUrl": "",
+                  "role": "top"
+                },
+                {
+                  "name": "Men's Navy Blue Oversized Cargo Shorts",
+                  "brand": "Bewakoof",
+                  "price": "₹799",
+                  "productUrl": "https://www.bewakoof.com/p/mens-blue-oversized-cargo-shorts",
+                  "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fp%2Fmens-blue-oversized-cargo-shorts&subid=mos09-bottom",
+                  "imageUrl": "",
+                  "role": "bottom"
+                }
+              ],
+              "imageSource": "placeholder"
+            },
+            {
+              "id": "mos-10",
+              "title": "Cream Typography Shirt × Black Tapered Cargo",
+              "image": "/images/looks/mos-10.svg",
+              "items": [
+                {
+                  "name": "Men's Cream Typography Oversized Shirt",
+                  "brand": "Bewakoof",
+                  "price": "₹1,399",
+                  "productUrl": "https://www.bewakoof.com/p/mens-cream-printed-oversized-shirt-cream",
+                  "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fp%2Fmens-cream-printed-oversized-shirt-cream&subid=mos10-top",
+                  "imageUrl": "",
+                  "role": "top"
+                },
+                {
+                  "name": "Men's Jet Black Tapered Fit Cargo Pants",
+                  "brand": "Bewakoof",
+                  "price": "₹1,039",
+                  "productUrl": "https://www.bewakoof.com/p/mens-jet-black-oversized-cargo-pants-jet-black",
+                  "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fp%2Fmens-jet-black-oversized-cargo-pants-jet-black&subid=mos10-bottom",
+                  "imageUrl": "",
+                  "role": "bottom"
+                }
+              ],
+              "imageSource": "placeholder"
+            }
+          ]
+        },
+        {
+          "id": "ethnic-casual",
+          "title": "Ethnic Casual",
+          "description": "Short kurtas and calm layers for desi-casual days.",
+          "looks": [
+            {
+              "id": "mec-01",
+              "title": "White Short Kurta × Ash Grey Cargo Jeans",
+              "image": "/images/looks/mec-01.svg",
+              "items": [
+                {
+                  "name": "Men's White Relaxed Fit Short Kurta",
+                  "brand": "Bewakoof",
+                  "price": "₹799",
+                  "productUrl": "https://www.bewakoof.com/p/white-basic-solid-kurta",
+                  "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fp%2Fwhite-basic-solid-kurta&subid=mec01-top",
+                  "imageUrl": "",
+                  "role": "top"
+                },
+                {
+                  "name": "Men's Ash Grey Baggy Fit Washed Cargo Jeans",
+                  "brand": "Bewakoof",
+                  "price": "₹1,699",
+                  "productUrl": "https://www.bewakoof.com/p/mens-grey-washed-straight-fit-cargo-jeans-grey",
+                  "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fp%2Fmens-grey-washed-straight-fit-cargo-jeans-grey&subid=mec01-bottom",
+                  "imageUrl": "",
+                  "role": "bottom"
+                }
+              ],
+              "imageSource": "placeholder"
+            },
+            {
+              "id": "mec-02",
+              "title": "Crystal Teal Short Kurta × Dark Blue Cargo Jeans",
+              "image": "/images/looks/mec-02.svg",
+              "items": [
+                {
+                  "name": "Men's Crystal Teal Relaxed Fit Short Kurta",
+                  "brand": "Bewakoof",
+                  "price": "₹899",
+                  "productUrl": "https://www.bewakoof.com/p/mens-plus-size-crystal-teal-solid-short-kurta",
+                  "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fp%2Fmens-plus-size-crystal-teal-solid-short-kurta&subid=mec02-top",
+                  "imageUrl": "",
+                  "role": "top"
+                },
+                {
+                  "name": "Men's Dark Blue Baggy Fit Washed Cargo Jeans",
+                  "brand": "Bewakoof",
+                  "price": "₹889",
+                  "productUrl": "https://www.bewakoof.com/p/mens-indigo-blue-washed-straight-fit-cargo-jeans-indigo-12",
+                  "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fp%2Fmens-indigo-blue-washed-straight-fit-cargo-jeans-indigo-12&subid=mec02-bottom",
+                  "imageUrl": "",
+                  "role": "bottom"
+                }
+              ],
+              "imageSource": "placeholder"
+            },
+            {
+              "id": "mec-03",
+              "title": "White Short Kurta × Beige Carpenter Jeans",
+              "image": "/images/looks/mec-03.svg",
+              "items": [
+                {
+                  "name": "Men's White Relaxed Fit Short Kurta",
+                  "brand": "Bewakoof",
+                  "price": "₹799",
+                  "productUrl": "https://www.bewakoof.com/p/white-basic-solid-kurta",
+                  "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fp%2Fwhite-basic-solid-kurta&subid=mec03-top",
+                  "imageUrl": "",
+                  "role": "top"
+                },
+                {
+                  "name": "Men's Beige Baggy Fit Cargo Carpenter Jeans",
+                  "brand": "Bewakoof",
+                  "price": "₹1,499",
+                  "productUrl": "https://www.bewakoof.com/p/mens-beige-straight-fit-jeans-beigee",
+                  "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fp%2Fmens-beige-straight-fit-jeans-beigee&subid=mec03-bottom",
+                  "imageUrl": "",
+                  "role": "bottom"
+                }
+              ],
+              "imageSource": "placeholder"
+            },
+            {
+              "id": "mec-04",
+              "title": "Crystal Teal Short Kurta × Blue Baggy Cargo",
+              "image": "/images/looks/mec-04.svg",
+              "items": [
+                {
+                  "name": "Men's Crystal Teal Relaxed Fit Short Kurta",
+                  "brand": "Bewakoof",
+                  "price": "₹899",
+                  "productUrl": "https://www.bewakoof.com/p/mens-plus-size-crystal-teal-solid-short-kurta",
+                  "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fp%2Fmens-plus-size-crystal-teal-solid-short-kurta&subid=mec04-top",
+                  "imageUrl": "",
+                  "role": "top"
+                },
+                {
+                  "name": "Men's Blue Baggy Oversized Cargo Pants",
+                  "brand": "Bewakoof",
+                  "price": "₹1,299",
+                  "productUrl": "https://www.bewakoof.com/p/mens-blue-oversized-cargo-pants",
+                  "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fp%2Fmens-blue-oversized-cargo-pants&subid=mec04-bottom",
+                  "imageUrl": "",
+                  "role": "bottom"
+                }
+              ],
+              "imageSource": "placeholder"
+            },
+            {
+              "id": "mec-05",
+              "title": "White Short Kurta × Navy Cargo Shorts",
+              "image": "/images/looks/mec-05.svg",
+              "items": [
+                {
+                  "name": "Men's White Relaxed Fit Short Kurta",
+                  "brand": "Bewakoof",
+                  "price": "₹799",
+                  "productUrl": "https://www.bewakoof.com/p/white-basic-solid-kurta",
+                  "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fp%2Fwhite-basic-solid-kurta&subid=mec05-top",
+                  "imageUrl": "",
+                  "role": "top"
+                },
+                {
+                  "name": "Men's Navy Blue Oversized Cargo Shorts",
+                  "brand": "Bewakoof",
+                  "price": "₹799",
+                  "productUrl": "https://www.bewakoof.com/p/mens-blue-oversized-cargo-shorts",
+                  "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fp%2Fmens-blue-oversized-cargo-shorts&subid=mec05-bottom",
+                  "imageUrl": "",
+                  "role": "bottom"
+                }
+              ],
+              "imageSource": "placeholder"
+            },
+            {
+              "id": "mec-06",
+              "title": "Crystal Teal Short Kurta × Ash Grey Cargo Jeans",
+              "image": "/images/looks/mec-06.svg",
+              "items": [
+                {
+                  "name": "Men's Crystal Teal Relaxed Fit Short Kurta",
+                  "brand": "Bewakoof",
+                  "price": "₹899",
+                  "productUrl": "https://www.bewakoof.com/p/mens-plus-size-crystal-teal-solid-short-kurta",
+                  "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fp%2Fmens-plus-size-crystal-teal-solid-short-kurta&subid=mec06-top",
+                  "imageUrl": "",
+                  "role": "top"
+                },
+                {
+                  "name": "Men's Ash Grey Baggy Fit Washed Cargo Jeans",
+                  "brand": "Bewakoof",
+                  "price": "₹1,699",
+                  "productUrl": "https://www.bewakoof.com/p/mens-grey-washed-straight-fit-cargo-jeans-grey",
+                  "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fp%2Fmens-grey-washed-straight-fit-cargo-jeans-grey&subid=mec06-bottom",
+                  "imageUrl": "",
+                  "role": "bottom"
+                }
+              ],
+              "imageSource": "placeholder"
+            },
+            {
+              "id": "mec-07",
+              "title": "White Short Kurta × Dark Blue Cargo Jeans",
+              "image": "/images/looks/mec-07.svg",
+              "items": [
+                {
+                  "name": "Men's White Relaxed Fit Short Kurta",
+                  "brand": "Bewakoof",
+                  "price": "₹799",
+                  "productUrl": "https://www.bewakoof.com/p/white-basic-solid-kurta",
+                  "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fp%2Fwhite-basic-solid-kurta&subid=mec07-top",
+                  "imageUrl": "",
+                  "role": "top"
+                },
+                {
+                  "name": "Men's Dark Blue Baggy Fit Washed Cargo Jeans",
+                  "brand": "Bewakoof",
+                  "price": "₹889",
+                  "productUrl": "https://www.bewakoof.com/p/mens-indigo-blue-washed-straight-fit-cargo-jeans-indigo-12",
+                  "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fp%2Fmens-indigo-blue-washed-straight-fit-cargo-jeans-indigo-12&subid=mec07-bottom",
+                  "imageUrl": "",
+                  "role": "bottom"
+                }
+              ],
+              "imageSource": "placeholder"
+            },
+            {
+              "id": "mec-08",
+              "title": "Crystal Teal Short Kurta × Beige Carpenter Jeans",
+              "image": "/images/looks/mec-08.svg",
+              "items": [
+                {
+                  "name": "Men's Crystal Teal Relaxed Fit Short Kurta",
+                  "brand": "Bewakoof",
+                  "price": "₹899",
+                  "productUrl": "https://www.bewakoof.com/p/mens-plus-size-crystal-teal-solid-short-kurta",
+                  "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fp%2Fmens-plus-size-crystal-teal-solid-short-kurta&subid=mec08-top",
+                  "imageUrl": "",
+                  "role": "top"
+                },
+                {
+                  "name": "Men's Beige Baggy Fit Cargo Carpenter Jeans",
+                  "brand": "Bewakoof",
+                  "price": "₹1,499",
+                  "productUrl": "https://www.bewakoof.com/p/mens-beige-straight-fit-jeans-beigee",
+                  "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fp%2Fmens-beige-straight-fit-jeans-beigee&subid=mec08-bottom",
+                  "imageUrl": "",
+                  "role": "bottom"
+                }
+              ],
+              "imageSource": "placeholder"
+            },
+            {
+              "id": "mec-09",
+              "title": "White Short Kurta × Blue Baggy Cargo",
+              "image": "/images/looks/mec-09.svg",
+              "items": [
+                {
+                  "name": "Men's White Relaxed Fit Short Kurta",
+                  "brand": "Bewakoof",
+                  "price": "₹799",
+                  "productUrl": "https://www.bewakoof.com/p/white-basic-solid-kurta",
+                  "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fp%2Fwhite-basic-solid-kurta&subid=mec09-top",
+                  "imageUrl": "",
+                  "role": "top"
+                },
+                {
+                  "name": "Men's Blue Baggy Oversized Cargo Pants",
+                  "brand": "Bewakoof",
+                  "price": "₹1,299",
+                  "productUrl": "https://www.bewakoof.com/p/mens-blue-oversized-cargo-pants",
+                  "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fp%2Fmens-blue-oversized-cargo-pants&subid=mec09-bottom",
+                  "imageUrl": "",
+                  "role": "bottom"
+                }
+              ],
+              "imageSource": "placeholder"
+            },
+            {
+              "id": "mec-10",
+              "title": "Crystal Teal Short Kurta × Navy Cargo Shorts",
+              "image": "/images/looks/mec-10.svg",
+              "items": [
+                {
+                  "name": "Men's Crystal Teal Relaxed Fit Short Kurta",
+                  "brand": "Bewakoof",
+                  "price": "₹899",
+                  "productUrl": "https://www.bewakoof.com/p/mens-plus-size-crystal-teal-solid-short-kurta",
+                  "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fp%2Fmens-plus-size-crystal-teal-solid-short-kurta&subid=mec10-top",
+                  "imageUrl": "",
+                  "role": "top"
+                },
+                {
+                  "name": "Men's Navy Blue Oversized Cargo Shorts",
+                  "brand": "Bewakoof",
+                  "price": "₹799",
+                  "productUrl": "https://www.bewakoof.com/p/mens-blue-oversized-cargo-shorts",
+                  "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fp%2Fmens-blue-oversized-cargo-shorts&subid=mec10-bottom",
+                  "imageUrl": "",
+                  "role": "bottom"
+                }
+              ],
+              "imageSource": "placeholder"
             }
           ]
         }
