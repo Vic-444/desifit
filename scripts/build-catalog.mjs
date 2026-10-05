@@ -14,6 +14,7 @@ const BASES = {
   Bewakoof: "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/",
   BlissClub: "https://tjzuh.com/g/f7dkjuc7zj0be660c062519b939af8/",
   Salty: "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/",
+  Uniqlo: "https://tjzuh.com/g/qot345j9bq0be660c062ccb93e5ddd/",
 };
 
 function wrap(brand, productUrl, subid) {

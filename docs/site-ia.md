@@ -31,4 +31,5 @@ Mobile-first lifestyle site for India traffic. Visitors browse curated women’s
 - Fitness foods are inline in `src/pages/fitness.astro`
 
 ## Merchants (live)
-- Bewakoof, BlissClub, Salty via Admitad deep links
+- Bewakoof, BlissClub, Salty, Uniqlo via Admitad deep links
+- Uniqlo debut (Oct 2026): product swaps inside existing looks only (no new lookbooks) — see `docs/uniqlo-swap-shortlist.md`
