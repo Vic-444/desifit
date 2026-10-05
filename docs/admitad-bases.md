@@ -1,6 +1,6 @@
 # Admitad affiliate bases (DesiFit)
 
-Recorded 27 Sep 2026 — strategy/prep only, no site code yet.
+Recorded 27 Sep 2026; Uniqlo India added 5 Oct 2026.
 
 ## Merchant deeplink bases
 
@@ -9,6 +9,7 @@ Recorded 27 Sep 2026 — strategy/prep only, no site code yet.
 | Bewakoof   | `https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/` |
 | BlissClub  | `https://tjzuh.com/g/f7dkjuc7zj0be660c062519b939af8/` |
 | Salty      | `https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/` |
+| Uniqlo     | `https://tjzuh.com/g/qot345j9bq0be660c062ccb93e5ddd/` |
 
 ## Deep-link pattern (when we build)
 
