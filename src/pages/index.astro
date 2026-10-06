@@ -29,9 +29,8 @@ const lookById = new Map(
 
 const featured = FEATURED_LOOK_IDS.map((id) => lookById.get(id)).filter(Boolean);
 
-const heroImage =
-  womenCategories[0]?.subcategories[0]?.looks[0]?.image ||
-  "/images/looks/skd-01.svg";
+/** Owned brand hero — not tied to a merchant PDP / look swap. */
+const heroImage = "/images/brand/hero.jpg";
 
 const womenLookCount = womenCategories.reduce(
   (n, cat) => n + cat.subcategories.reduce((m, sub) => m + sub.looks.length, 0),
@@ -46,11 +45,10 @@ const menLookCount = mensCategory
   <section class="relative min-h-[88vh] overflow-hidden bg-ink text-paper">
     <img
       src={heroImage}
-      alt=""
-      class="absolute inset-0 h-full w-full object-cover opacity-45 animate-fade"
-      referrerpolicy="no-referrer"
+      alt="Young women and men in everyday Indo-Western and metro casual looks"
+      class="absolute inset-0 h-full w-full object-cover object-[center_30%] opacity-45 animate-fade"
     />
-    <div class="absolute inset-0 bg-gradient-to-r from-ink via-ink/80 to-ink/35"></div>
+    <div class="absolute inset-0 bg-gradient-to-r from-ink via-ink/82 to-ink/40"></div>
     <div class="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(230,57,70,0.28),transparent_42%)]"></div>
 
     <div class="relative mx-auto flex min-h-[88vh] max-w-6xl flex-col justify-end px-4 pb-16 pt-28 md:px-6 md:pb-20">
