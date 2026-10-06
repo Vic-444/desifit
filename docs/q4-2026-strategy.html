@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DesiFit Q4 2026 Strategy Reference</title>
+  <style>
+    :root {
+      --ink: #171411;
+      --ink-soft: #3a342e;
+      --paper: #f7f4ef;
+      --line: #ddd4c8;
+      --accent: #b72b36;
+      --sand: #8a735a;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font: 16px/1.65 "Georgia", "Times New Roman", serif;
+    }
+    .wrap {
+      max-width: 46rem;
+      margin: 0 auto;
+      padding: 2.5rem 1.25rem 4rem;
+    }
+    header {
+      border-bottom: 2px solid var(--ink);
+      padding-bottom: 1.25rem;
+      margin-bottom: 2rem;
+    }
+    .eyebrow {
+      margin: 0 0 0.4rem;
+      font: 600 0.75rem/1.3 system-ui, sans-serif;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--sand);
+    }
+    h1 {
+      margin: 0 0 0.6rem;
+      font: 700 2rem/1.2 system-ui, sans-serif;
+      letter-spacing: -0.02em;
+    }
+    .meta {
+      margin: 0;
+      color: var(--ink-soft);
+      font-size: 0.95rem;
+    }
+    h2 {
+      margin: 2.4rem 0 0.8rem;
+      padding-top: 0.4rem;
+      border-top: 1px solid var(--line);
+      font: 700 1.35rem/1.3 system-ui, sans-serif;
+    }
+    h3 {
+      margin: 1.6rem 0 0.5rem;
+      font: 700 1.05rem/1.35 system-ui, sans-serif;
+    }
+    p { margin: 0.7rem 0; }
+    ul, ol { margin: 0.5rem 0 1rem; padding-left: 1.3rem; }
+    li { margin: 0.45rem 0; }
+    .note {
+      margin: 1rem 0;
+      padding: 0.9rem 1rem;
+      border-left: 3px solid var(--accent);
+      background: #fff;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0 1.4rem;
+      font-size: 0.95rem;
+      background: #fff;
+    }
+    th, td {
+      border: 1px solid var(--line);
+      padding: 0.65rem 0.75rem;
+      text-align: left;
+      vertical-align: top;
+    }
+    th {
+      background: #efe8df;
+      font: 650 0.85rem/1.3 system-ui, sans-serif;
+    }
+    .tag {
+      display: inline-block;
+      font: 650 0.72rem/1 system-ui, sans-serif;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+    footer {
+      margin-top: 3rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--line);
+      color: var(--ink-soft);
+      font-size: 0.9rem;
+    }
+    @media print {
+      body { background: #fff; }
+      .wrap { max-width: none; padding: 0; }
+      h2 { break-after: avoid; }
+      .note, table { break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <p class="eyebrow">DesiFit · Internal strategy reference</p>
+      <h1>Q4 2026 baseline runway</h1>
+      <p class="meta">
+        Captured 6 Oct 2026 · Re-evaluate first week of January 2027<br />
+        Roles: CEO (founder) · CSO (strategy sparring) · CTO (Cursor / site execution)<br />
+        Live site: <strong>desifit.com</strong> · Social handle: <strong>@desifit_style</strong>
+      </p>
+    </header>
+
+    <p>
+      This document records the strategic agreement reached after DesiFit’s core
+      affiliate-site setup was judged complete. It is meant to be re-read later
+      with enough context that short bullet points alone would not provide.
+      It is an operating reference for October–December 2026, not a marketing
+      plan and not a build backlog for major site redesigns.
+    </p>
+
+    <h2>1. Where we are: foundation complete</h2>
+    <p>
+      The shared conclusion on 6 Oct 2026 was that DesiFit’s basic setup is
+      finished across the layers that matter for an affiliate lifestyle site.
+      That does not mean the business is “done.” It means the machine exists,
+      is live, and is ready for a disciplined run rather than more foundation
+      building.
+    </p>
+
+    <h3>Site &amp; technical stack</h3>
+    <p>
+      The public product lives at <strong>desifit.com</strong>. The stack is
+      Astro + Tailwind, source on GitHub, deployed through Cloudflare Pages.
+      Cursor acts as the ongoing engineering/CTO workspace for catalog updates,
+      content surfaces, and maintenance. The site already includes the main
+      marketing/legal pages, women’s and men’s lookbook structure, Fitness
+      studio tools, About, and a working contact form.
+    </p>
+    <p>
+      Women’s lookbooks are populated (90 looks). Men’s studio is live as a
+      thinner start (30 looks). Fitness is intentionally tools-only (BMI + Desi
+      calorie index), not a supplement storefront. Uniqlo India was approved on
+      Admitad and integrated by swapping products into existing looks rather
+      than inventing new categories or lookbook counts.
+    </p>
+
+    <h3>Business identity &amp; workspace</h3>
+    <p>
+      DesiFit runs in a dedicated Google Workspace / Chrome setup with
+      <strong>hello@desifit.com</strong> as the brand mailbox. The contact form
+      is activated through FormSubmit to that inbox. The goal is a clean brand
+      operating environment separate from personal accounts.
+    </p>
+
+    <h3>Affiliate monetization</h3>
+    <p>
+      Admitad India is live with four approved merchants:
+      <strong>Bewakoof</strong>, <strong>BlissClub</strong>,
+      <strong>Salty</strong>, and <strong>Uniqlo</strong>. Deep links follow the
+      standard Admitad pattern (base + encoded product URL + subid). The
+      commercial idea behind Uniqlo is high-low styling: Uniqlo as a premium /
+      trustworthy canvas, with higher-margin partners (especially Salty, and
+      Bewakoof where it still fits) as accents.
+    </p>
+    <div class="note">
+      <span class="tag">CTO watchpoint</span>
+      <p style="margin:0.45rem 0 0">
+        Bewakoof Admitad deeplinks were previously unreliable in some cases
+        (links falling back toward homepage behavior). That is not a reason to
+        rebuild the site, but it is an active monetization risk to monitor
+        during monthly inventory audits and weekly metrics reviews.
+      </p>
+    </div>
+
+    <h3>Social distribution presence</h3>
+    <p>
+      Accounts/channels exist on YouTube, Pinterest, and Instagram under the
+      synced handle <strong>@desifit_style</strong>. Having the accounts is part
+      of “setup complete.” Filling them with a repeatable content routine is
+      part of the Q4 execution phase, not more foundation work.
+    </p>
+
+    <h3>Analytics / measurement layer</h3>
+    <p>
+      Measurement is in place across three complementary views:
+    </p>
+    <ul>
+      <li><strong>Cloudflare analytics</strong> — edge/request reality (traffic hitting the site, geography, cache behavior).</li>
+      <li><strong>Google Search Console</strong> — search demand and queries that lead people toward the site, including branded interest.</li>
+      <li><strong>Google Analytics 4</strong> — on-site behavior after arrival (pages, studios, engagement).</li>
+    </ul>
+    <p>
+      Together these are enough to run a serious baseline quarter. They are not
+      a reason to check dashboards constantly. The operating rule agreed later
+      in the discussion: one deliberate weekly metrics check-in, not continuous
+      monitoring.
+    </p>
+
+    <h2>2. The strategic shift: from building to baseline runway</h2>
+    <p>
+      Because the chassis is complete, the agreed macro move is a
+      <strong>3-month baseline observation and execution window</strong> from
+      <strong>6 October 2026 through 31 December 2026</strong>, with a formal
+      re-evaluation in the <strong>first week of January 2027</strong>.
+    </p>
+    <p>
+      The point of the runway is to give the current setup a fair chance to
+      work before changing the model again. In practical terms that means:
+    </p>
+    <ul>
+      <li>run a simple, repeatable weekly content + distribution routine;</li>
+      <li>keep the site structurally stable (no major IA rewrites);</li>
+      <li>do light, scheduled maintenance (especially inventory/link health);</li>
+      <li>gather enough traffic, content, and affiliate data that January decisions are based on experience, not impatience.</li>
+    </ul>
+    <p>
+      This is deliberately anti-whiplash. The early-stage failure mode is
+      changing strategy every time a day of traffic dips or a post underperforms.
+      A locked quarter creates a control period: same machine, same routine,
+      then evaluate.
+    </p>
+
+    <h2>3. What Q4 is for — and what it is not for</h2>
+    <h3>Q4 is for</h3>
+    <ul>
+      <li>Executing a lean weekly content loop (social + one on-site blog post).</li>
+      <li>Learning how the routine feels to operate and whether it converts interest into clicks/orders.</li>
+      <li>Understanding traffic quality and paths with a calmer metrics habit.</li>
+      <li>Keeping lookbooks commercially alive via monthly product/link audits.</li>
+      <li>Making a small number of timed compliance/growth applications (AdSense, more Admitad merchants, trademark).</li>
+    </ul>
+    <h3>Q4 is not for</h3>
+    <ul>
+      <li>Major site revamps or new “doors” / category trees unless a new merchant approval truly forces a minimal addition.</li>
+      <li>Seasonal/sales page systems, newsletter/CRM, or heavy manual editorial production.</li>
+      <li>Constant redesign of look formulas, video formats, or analytics stacks.</li>
+      <li>Chasing every CSO-style tactical prompt (bio hacks, endless “next button” tasks) at the expense of the runway.</li>
+    </ul>
+
+    <h2>4. Q4 2026 operating ledger</h2>
+    <p>
+      The CEO’s prioritized list, refined with CTO notes, is the operating
+      source of truth for the rest of the year.
+    </p>
+
+    <h3>A. Weekly momentum engine</h3>
+    <p>
+      Every week, create <strong>three short videos</strong> based on
+      <em>existing</em> looks already on the site. Schedule them for
+      <strong>Tuesday, Friday, and Saturday</strong> across YouTube, Pinterest,
+      and Instagram (@desifit_style). Then publish <strong>one blog article</strong>
+      on desifit.com that embeds those three videos and surrounds them with
+      short, mobile-friendly copy — not long product essays.
+    </p>
+    <p>
+      Why this shape: it covers both off-site distribution and on-site content
+      with one weekly production batch. Mobile users punish text walls; look
+      pages should stay scannable. The first-quarter bet is that a lightweight,
+      highly templated / AI-assisted pipeline is enough to learn from. More
+      manual, elaborate content craft is explicitly deferred to next quarter
+      after we see whether the simple loop works.
+    </p>
+    <div class="note">
+      <span class="tag">Quality gate</span>
+      <p style="margin:0.45rem 0 0">
+        Before anything goes live, do a short manual sanity check (about a
+        minute is the spirit of it, not a bureaucratic ritual): confirm the copy
+        did not mismatch brands (e.g. calling a Uniqlo piece Bewakoof), and that
+        embeds/links point to the intended looks. Automation is encouraged;
+        unsupervised publishing is not.
+      </p>
+    </div>
+    <div class="note">
+      <span class="tag">Scope cap</span>
+      <p style="margin:0.45rem 0 0">
+        If a week slips, ship a reduced version (for example two videos + the
+        post) rather than inventing a new system. Consistency beats perfection
+        in a baseline quarter.
+      </p>
+    </div>
+
+    <h3>B. End-of-month inventory audit</h3>
+    <p>
+      During the <strong>last five days of each month</strong> (October,
+      November, December), run a product/look inventory audit — preferably by
+      tasking Cursor. Replace broken links, unavailable items, and obvious dead
+      merchants paths with fresh equivalents from the approved catalog set.
+    </p>
+    <p>
+      This is maintenance, not expansion. No major new categories. No major
+      information-architecture changes. Seasonal collections, sales surfaces,
+      and bigger catalog ambitions wait until the January review unless a new
+      merchant approval creates a narrow, unavoidable need.
+    </p>
+    <p>
+      On dead links: for DesiFit’s model, the default fix is to
+      <strong>swap the product inside the existing look</strong> in the catalog.
+      Heavy server-side 301 redirect schemes for individual out-of-stock items
+      are usually overkill. Redirects matter more if an entire look URL that
+      social already promotes would otherwise 404.
+    </p>
+
+    <h3>C. Mid-November compliance / expansion sweep</h3>
+    <p>
+      Around the <strong>second week of November</strong>:
+    </p>
+    <ul>
+      <li>Reapply on Admitad to <strong>Myntra, AJIO, Libas, and boAt</strong>.</li>
+      <li>Apply to <strong>Google AdSense</strong>.</li>
+    </ul>
+    <p>
+      Timing rationale: give the live site and traffic pattern a clearer
+      multi-week baseline before those applications, instead of applying on day
+      one of the runway. If merchants approve, integrate mainly by improving the
+      existing mix of looks — not by rebuilding the whole site. A single extra
+      category (for example festive/bridal after a major marketplace approval)
+      may be justified; extensive revamp still belongs next quarter.
+    </p>
+    <div class="note">
+      <span class="tag">Expectations</span>
+      <p style="margin:0.45rem 0 0">
+        Treat AdSense and merchant reapprovals as attempts, not guaranteed
+        unlocks. A delay or rejection is not a strategy failure; it is data for
+        January.
+      </p>
+    </div>
+
+    <h3>D. December brand-protection milestone</h3>
+    <p>
+      By December, apply for trademark protection through
+      <strong>IPO Pakistan</strong> and the <strong>Madrid</strong> route as
+      planned. This is brand defense and asset hygiene, not a traffic tactic.
+    </p>
+    <p>
+      Registering every country TLD (such as .pk variants) is optional and was
+      judged low priority for now: owning <strong>desifit.com</strong> plus a
+      formal trademark filing is the core shield. Local squatters can be
+      challenged later if needed.
+    </p>
+
+    <h3>E. Weekly metrics check-in (discipline rule)</h3>
+    <p>
+      One of the practical risks called out in the strategy discussion is
+      checking analytics too often. Dashboards can become a distraction loop.
+      The agreed correction is:
+    </p>
+    <ul>
+      <li><strong>One fixed weekly slot</strong> (for example Sunday evening or Monday morning).</li>
+      <li><strong>15–20 minutes maximum.</strong></li>
+      <li>Same three questions every time: traffic level/trend, top pages/paths, Admitad clicks/orders (and any obvious breakage).</li>
+      <li>Outside that window, do not open GA4 / Search Console / Admitad unless something is clearly broken.</li>
+    </ul>
+    <p>
+      This is enough to prevent a blind January review without turning metrics
+      into daily mood management.
+    </p>
+
+    <h2>5. Explicitly deferred to next quarter (Jan 2027+)</h2>
+    <p>
+      After the January re-evaluation, and only then as decisions, consider:
+    </p>
+    <ul>
+      <li>Email capture and a newsletter / owned-audience loop.</li>
+      <li>Major site revamp or layout experiments.</li>
+      <li>More categories, seasonal pages, and sales frameworks.</li>
+      <li>Heavier manually researched content (beyond the templated weekly loop).</li>
+      <li>Broader merchant-driven catalog expansion once approvals and Q4 data are in hand.</li>
+    </ul>
+    <p>
+      The January session should answer questions like: Did the weekly loop stay
+      operable? Which looks/doors attracted attention? Did affiliate clicks or
+      orders concentrate anywhere? What broke repeatedly? What is worth scaling
+      versus cutting?
+    </p>
+
+    <h2>6. CTO alignment summary</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Topic</th>
+          <th>Position</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Foundation complete enough to stop major building</td>
+          <td>Agree</td>
+        </tr>
+        <tr>
+          <td>3-month baseline runway through Dec 2026</td>
+          <td>Agree — primary macro strategy</td>
+        </tr>
+        <tr>
+          <td>Weekly 3 shorts + 1 blog post</td>
+          <td>Agree — core Q4 loop</td>
+        </tr>
+        <tr>
+          <td>Light mobile copy; avoid text walls</td>
+          <td>Agree</td>
+        </tr>
+        <tr>
+          <td>AI/templates first, more craft later</td>
+          <td>Agree, with mandatory pre-publish check</td>
+        </tr>
+        <tr>
+          <td>Monthly inventory audit only (no IA churn)</td>
+          <td>Agree</td>
+        </tr>
+        <tr>
+          <td>Mid-Nov AdSense + merchant reapplications</td>
+          <td>Agree as timed attempts</td>
+        </tr>
+        <tr>
+          <td>Trademark filing this quarter</td>
+          <td>Agree if time/budget allow</td>
+        </tr>
+        <tr>
+          <td>Email/newsletter now</td>
+          <td>No — next quarter</td>
+        </tr>
+        <tr>
+          <td>Automatic 301 maze for every OOS item</td>
+          <td>No — swap products in looks instead</td>
+        </tr>
+        <tr>
+          <td>Urgent .pk domain buying</td>
+          <td>No — .com + trademark sufficient for now</td>
+        </tr>
+        <tr>
+          <td>Weekly metrics ritual</td>
+          <td>Yes — once per week, not constant checking</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>7. Practical first implementation notes (when execution starts)</h2>
+    <p>
+      This document does not force the first production ticket, but when the
+      weekly engine starts, keep engineering scope narrow:
+    </p>
+    <ul>
+      <li>Add a simple blog surface once (for example <code>/blog</code>), then only publish posts — do not turn blogging into ongoing site architecture experiments.</li>
+      <li>Reuse existing looks as the source of truth for videos; do not invent parallel product catalogs for social.</li>
+      <li>Keep Look detail pages commercially clean; the blog can carry the week’s narrative and embeds.</li>
+    </ul>
+
+    <h2>8. One-page chronological reminder</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>When</th>
+          <th>What</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Every week</td>
+          <td>3 short videos (Tue / Fri / Sat) across YT + Pin + IG; 1 blog post embedding them; quick accuracy check before publish</td>
+        </tr>
+        <tr>
+          <td>Once per week</td>
+          <td>Metrics check-in (traffic, top pages, Admitad)</td>
+        </tr>
+        <tr>
+          <td>Last 5 days of Oct / Nov / Dec</td>
+          <td>Inventory / broken-link audit; swap dead products; no major structure changes</td>
+        </tr>
+        <tr>
+          <td>Second week of November</td>
+          <td>Reapply Myntra, AJIO, Libas, boAt; apply to Google AdSense</td>
+        </tr>
+        <tr>
+          <td>By end of December</td>
+          <td>IPO Pakistan + Madrid trademark filing</td>
+        </tr>
+        <tr>
+          <td>First week of January 2027</td>
+          <td>Full re-evaluation; only then decide newsletter, major revamp, seasonal systems, heavier manual content</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <footer>
+      <p>
+        Source conversation: DesiFit Workplace 2 strategy session with CEO and
+        CTO review of CSO discussion · 6 Oct 2026.<br />
+        File location in repo: <code>docs/q4-2026-strategy.html</code>.
+        Open in a browser and use Print → Save as PDF if a PDF copy is needed.
+      </p>
+    </footer>
+  </div>
+</body>
+</html>
