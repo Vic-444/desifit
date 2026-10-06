@@ -2,7 +2,8 @@
 
 ## Brand surfaces (homepage / social)
 - Homepage hero and share/OG imagery use **owned brand assets** under `public/images/brand/` — not merchant product photos.
-- Current hero: `public/images/brand/hero.jpg` (group lifestyle scene; Q4 2026).
+- Current hero: `public/images/brand/hero.jpg` (desktop/group landscape) + `hero-mobile.jpg` (portrait crop for phones).
+- Overlays stay light enough that faces on the left remain visible; text sits on a soft bottom scrim.
 - Social banner crops for YT / Pin / IG / Facebook live in the agent artifacts folder when generated; re-export from the master if needed.
 - Merchant look swaps must **not** change the homepage hero.
 

@@ -31,6 +31,7 @@ const featured = FEATURED_LOOK_IDS.map((id) => lookById.get(id)).filter(Boolean)
 
 /** Owned brand hero — not tied to a merchant PDP / look swap. */
 const heroImage = "/images/brand/hero.jpg";
+const heroImageMobile = "/images/brand/hero-mobile.jpg";
 
 const womenLookCount = womenCategories.reduce(
   (n, cat) => n + cat.subcategories.reduce((m, sub) => m + sub.looks.length, 0),
@@ -43,13 +44,18 @@ const menLookCount = mensCategory
 
 <Layout>
   <section class="relative min-h-[88vh] overflow-hidden bg-ink text-paper">
-    <img
-      src={heroImage}
-      alt="Young women and men in everyday Indo-Western and metro casual looks"
-      class="absolute inset-0 h-full w-full object-cover object-[center_30%] opacity-45 animate-fade"
-    />
-    <div class="absolute inset-0 bg-gradient-to-r from-ink via-ink/82 to-ink/40"></div>
-    <div class="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(230,57,70,0.28),transparent_42%)]"></div>
+    <picture>
+      <source media="(min-width: 768px)" srcset={heroImage} />
+      <img
+        src={heroImageMobile}
+        alt="Young women and men in everyday Indo-Western and metro casual looks"
+        class="absolute inset-0 h-full w-full object-cover object-[center_22%] opacity-[0.62] animate-fade md:object-[center_28%] md:opacity-50"
+      />
+    </picture>
+    <!-- Soft bottom scrim for type; light left wash only — keep group faces visible -->
+    <div class="absolute inset-0 bg-gradient-to-t from-ink via-ink/55 to-ink/15"></div>
+    <div class="absolute inset-0 bg-gradient-to-r from-ink/50 via-transparent to-transparent md:from-ink/35"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_18%_18%,rgba(230,57,70,0.18),transparent_40%)]"></div>
 
     <div class="relative mx-auto flex min-h-[88vh] max-w-6xl flex-col justify-end px-4 pb-16 pt-28 md:px-6 md:pb-20">
       <p class="animate-rise font-display text-5xl font-extrabold tracking-tight md:text-7xl lg:text-8xl">
