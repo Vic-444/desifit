@@ -1,0 +1,51 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { getLivePosts } from "../../data/blog-posts";
+
+const posts = getLivePosts();
+---
+
+<Layout
+  title="Blog | DesiFit"
+  description="DesiFit Blog — weekly outfit edits, fashion notes, and lifestyle reading with shoppable looks."
+>
+  <main class="mx-auto max-w-3xl px-4 py-12 md:px-6">
+    <h1 class="font-display text-4xl font-bold text-ink md:text-5xl">Blog</h1>
+    <p class="mt-5 text-lg leading-relaxed text-ink-soft">
+      Longer reads for when you want the why behind the look — weekly outfit edits now; fashion and fitness pieces as we grow.
+    </p>
+
+    {posts.length === 0 ? (
+      <p class="mt-12 border-b border-line pb-8 text-ink-soft">
+        The first article lands soon. Meanwhile, browse the
+        <a href="/categories" class="font-semibold text-accent-deep underline-offset-2 hover:underline">lookbooks</a>.
+      </p>
+    ) : (
+      <ul class="mt-12 space-y-6">
+        {posts.map((post) => (
+          <li>
+            <a
+              href={`/blog/${post.slug}`}
+              class="group block border-b border-line pb-6 transition hover:border-accent"
+            >
+              <p class="text-xs font-semibold uppercase tracking-[0.14em] text-sand">
+                {post.category}
+                <span class="mx-2 text-line">·</span>
+                {new Date(post.publishAt).toLocaleDateString("en-IN", {
+                  day: "numeric",
+                  month: "short",
+                  year: "numeric",
+                  timeZone: "Asia/Kolkata",
+                })}
+              </p>
+              <h2 class="mt-2 font-display text-2xl font-bold text-ink group-hover:text-accent-deep md:text-3xl">
+                {post.title}
+              </h2>
+              <p class="mt-2 text-ink-soft">{post.description}</p>
+            </a>
+          </li>
+        ))}
+      </ul>
+    )}
+  </main>
+</Layout>
