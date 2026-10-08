@@ -58,6 +58,15 @@ img {
   font-family: var(--font-display);
 }
 
+/* Syne’s descenders (g, y, p) clip under default heading line boxes */
+h1.font-display,
+h2.font-display,
+h3.font-display {
+  line-height: 1.2;
+  overflow: visible;
+  padding-bottom: 0.08em;
+}
+
 @keyframes rise-in {
   from {
     opacity: 0;
