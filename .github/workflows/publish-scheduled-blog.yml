@@ -4,8 +4,8 @@ name: Publish scheduled blog
 
 on:
   schedule:
-    # 16:00 UTC = 9:30 PM IST · 17 Oct (also runs yearly — harmless empty commit if nothing new)
-    - cron: "0 16 17 10 *"
+    # 16:10 UTC = 9:40 PM IST · 17 Oct (10 min after Desi Short; yearly cron is harmless if nothing new)
+    - cron: "40 16 17 10 *"
   workflow_dispatch:
 
 permissions:
