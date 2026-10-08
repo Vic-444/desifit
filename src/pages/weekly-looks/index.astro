@@ -1,24 +1,24 @@
 ---
 import Layout from "../../layouts/Layout.astro";
-import { getLivePosts } from "../../data/blog-posts";
+import { getLiveWeeklyPosts } from "../../data/weekly-posts";
 
-const posts = getLivePosts();
+const posts = getLiveWeeklyPosts();
 ---
 
 <Layout
-  title="Blog | DesiFit"
-  description="Weekly DesiFit lookbook drops — short videos and shoppable outfit links."
+  title="Weekly Looks | DesiFit"
+  description="DesiFit Weekly Looks — editorial guides to each week’s fusion, street, and desi casual outfits, with videos and shoppable links."
 >
   <main class="mx-auto max-w-3xl px-4 py-12 md:px-6">
-    <p class="text-xs font-semibold uppercase tracking-[0.18em] text-sand">Blog</p>
+    <p class="text-xs font-semibold uppercase tracking-[0.18em] text-sand">On site</p>
     <h1 class="mt-3 font-display text-4xl font-bold text-ink md:text-5xl">Weekly looks</h1>
     <p class="mt-5 text-lg leading-relaxed text-ink-soft">
-      Short lookbook videos paired with the exact shoppable outfits on DesiFit. New drop each week.
+      Each week we break down three outfits — what works, when to wear them, and where to shop every piece. Videos included; the writing is the point.
     </p>
 
     {posts.length === 0 ? (
-      <p class="mt-12 rounded-2xl border border-line bg-paper-2/60 px-5 py-8 text-ink-soft">
-        The first weekly drop lands soon. Meanwhile, browse the
+      <p class="mt-12 border-b border-line pb-8 text-ink-soft">
+        The first weekly look lands soon. Meanwhile, browse the
         <a href="/categories" class="font-semibold text-accent-deep underline-offset-2 hover:underline">lookbooks</a>.
       </p>
     ) : (
@@ -26,7 +26,7 @@ const posts = getLivePosts();
         {posts.map((post) => (
           <li>
             <a
-              href={`/blog/${post.slug}`}
+              href={`/weekly-looks/${post.slug}`}
               class="group block border-b border-line pb-6 transition hover:border-accent"
             >
               <p class="text-xs font-semibold uppercase tracking-[0.14em] text-sand">
