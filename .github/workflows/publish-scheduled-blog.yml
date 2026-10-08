@@ -1,6 +1,6 @@
-# Rebuilds the site so Weekly Looks posts whose publishAt has passed become visible.
+# Rebuilds the site so blog posts whose publishAt has passed become visible.
 # Cloudflare Pages builds on push; this empty commit is the scheduled “go live”.
-name: Publish scheduled weekly looks
+name: Publish scheduled blog
 
 on:
   schedule:
@@ -22,5 +22,5 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git commit --allow-empty -m "chore: rebuild for scheduled weekly looks publish"
+          git commit --allow-empty -m "chore: rebuild for scheduled blog publish"
           git push origin main

@@ -1,4 +1,4 @@
-export type WeeklyVideo = {
+export type BlogVideo = {
   id: string;
   label: string;
   lookId: string;
@@ -7,27 +7,31 @@ export type WeeklyVideo = {
   body: string[];
 };
 
-export type WeeklyPost = {
+export type BlogCategory = "Weekly looks" | "Fashion" | "Fitness";
+
+export type BlogPost = {
   slug: string;
   title: string;
   description: string;
+  category: BlogCategory;
   /** ISO 8601 with offset — post is public only at/after this instant */
   publishAt: string;
   intro: string[];
-  videos: WeeklyVideo[];
+  videos: BlogVideo[];
   outro: string[];
 };
 
 /**
- * Weekly Looks — on-site editorial paired with the week’s three Shorts.
+ * DesiFit Blog — all longform articles (weekly edits, later features).
  * publishAt uses IST (+05:30) to match the social schedule.
  */
-export const weeklyPosts: WeeklyPost[] = [
+export const blogPosts: BlogPost[] = [
   {
     slug: "week-of-oct-13-fusion-street-desi",
     title: "3 looks this week: Fusion, Street & Desi Casual",
     description:
       "This week’s DesiFit edit: Indo-Western fusion, oversized street, and everyday desi casual — what works, when to wear it, and where to shop each piece.",
+    category: "Weekly looks",
     // Sat Oct 17, 2026 · 9:30 PM IST (= same window as the Desi YouTube Short)
     publishAt: "2026-10-17T21:30:00+05:30",
     intro: [
@@ -75,17 +79,17 @@ export const weeklyPosts: WeeklyPost[] = [
 /** Set SHOW_SCHEDULED_POSTS=true at build time to preview future posts (PR/local only). */
 const showScheduled = import.meta.env.SHOW_SCHEDULED_POSTS === "true";
 
-export function isPostLive(post: WeeklyPost, now = new Date()): boolean {
+export function isPostLive(post: BlogPost, now = new Date()): boolean {
   if (showScheduled) return true;
   return new Date(post.publishAt).getTime() <= now.getTime();
 }
 
-export function getLiveWeeklyPosts(now = new Date()): WeeklyPost[] {
-  return weeklyPosts
+export function getLivePosts(now = new Date()): BlogPost[] {
+  return blogPosts
     .filter((p) => isPostLive(p, now))
     .sort((a, b) => +new Date(b.publishAt) - +new Date(a.publishAt));
 }
 
-export function getWeeklyPostBySlug(slug: string): WeeklyPost | undefined {
-  return weeklyPosts.find((p) => p.slug === slug);
+export function getPostBySlug(slug: string): BlogPost | undefined {
+  return blogPosts.find((p) => p.slug === slug);
 }
