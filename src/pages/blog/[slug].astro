@@ -1,0 +1,78 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { getLivePosts, isPostLive, type BlogPost } from "../../data/blog-posts";
+
+export function getStaticPaths() {
+  // Only ship live posts into the build. A scheduled rebuild after publishAt
+  // makes the page appear (see .github/workflows/publish-scheduled-blog.yml).
+  const live = getLivePosts();
+  return live.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+interface Props {
+  post: BlogPost;
+}
+
+const { post } = Astro.props;
+
+// Safety: never render a future post even if paths were forced.
+if (!isPostLive(post)) {
+  return Astro.redirect("/blog");
+}
+
+const publishLabel = new Date(post.publishAt).toLocaleString("en-IN", {
+  day: "numeric",
+  month: "short",
+  year: "numeric",
+  hour: "numeric",
+  minute: "2-digit",
+  timeZone: "Asia/Kolkata",
+});
+---
+
+<Layout title={`${post.title} | DesiFit`} description={post.description}>
+  <main class="mx-auto max-w-3xl px-4 py-12 md:px-6">
+    <p class="text-xs font-semibold uppercase tracking-[0.18em] text-sand">Weekly looks</p>
+    <h1 class="mt-3 font-display text-4xl font-bold text-ink md:text-5xl">{post.title}</h1>
+    <p class="mt-3 text-sm text-ink-soft/80">{publishLabel} IST</p>
+    <p class="mt-5 text-lg leading-relaxed text-ink-soft">{post.description}</p>
+
+    <div class="mt-12 space-y-14">
+      {post.videos.map((video, i) => (
+        <section>
+          <p class="text-xs font-semibold uppercase tracking-[0.16em] text-sand">
+            {String(i + 1).padStart(2, "0")} · {video.label}
+          </p>
+          <h2 class="mt-2 font-display text-2xl font-bold text-ink">{video.lookTitle}</h2>
+
+          <div class="mx-auto mt-5 max-w-[320px]">
+            <div class="relative aspect-[9/16] overflow-hidden rounded-2xl bg-ink/5">
+              <iframe
+                class="absolute inset-0 h-full w-full"
+                src={`https://www.youtube.com/embed/${video.id}`}
+                title={`${video.lookTitle} — DesiFit Short`}
+                loading="lazy"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen
+              />
+            </div>
+          </div>
+
+          <a href={`/looks/${video.lookId}`} class="shop-cta mt-5">
+            Shop this look
+          </a>
+        </section>
+      ))}
+    </div>
+
+    <p class="mt-16 text-sm text-ink-soft">
+      <a href="/blog" class="font-semibold text-accent-deep underline-offset-2 hover:underline">← All weekly looks</a>
+      {" · "}
+      <a href="/categories" class="font-semibold text-accent-deep underline-offset-2 hover:underline">Browse lookbooks</a>
+    </p>
+  </main>
+</Layout>

@@ -1,0 +1,50 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { getLivePosts } from "../../data/blog-posts";
+
+const posts = getLivePosts();
+---
+
+<Layout
+  title="Blog | DesiFit"
+  description="Weekly DesiFit lookbook drops — short videos and shoppable outfit links."
+>
+  <main class="mx-auto max-w-3xl px-4 py-12 md:px-6">
+    <p class="text-xs font-semibold uppercase tracking-[0.18em] text-sand">Blog</p>
+    <h1 class="mt-3 font-display text-4xl font-bold text-ink md:text-5xl">Weekly looks</h1>
+    <p class="mt-5 text-lg leading-relaxed text-ink-soft">
+      Short lookbook videos paired with the exact shoppable outfits on DesiFit. New drop each week.
+    </p>
+
+    {posts.length === 0 ? (
+      <p class="mt-12 rounded-2xl border border-line bg-paper-2/60 px-5 py-8 text-ink-soft">
+        The first weekly drop lands soon. Meanwhile, browse the
+        <a href="/categories" class="font-semibold text-accent-deep underline-offset-2 hover:underline">lookbooks</a>.
+      </p>
+    ) : (
+      <ul class="mt-12 space-y-6">
+        {posts.map((post) => (
+          <li>
+            <a
+              href={`/blog/${post.slug}`}
+              class="group block border-b border-line pb-6 transition hover:border-accent"
+            >
+              <p class="text-xs font-semibold uppercase tracking-[0.14em] text-sand">
+                {new Date(post.publishAt).toLocaleDateString("en-IN", {
+                  day: "numeric",
+                  month: "short",
+                  year: "numeric",
+                  timeZone: "Asia/Kolkata",
+                })}
+              </p>
+              <h2 class="mt-2 font-display text-2xl font-bold text-ink group-hover:text-accent-deep md:text-3xl">
+                {post.title}
+              </h2>
+              <p class="mt-2 text-ink-soft">{post.description}</p>
+            </a>
+          </li>
+        ))}
+      </ul>
+    )}
+  </main>
+</Layout>
