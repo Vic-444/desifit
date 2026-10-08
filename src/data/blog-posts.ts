@@ -32,8 +32,8 @@ export const blogPosts: BlogPost[] = [
     description:
       "This week’s DesiFit edit: Indo-Western fusion, oversized street, and everyday desi casual — what works, when to wear it, and where to shop each piece.",
     category: "Weekly looks",
-    // Sat Oct 17, 2026 · 9:30 PM IST (= same window as the Desi YouTube Short)
-    publishAt: "2026-10-17T21:30:00+05:30",
+    // Sat Oct 17, 2026 · 9:40 PM IST (10 min after Desi Short at 9:30 so the embed is public)
+    publishAt: "2026-10-17T21:40:00+05:30",
     intro: [
       "October shopping in India rarely asks you to pick one aesthetic and stick with it. Mid-week might need something that reads polished without feeling costume-y; Friday wants volume and print; the weekend often wants soft cotton and zero drama. This week’s DesiFit edit follows that rhythm — three looks, three moods, each already live on the site with piece-by-piece links.",
       "Think of these less as runway statements and more as wearable uniforms: Indo-Western fusion when you want desi colour with denim ease, oversized street when the print does the talking, and desi casual when comfort has to look intentional. Watch the short, then shop the exact outfit breakdown.",
