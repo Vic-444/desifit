@@ -58,13 +58,13 @@ img {
   font-family: var(--font-display);
 }
 
-/* Syne’s descenders (g, y, p) clip under default heading line boxes */
+/* Syne descenders (g, y, p) clip under Tailwind’s tight text-* line boxes */
 h1.font-display,
 h2.font-display,
 h3.font-display {
-  line-height: 1.2;
+  line-height: 1.25 !important;
   overflow: visible;
-  padding-bottom: 0.08em;
+  padding-bottom: 0.18em;
 }
 
 @keyframes rise-in {
