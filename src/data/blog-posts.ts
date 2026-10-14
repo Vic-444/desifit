@@ -124,8 +124,20 @@ export const blogPosts: BlogPost[] = [
   },
 ];
 
-/** Set SHOW_SCHEDULED_POSTS=true at build time to preview future posts (PR/local only). */
-const showScheduled = import.meta.env.SHOW_SCHEDULED_POSTS === "true";
+/**
+ * Show future posts at build time for local/PR preview only.
+ * - SHOW_SCHEDULED_POSTS=true (local)
+ * - Cloudflare Pages preview builds (any branch other than main)
+ * Production `main` stays gated by publishAt.
+ */
+function shouldShowScheduled(): boolean {
+  if (import.meta.env.SHOW_SCHEDULED_POSTS === "true") return true;
+  const branch =
+    typeof process !== "undefined" ? process.env.CF_PAGES_BRANCH : undefined;
+  return Boolean(branch && branch !== "main");
+}
+
+const showScheduled = shouldShowScheduled();
 
 export function isPostLive(post: BlogPost, now = new Date()): boolean {
   if (showScheduled) return true;
