@@ -74,6 +74,54 @@ export const blogPosts: BlogPost[] = [
       "All three outfits are on DesiFit with verified item links — tap through from the buttons below each video, or browse the full women’s lookbooks when you want more options in the same lane. Same edit ships on our Shorts; this page is the longer read for when you want the why, not only the scroll.",
     ],
   },
+  {
+    slug: "week-of-oct-20-fusion-street-desi",
+    title: "3 looks this week: Cargo Fusion, Blue Street & Navy Desi",
+    description:
+      "This week’s DesiFit edit: brown kurta with cargo denim, a blue AOP crop street set, and a navy kurti with cotton flares — what works, when to wear it, and where to shop each piece.",
+    category: "Weekly looks",
+    // Sat Oct 24, 2026 · 9:40 PM IST (10 min after Desi Short at 9:30)
+    publishAt: "2026-10-24T21:40:00+05:30",
+    intro: [
+      "If last week was about high-low hems and bold cow print, this week eases into utility and cooler colour. Cargo pockets show up twice — once under a brown printed kurta, once under a blue all-over-print crop — and Saturday resets with navy sleeveless kurti energy you can actually live in. Same three-door rhythm: fusion mid-week, street for Friday, desi casual for the weekend.",
+      "None of these need a full wardrobe rebuild. They are mix-and-match uniforms with piece-by-piece links on DesiFit. Watch the short for the vibe; read below for when the look earns its place.",
+    ],
+    videos: [
+      {
+        id: "WsQ55eMSGYk",
+        label: "Fusion",
+        lookId: "skd-01",
+        lookTitle: "Brown Printed Short Kurta × Wide Leg Cargo",
+        body: [
+          "Brown print plus cargo denim is Indo-Western without trying too hard. The short kurta keeps the desi read; the dark grey wide-leg cargos pull it into everyday street. Cargo pockets add structure so the outfit does not float — useful when print alone can feel soft or costume-y.",
+          "Silver drop earrings are enough. Wear it for daytime plans, travel days, or any mid-week slot where jeans feel right but a plain tee feels flat. If you already own wide cargos, the kurta is the update; if you already lean kurta, the cargos are the modern half.",
+        ],
+      },
+      {
+        id: "7ANVSWtbw0Q",
+        label: "Street",
+        lookId: "bs-04",
+        lookTitle: "Blue AOP Crop Shirt × Light Blue Cargo",
+        body: [
+          "Street this week is a colour story: blue-and-white oversized crop print on top, light washed cargo denim below. The crop shows a little waist so the wide leg does not swallow the frame. Let the AOP do the talking — no need for loud shoes or stacked accessories.",
+          "This is Friday-evening and weekend-errand energy. Sneakers or simple flats keep it grounded. If last week’s black flare set felt heavy, this one is lighter in mood without losing the oversized street silhouette.",
+        ],
+      },
+      {
+        id: "iOmYZ8Vhdcs",
+        label: "Desi Casual",
+        lookId: "dck-05",
+        lookTitle: "Navy Sleeveless Kurti × AM:PM Cotton Flare",
+        body: [
+          "Navy sleeveless kurti with cotton flares is the soft landing after two denim-forward looks. The sleeveless cut keeps it cool; the flare adds movement without festive stiffness. Print stays readable but calm — closer to Sunday outside than to a ceremony.",
+          "A simple silver necklace finishes it. Flat footwear, no heavy dupatta unless you want one. When fusion and street have done the mid-week and Friday jobs, this is the reset that still looks intentional in a photograph and comfortable in real life.",
+        ],
+      },
+    ],
+    outro: [
+      "Shop each look through the buttons below the videos, or wander the women’s lookbooks for more mixes in the same lanes. The Shorts carry the scroll; this page is for the longer why.",
+    ],
+  },
 ];
 
 /** Set SHOW_SCHEDULED_POSTS=true at build time to preview future posts (PR/local only). */
