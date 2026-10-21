@@ -1,0 +1,7 @@
+# Legacy studio / lookbook routes → visual homepage wall
+/categories / 301
+/categories/* / 301
+/looks / 301
+/looks/* / 301
+/fitness / 301
+/fitness/* / 301

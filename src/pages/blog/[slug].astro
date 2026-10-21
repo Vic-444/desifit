@@ -72,7 +72,7 @@ const publishLabel = new Date(post.publishAt).toLocaleString("en-IN", {
             </div>
           </div>
 
-          <a href={`/looks/${video.lookId}`} class="shop-cta mt-5">
+          <a href={`/#look-${video.lookId}`} class="shop-cta mt-5">
             Shop this look
           </a>
         </section>
@@ -88,7 +88,7 @@ const publishLabel = new Date(post.publishAt).toLocaleString("en-IN", {
     <p class="mt-10 text-sm text-ink-soft">
       <a href="/blog" class="font-semibold text-accent-deep underline-offset-2 hover:underline">← All articles</a>
       {" · "}
-      <a href="/categories" class="font-semibold text-accent-deep underline-offset-2 hover:underline">Browse lookbooks</a>
+      <a href="/" class="font-semibold text-accent-deep underline-offset-2 hover:underline">Browse looks</a>
     </p>
   </main>
 </Layout>

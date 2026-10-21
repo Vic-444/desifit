@@ -71,7 +71,7 @@ export const blogPosts: BlogPost[] = [
       },
     ],
     outro: [
-      "All three outfits are on DesiFit with verified item links — tap through from the buttons below each video, or browse the full women’s lookbooks when you want more options in the same lane. Same edit ships on our Shorts; this page is the longer read for when you want the why, not only the scroll.",
+      "All three outfits are on DesiFit with verified item links — tap through from the buttons below each video, or browse the homepage looks wall when you want more inspiration. This page is the longer read for when you want the why, not only the scroll.",
     ],
   },
   {
@@ -119,7 +119,7 @@ export const blogPosts: BlogPost[] = [
       },
     ],
     outro: [
-      "Shop each look through the buttons below the videos, or wander the women’s lookbooks for more mixes in the same lanes. The Shorts carry the scroll; this page is for the longer why.",
+      "Shop each look through the buttons below the videos, or scroll the homepage looks wall for more mixes in the same lanes. This page is for the longer why.",
     ],
   },
 ];

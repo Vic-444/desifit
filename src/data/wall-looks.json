@@ -1,0 +1,485 @@
+{
+  "updatedAt": "2026-10-21",
+  "note": "Homepage visual wall. Unique images only. Prefer ~20–30 looks; launch lean while ethnic PDP variety is limited. Weekly: swap ~10. Midweek UI: bottom 10 → top (IST Wed–Sat). Optional per-item mrp for strikethrough.",
+  "looks": [
+    {
+      "id": "skd-01",
+      "title": "Brown Printed Short Kurta × Wide Leg Cargo",
+      "description": "A complete desi-leaning outfit with real merchant links. Scroll the pieces below to shop.",
+      "image": "https://images.bewakoof.com/original/women-s-printed-short-kurta-364684-1656151141-1.jpg",
+      "items": [
+        {
+          "name": "Women's Brown Printed Short Kurta",
+          "brand": "Bewakoof",
+          "price": "₹549",
+          "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fp%2Faop-v-notch-mandarin-neck-3-4th-sleeve-kurtas&subid=skd01-top",
+          "imageUrl": "https://images.bewakoof.com/original/women-s-printed-short-kurta-364684-1656151141-1.jpg"
+        },
+        {
+          "name": "Women's Dark Grey Washed Wide Leg Cargo Jeans",
+          "brand": "Bewakoof",
+          "price": "₹799",
+          "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fp%2Fwomens-dark-grey-wide-leg-cargo-jeans&subid=skd01-bottom",
+          "imageUrl": "https://images.bewakoof.com/original/women-s-dark-grey-wide-leg-cargo-jeans-646614-1751451805-1.jpg"
+        },
+        {
+          "name": "Cascade Gleam Drop Earrings",
+          "brand": "Salty",
+          "price": "₹399",
+          "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fproducts%2Fcascade-gleam-drop-earrings&subid=skd01-acc",
+          "imageUrl": "https://salty.co.in/cdn/shop/files/Image_20260803093353_2994_62.jpg?v=1788443855"
+        }
+      ]
+    },
+    {
+      "id": "skd-02",
+      "title": "Maroon High-Low Kurti × Blue Flared Denim",
+      "description": "A complete desi-leaning outfit with real merchant links. Scroll the pieces below to shop.",
+      "image": "https://images.bewakoof.com/original/women-s-maroon-printed-high-low-kurti-318107-1656187639-1.jpg",
+      "items": [
+        {
+          "name": "Women's Maroon Printed High Low Kurti",
+          "brand": "Bewakoof",
+          "price": "₹354",
+          "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fp%2Fwomens-mid-printed-kurta&subid=skd02-top",
+          "imageUrl": "https://images.bewakoof.com/original/women-s-maroon-printed-high-low-kurti-318107-1656187639-1.jpg"
+        },
+        {
+          "name": "Women's Blue Flared Washed Korean Jeans",
+          "brand": "Bewakoof",
+          "price": "₹819",
+          "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fp%2Fwomens-blue-flared-jeans-blue-denim-83-women&subid=skd02-bottom",
+          "imageUrl": "https://images.bewakoof.com/original/women-s-blue-flared-washed-korean-jeans-662205-1752560900-1.jpg"
+        },
+        {
+          "name": "Gleam Halo Hoops Earrings - Silver",
+          "brand": "Salty",
+          "price": "₹446",
+          "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fproducts%2Fgleam-halo-hoops-earrings-silver&subid=skd02-acc",
+          "imageUrl": "https://salty.co.in/cdn/shop/files/ES15193-S_MAIN2.png?v=1788443579"
+        }
+      ]
+    },
+    {
+      "id": "skd-03",
+      "title": "Printed Short Kurta × Light Blue Cargo",
+      "description": "A complete desi-leaning outfit with real merchant links. Scroll the pieces below to shop.",
+      "image": "https://images.bewakoof.com/original/women-s-printed-short-kurta-364686-1656140136-1.jpg",
+      "items": [
+        {
+          "name": "Women's Printed Short Kurta",
+          "brand": "Bewakoof",
+          "price": "₹299",
+          "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fp%2Faop-v-notch-mandarins-neck-3-4th-sleeve-kurta&subid=skd03-top",
+          "imageUrl": "https://images.bewakoof.com/original/women-s-printed-short-kurta-364686-1656140136-1.jpg"
+        },
+        {
+          "name": "Women's Light Blue Washed Wide Leg Cargo Jeans",
+          "brand": "Bewakoof",
+          "price": "₹809",
+          "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fp%2Fwomens-light-blue-wide-leg-cargo-jeans-women&subid=skd03-bottom",
+          "imageUrl": "https://images.bewakoof.com/original/women-s-light-blue-washed-wide-leg-cargo-jeans-646613-1745924767-1.jpg"
+        },
+        {
+          "name": "Lustre Halo Statement Drop Earrings - Silver",
+          "brand": "Salty",
+          "price": "₹399",
+          "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fproducts%2Flustre-halo-statement-drop-earrings-silver&subid=skd03-acc",
+          "imageUrl": "https://salty.co.in/cdn/shop/files/ES15215-S_MAIN.png?v=1788443808"
+        }
+      ]
+    },
+    {
+      "id": "skd-04",
+      "title": "Navy Sleeveless Kurti × Dark Blue Wide Leg",
+      "description": "A complete desi-leaning outfit with real merchant links. Scroll the pieces below to shop.",
+      "image": "https://images.bewakoof.com/original/women-s-navy-printed-sleeveless-kurti-dress-318397-1656152400-1.jpg",
+      "items": [
+        {
+          "name": "Women's Navy Printed Sleeveless Kurti Dress",
+          "brand": "Bewakoof",
+          "price": "₹549",
+          "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fp%2Fwomens-long-aop-kurta-dress-women&subid=skd04-top",
+          "imageUrl": "https://images.bewakoof.com/original/women-s-navy-printed-sleeveless-kurti-dress-318397-1656152400-1.jpg"
+        },
+        {
+          "name": "Women's Dark Blue Washed Wide Leg Cargo Jeans",
+          "brand": "Bewakoof",
+          "price": "₹1,079",
+          "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fp%2Fwomens-dark-blue-wide-leg-cargo-jeans-women&subid=skd04-bottom",
+          "imageUrl": "https://images.bewakoof.com/original/women-s-dark-blue-washed-wide-leg-cargo-jeans-646617-1745924762-1.jpg"
+        },
+        {
+          "name": "Rendezvous Silver Chain",
+          "brand": "Salty",
+          "price": "₹502",
+          "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fproducts%2Frendezvous-silver-chain&subid=skd04-acc",
+          "imageUrl": "https://salty.co.in/cdn/shop/files/NS12475_model.png?v=1781797705"
+        }
+      ]
+    },
+    {
+      "id": "skd-05",
+      "title": "Swiss Dot Blue Kurta × Straight Blue Jeans",
+      "description": "A complete desi-leaning outfit with real merchant links. Scroll the pieces below to shop.",
+      "image": "https://images.bewakoof.com/original/women-s-cotton-swiss-dot-dobby-sleeveless-classic-blue-kurta-with-belt-tie-up-321806-1656167245-1.jpg",
+      "items": [
+        {
+          "name": "Women's Cotton Swiss Dot Dobby Sleeveless Classic Blue Kurta",
+          "brand": "Bewakoof",
+          "price": "₹399",
+          "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fp%2Fbrooklyn-blue-swiss-dot-sleevless-long-kurta&subid=skd05-top",
+          "imageUrl": "https://images.bewakoof.com/original/women-s-cotton-swiss-dot-dobby-sleeveless-classic-blue-kurta-with-belt-tie-up-321806-1656167245-1.jpg"
+        },
+        {
+          "name": "Women's Blue Washed Straight Fit Jeans",
+          "brand": "Bewakoof",
+          "price": "₹1,599",
+          "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fp%2Fwomens-blue-straight-fit-high-rise-jeans-bleach&subid=skd05-bottom",
+          "imageUrl": "https://images.bewakoof.com/original/women-s-blue-washed-straight-fit-jeans-625164-1751441179-1.jpg"
+        },
+        {
+          "name": "Halo Cushion Drop Earrings - Silver",
+          "brand": "Salty",
+          "price": "₹459",
+          "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fproducts%2Fhalo-cushion-drop-earrings-silver&subid=skd05-acc",
+          "imageUrl": "https://salty.co.in/cdn/shop/files/ES15208-S_Main_20_282_29.jpg?v=1788442852"
+        }
+      ]
+    },
+    {
+      "id": "skd-06",
+      "title": "Jet Black Embroidered Top × Black Bootcut",
+      "description": "A shoppable style look for everyday inspiration. Open any piece to buy at the merchant.",
+      "image": "https://images.bewakoof.com/original/women-s-jet-black-embroidered-slim-fit-acid-wash-short-top-684704-1760689901-1.jpg",
+      "items": [
+        {
+          "name": "Women's Jet Black Embroidered Slim Fit Acid Wash Short Top",
+          "brand": "Bewakoof",
+          "price": "₹599",
+          "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fp%2Fwomens-jet-black-slim-fit-acid-wash-short-top&subid=skd06-top",
+          "imageUrl": "https://images.bewakoof.com/original/women-s-jet-black-embroidered-slim-fit-acid-wash-short-top-684704-1760689901-1.jpg"
+        },
+        {
+          "name": "Women's Jet Black Bootcut Jeans",
+          "brand": "Bewakoof",
+          "price": "₹769",
+          "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fp%2Fwomens-jet-black-bootcut-jeans&subid=skd06-bottom",
+          "imageUrl": "https://images.bewakoof.com/original/women-s-jet-black-bootcut-jeans-646017-1741766939-1.jpg"
+        },
+        {
+          "name": "Deep Sea Spark Earrings",
+          "brand": "Salty",
+          "price": "₹579",
+          "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fproducts%2Fdeep-sea-spark-earrings&subid=skd06-acc",
+          "imageUrl": "https://salty.co.in/cdn/shop/files/Deep-Sea-Spark-Earrings-Salty-226369794.jpg?v=1785246717"
+        }
+      ]
+    },
+    {
+      "id": "skd-08",
+      "title": "Skipper Blue Blossom × Jet Black Flared",
+      "description": "A shoppable style look for everyday inspiration. Open any piece to buy at the merchant.",
+      "image": "https://images.bewakoof.com/original/women-s-skipper-blue-blossom-graphic-printed-top-662758-1744194890-1.jpg",
+      "items": [
+        {
+          "name": "Women's Skipper Blue Blossom Graphic Printed Short Top",
+          "brand": "Bewakoof",
+          "price": "₹321",
+          "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fp%2Fwomens-skipper-blue-blossom-graphic-printed-top&subid=skd08-top",
+          "imageUrl": "https://images.bewakoof.com/original/women-s-skipper-blue-blossom-graphic-printed-top-662758-1744194890-1.jpg"
+        },
+        {
+          "name": "Women's Jet Black Washed Flared Korean Jeans",
+          "brand": "Bewakoof",
+          "price": "₹1,399",
+          "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fp%2Fwomens-jet-black-flared-jeans-black-01&subid=skd08-bottom",
+          "imageUrl": "https://images.bewakoof.com/original/women-s-jet-black-washed-flared-korean-jeans-662161-1754915131-1.jpg"
+        },
+        {
+          "name": "Linked by Love Knot Bracelet - Silver",
+          "brand": "Salty",
+          "price": "₹349",
+          "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fproducts%2Flinked-by-love-knot-bracelet-silver&subid=skd08-acc",
+          "imageUrl": "https://salty.co.in/cdn/shop/files/BS14709-S_MAIN2.jpg?v=1789683964"
+        }
+      ]
+    },
+    {
+      "id": "skd-10",
+      "title": "Brown Printed Short Kurta × Blue Flared Denim",
+      "description": "A complete desi-leaning outfit with real merchant links. Scroll the pieces below to shop.",
+      "image": "https://images.bewakoof.com/original/women-s-blue-flared-washed-korean-jeans-662205-1752560900-1.jpg",
+      "items": [
+        {
+          "name": "Women's Brown Printed Short Kurta",
+          "brand": "Bewakoof",
+          "price": "₹549",
+          "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fp%2Faop-v-notch-mandarin-neck-3-4th-sleeve-kurtas&subid=skd10-top",
+          "imageUrl": "https://images.bewakoof.com/original/women-s-printed-short-kurta-364684-1656151141-1.jpg"
+        },
+        {
+          "name": "Women's Blue Flared Washed Korean Jeans",
+          "brand": "Bewakoof",
+          "price": "₹819",
+          "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fp%2Fwomens-blue-flared-jeans-blue-denim-83-women&subid=skd10-bottom",
+          "imageUrl": "https://images.bewakoof.com/original/women-s-blue-flared-washed-korean-jeans-662205-1752560900-1.jpg"
+        },
+        {
+          "name": "Icy Arc Drop Earrings",
+          "brand": "Salty",
+          "price": "₹689",
+          "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fproducts%2Ficy-arc-drop-earrings&subid=skd10-acc",
+          "imageUrl": "https://salty.co.in/cdn/shop/files/ES15035-S_Main2.jpg?v=1784899058"
+        }
+      ]
+    },
+    {
+      "id": "osj-01",
+      "title": "Cascade Gleam Suite",
+      "description": "Finishing pieces that complete a desi look — shop the set at Salty.",
+      "image": "https://salty.co.in/cdn/shop/files/Image_20260803093353_2994_62.jpg?v=1788443855",
+      "items": [
+        {
+          "name": "Cascade Gleam Drop Earrings",
+          "brand": "Salty",
+          "price": "₹399",
+          "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fproducts%2Fcascade-gleam-drop-earrings&subid=osj01-item1",
+          "imageUrl": "https://salty.co.in/cdn/shop/files/Image_20260803093353_2994_62.jpg?v=1788443855"
+        },
+        {
+          "name": "Rendezvous Silver Chain",
+          "brand": "Salty",
+          "price": "₹502",
+          "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fproducts%2Frendezvous-silver-chain&subid=osj01-item2",
+          "imageUrl": "https://salty.co.in/cdn/shop/files/NS12475_model.png?v=1781797705"
+        },
+        {
+          "name": "Linked by Love Knot Bracelet - Silver",
+          "brand": "Salty",
+          "price": "₹349",
+          "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fproducts%2Flinked-by-love-knot-bracelet-silver&subid=osj01-item3",
+          "imageUrl": "https://salty.co.in/cdn/shop/files/BS14709-S_MAIN2.jpg?v=1789683964"
+        }
+      ]
+    },
+    {
+      "id": "cm-01",
+      "title": "Gold Heart & Minimal Hoops Set",
+      "description": "Finishing pieces that complete a desi look — shop the set at Salty.",
+      "image": "https://salty.co.in/cdn/shop/files/correct_20mp_20NS14121-G_MODEL3_20_281_29.jpg?v=1773354959",
+      "items": [
+        {
+          "name": "Luxe Gold Heart Pendant Necklace",
+          "brand": "Salty",
+          "price": "₹289",
+          "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fproducts%2Fluxe-gold-heart-pendant-necklace&subid=cm01-item1",
+          "imageUrl": "https://salty.co.in/cdn/shop/files/correct_20mp_20NS14121-G_MODEL3_20_281_29.jpg?v=1773354959"
+        },
+        {
+          "name": "Set of 3 Minimal Golden Hoop Earrings",
+          "brand": "Salty",
+          "price": "₹799",
+          "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fproducts%2Fset-of-3-minimal-golden-hoop-earrings&subid=cm01-item2",
+          "imageUrl": "https://salty.co.in/cdn/shop/files/EC33998-G__tirj7o_fcda1938-5d38-4b5c-9a67-ad61ba41e4af.jpg?v=1773352795"
+        }
+      ]
+    },
+    {
+      "id": "fl-05",
+      "title": "Green Ethnic Kurti × AirMelt Flare Lite",
+      "description": "A complete desi-leaning outfit with real merchant links. Scroll the pieces below to shop.",
+      "image": "https://images.bewakoof.com/original/women-s-sleevelesss-ethnic-kurti-403805-1656182466-1.jpg",
+      "items": [
+        {
+          "name": "Women's Green Sleeveless Ethnic Kurti",
+          "brand": "Bewakoof",
+          "price": "₹649",
+          "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fp%2Folive-solid-3-4th-sleeve-ethnic-flared-dress&subid=fl05-top",
+          "imageUrl": "https://images.bewakoof.com/original/women-s-sleevelesss-ethnic-kurti-403805-1656182466-1.jpg"
+        },
+        {
+          "name": "AirMelt™ Flare Pants - Lite",
+          "brand": "BlissClub",
+          "price": "₹1,199",
+          "affiliateUrl": "https://tjzuh.com/g/f7dkjuc7zj0be660c062519b939af8/?ulp=https%3A%2F%2Fblissclub.com%2Fproducts%2Fairmelt-flare-pants-lite&subid=fl05-bottom",
+          "imageUrl": "https://blissclub.com/cdn/shop/files/airmelt-flare-pants-lite-6877722.jpg?v=1781848839&width=2048"
+        },
+        {
+          "name": "Halo Cushion Drop Earrings - Silver",
+          "brand": "Salty",
+          "price": "₹459",
+          "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fproducts%2Fhalo-cushion-drop-earrings-silver&subid=fl05-acc",
+          "imageUrl": "https://salty.co.in/cdn/shop/files/ES15208-S_Main_20_282_29.jpg?v=1788442852"
+        }
+      ]
+    },
+    {
+      "id": "kcb-09",
+      "title": "White Oversized Short Top × AirMelt Flare Lite",
+      "description": "A shoppable style look for everyday inspiration. Open any piece to buy at the merchant.",
+      "image": "https://images.bewakoof.com/original/women-white-plain-crop-t-shirt-571204-1682421651-1.JPG",
+      "items": [
+        {
+          "name": "Women's White Oversized Short Top",
+          "brand": "Bewakoof",
+          "price": "₹287",
+          "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fp%2Fwomen-white-plain-crop-t-shirt&subid=kcb09-top",
+          "imageUrl": "https://images.bewakoof.com/original/women-white-plain-crop-t-shirt-571204-1682421651-1.JPG"
+        },
+        {
+          "name": "AirMelt™ Flare Pants - Lite",
+          "brand": "BlissClub",
+          "price": "₹1,199",
+          "affiliateUrl": "https://tjzuh.com/g/f7dkjuc7zj0be660c062519b939af8/?ulp=https%3A%2F%2Fblissclub.com%2Fproducts%2Fairmelt-flare-pants-lite&subid=kcb09-bottom",
+          "imageUrl": "https://blissclub.com/cdn/shop/files/airmelt-flare-pants-lite-6877722.jpg?v=1781848839&width=2048"
+        },
+        {
+          "name": "Silver Elegance Necklace",
+          "brand": "Salty",
+          "price": "₹269",
+          "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fproducts%2Fsilver-elegance-necklace&subid=kcb09-acc",
+          "imageUrl": "https://salty.co.in/cdn/shop/files/SilverEleganceNecklace_1_bfdd7491-d4c1-4786-a47c-51f55cade5ea.jpg?v=1773377636"
+        }
+      ]
+    },
+    {
+      "id": "skd-07",
+      "title": "White AIRism Tee × Black Wide Leg Cargo",
+      "description": "A shoppable style look for everyday inspiration. Open any piece to buy at the merchant.",
+      "image": "https://image.uniqlo.com/UQ/ST3/in/imagesgoods/465755/item/ingoods_00_465755_3x4.jpg",
+      "items": [
+        {
+          "name": "Women's White AIRism Cotton T-Shirt",
+          "brand": "Uniqlo",
+          "price": "₹1,490",
+          "affiliateUrl": "https://tjzuh.com/g/qot345j9bq0be660c062ccb93e5ddd/?ulp=https%3A%2F%2Fwww.uniqlo.com%2Fin%2Fen%2Fproducts%2FE465755-000%2F00&subid=skd07-top",
+          "imageUrl": "https://image.uniqlo.com/UQ/ST3/in/imagesgoods/465755/item/ingoods_00_465755_3x4.jpg"
+        },
+        {
+          "name": "Women's Black Wide Leg Cargo Jeans",
+          "brand": "Bewakoof",
+          "price": "₹809",
+          "affiliateUrl": "https://tjzuh.com/g/el5arbwari0be660c0628f3bde6dea/?ulp=https%3A%2F%2Fwww.bewakoof.com%2Fp%2Fwomens-black-wide-leg-cargo-jeans-women&subid=skd07-bottom",
+          "imageUrl": "https://images.bewakoof.com/original/women-s-black-wide-leg-cargo-jeans-646618-1741348491-1.jpg"
+        },
+        {
+          "name": "Silver Elegance Necklace",
+          "brand": "Salty",
+          "price": "₹269",
+          "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fproducts%2Fsilver-elegance-necklace&subid=skd07-acc",
+          "imageUrl": "https://salty.co.in/cdn/shop/files/SilverEleganceNecklace_1_bfdd7491-d4c1-4786-a47c-51f55cade5ea.jpg?v=1773377636"
+        }
+      ]
+    },
+    {
+      "id": "mw-01",
+      "title": "Black Rayon Blouse × Linen Blend Easy Pants",
+      "description": "A shoppable style look for everyday inspiration. Open any piece to buy at the merchant.",
+      "image": "https://image.uniqlo.com/UQ/ST3/in/imagesgoods/479071/item/ingoods_09_479071_3x4.jpg",
+      "items": [
+        {
+          "name": "Women's Black Rayon Blouse",
+          "brand": "Uniqlo",
+          "price": "₹2,490",
+          "affiliateUrl": "https://tjzuh.com/g/qot345j9bq0be660c062ccb93e5ddd/?ulp=https%3A%2F%2Fwww.uniqlo.com%2Fin%2Fen%2Fproducts%2FE479071-000%2F00&subid=mw01-top",
+          "imageUrl": "https://image.uniqlo.com/UQ/ST3/in/imagesgoods/479071/item/ingoods_09_479071_3x4.jpg"
+        },
+        {
+          "name": "Women's Black Linen Blend Easy Pants",
+          "brand": "Uniqlo",
+          "price": "₹1,990",
+          "affiliateUrl": "https://tjzuh.com/g/qot345j9bq0be660c062ccb93e5ddd/?ulp=https%3A%2F%2Fwww.uniqlo.com%2Fin%2Fen%2Fproducts%2FE473791-000%2F00&subid=mw01-bottom",
+          "imageUrl": "https://image.uniqlo.com/UQ/ST3/in/imagesgoods/473791/item/ingoods_09_473791_3x4.jpg"
+        },
+        {
+          "name": "Silver Elegance Necklace",
+          "brand": "Salty",
+          "price": "₹269",
+          "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fproducts%2Fsilver-elegance-necklace&subid=mw01-acc",
+          "imageUrl": "https://salty.co.in/cdn/shop/files/SilverEleganceNecklace_1_bfdd7491-d4c1-4786-a47c-51f55cade5ea.jpg?v=1773377636"
+        }
+      ]
+    },
+    {
+      "id": "mw-03",
+      "title": "White Premium Linen Shirt × Pleated Wide Pants",
+      "description": "A shoppable style look for everyday inspiration. Open any piece to buy at the merchant.",
+      "image": "https://image.uniqlo.com/UQ/ST3/in/imagesgoods/475647/item/ingoods_00_475647_3x4.jpg",
+      "items": [
+        {
+          "name": "Women's White Premium Linen Shirt",
+          "brand": "Uniqlo",
+          "price": "₹2,990",
+          "affiliateUrl": "https://tjzuh.com/g/qot345j9bq0be660c062ccb93e5ddd/?ulp=https%3A%2F%2Fwww.uniqlo.com%2Fin%2Fen%2Fproducts%2FE475647-000%2F00&subid=mw03-top",
+          "imageUrl": "https://image.uniqlo.com/UQ/ST3/in/imagesgoods/475647/item/ingoods_00_475647_3x4.jpg"
+        },
+        {
+          "name": "Women's Light Gray Cotton Tencel Pleated Wide Pants",
+          "brand": "Uniqlo",
+          "price": "₹3,990",
+          "affiliateUrl": "https://tjzuh.com/g/qot345j9bq0be660c062ccb93e5ddd/?ulp=https%3A%2F%2Fwww.uniqlo.com%2Fin%2Fen%2Fproducts%2FE476945-000%2F00&subid=mw03-bottom",
+          "imageUrl": "https://image.uniqlo.com/UQ/ST3/AsianCommon/imagesgoods/476945/item/goods_02_476945_3x4.jpg"
+        },
+        {
+          "name": "Classic Beauty Silver Necklace",
+          "brand": "Salty",
+          "price": "₹329",
+          "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fproducts%2Fclassic-beauty-silver-necklace&subid=mw03-acc",
+          "imageUrl": "https://salty.co.in/cdn/shop/files/NS14039-S_MAIN_202_c66c7cc3-218c-4f91-a293-8114d8cb6b01.jpg?v=1773423227"
+        }
+      ]
+    },
+    {
+      "id": "mw-09",
+      "title": "White Rayon Blouse × Ultimate Straight Lite",
+      "description": "A shoppable style look for everyday inspiration. Open any piece to buy at the merchant.",
+      "image": "https://image.uniqlo.com/UQ/ST3/in/imagesgoods/479071/item/ingoods_00_479071_3x4.jpg",
+      "items": [
+        {
+          "name": "Women's White Rayon Blouse",
+          "brand": "Uniqlo",
+          "price": "₹2,490",
+          "affiliateUrl": "https://tjzuh.com/g/qot345j9bq0be660c062ccb93e5ddd/?ulp=https%3A%2F%2Fwww.uniqlo.com%2Fin%2Fen%2Fproducts%2FE479071-000%2F00&subid=mw09-top",
+          "imageUrl": "https://image.uniqlo.com/UQ/ST3/in/imagesgoods/479071/item/ingoods_00_479071_3x4.jpg"
+        },
+        {
+          "name": "Ultimate Straight Pants - Lite",
+          "brand": "BlissClub",
+          "price": "₹999",
+          "affiliateUrl": "https://tjzuh.com/g/f7dkjuc7zj0be660c062519b939af8/?ulp=https%3A%2F%2Fblissclub.com%2Fproducts%2Fultimate-straight-pants-lite&subid=mw09-bottom",
+          "imageUrl": "https://blissclub.com/cdn/shop/files/ultimate_straight_pants_-_lite_-_wahida_white_cloud_s.jpg?v=1786696607&width=2048"
+        },
+        {
+          "name": "Cascade Gleam Drop Earrings",
+          "brand": "Salty",
+          "price": "₹399",
+          "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fproducts%2Fcascade-gleam-drop-earrings&subid=mw09-acc",
+          "imageUrl": "https://salty.co.in/cdn/shop/files/Image_20260803093353_2994_62.jpg?v=1788443855"
+        }
+      ]
+    },
+    {
+      "id": "ft-03",
+      "title": "Mocha Curve & Girl Boss Watch Ring",
+      "description": "Finishing pieces that complete a desi look — shop the set at Salty.",
+      "image": "https://salty.co.in/cdn/shop/files/SG0048-BK-BR_Model.jpg?v=1773390165",
+      "items": [
+        {
+          "name": "Mocha Curve Luxury Sunglasses",
+          "brand": "Salty",
+          "price": "₹799",
+          "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fproducts%2Fmocha-curve-luxury-sunglasses&subid=ft03-item1",
+          "imageUrl": "https://salty.co.in/cdn/shop/files/SG0048-BK-BR_Model.jpg?v=1773390165"
+        },
+        {
+          "name": "Girl Boss Salty Watch Ring - Gold",
+          "brand": "Salty",
+          "price": "₹749",
+          "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fproducts%2Fgirl-boss-salty-watch-ring-gold&subid=ft03-item2",
+          "imageUrl": "https://salty.co.in/cdn/shop/files/RS12399_Main4.jpg?v=1785449585"
+        }
+      ]
+    }
+  ]
+}

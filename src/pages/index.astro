@@ -1,182 +1,199 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import LookCard from "../components/LookCard.astro";
-import data from "../data/looks.json";
+import { assertUniqueWallImages, wallLooks } from "../data/wall";
 
-const womenCategories = data.categories.filter((c) => c.studio !== "men");
-const mensCategory = data.categories.find((c) => c.id === "mens");
-
-/** Hand-picked Featured looks (homepage). */
-const FEATURED_LOOK_IDS = ["skd-01", "fl-04", "dck-07", "kcb-04", "cm-01", "ft-03"] as const;
-
-const lookById = new Map(
-  data.categories.flatMap((cat) =>
-    cat.subcategories.flatMap((sub) =>
-      sub.looks.map((look) => [
-        look.id,
-        {
-          ...look,
-          image: look.cardImage || look.image,
-          imageSecondary: look.cardImageSecondary,
-          categoryTitle: cat.title,
-          categoryId: cat.id,
-          subcategoryId: sub.id,
-        },
-      ])
-    )
-  )
-);
-
-const featured = FEATURED_LOOK_IDS.map((id) => lookById.get(id)).filter(Boolean);
-
-/** Owned brand hero — not tied to a merchant PDP / look swap. */
-const heroImage = "/images/brand/hero.jpg";
-const heroImageMobile = "/images/brand/hero-mobile.jpg";
-
-const womenLookCount = womenCategories.reduce(
-  (n, cat) => n + cat.subcategories.reduce((m, sub) => m + sub.looks.length, 0),
-  0
-);
-const menLookCount = mensCategory
-  ? mensCategory.subcategories.reduce((m, sub) => m + sub.looks.length, 0)
-  : 0;
+assertUniqueWallImages(wallLooks);
+/** Base order from JSON — midweek rotate runs in the browser (IST). */
+const looks = wallLooks;
+const looksJson = JSON.stringify(looks);
 ---
 
-<Layout>
-  <section class="relative min-h-[88vh] overflow-hidden bg-ink text-paper">
-    <picture>
-      <source media="(min-width: 768px)" srcset={heroImage} />
-      <img
-        src={heroImageMobile}
-        alt="Young women and men in everyday Indo-Western and metro casual looks"
-        class="absolute inset-0 h-full w-full object-cover object-[center_20%] opacity-75 animate-fade md:object-[center_28%] md:opacity-60"
-      />
-    </picture>
-    <!-- Soft bottom scrim for type only; keep faces readable -->
-    <div
-      class="absolute inset-0 bg-gradient-to-t from-ink from-[8%] via-ink/45 via-[38%] to-transparent to-[72%]"
-    ></div>
-    <div class="absolute inset-0 hidden bg-gradient-to-r from-ink/25 via-transparent to-transparent md:block"></div>
-    <div class="absolute inset-0 bg-[radial-gradient(circle_at_16%_12%,rgba(230,57,70,0.12),transparent_38%)]"></div>
-
-    <div class="relative mx-auto flex min-h-[88vh] max-w-6xl flex-col justify-end px-4 pb-16 pt-28 md:px-6 md:pb-20">
-      <p class="animate-rise font-display text-5xl font-extrabold tracking-tight md:text-7xl lg:text-8xl">
-        DesiFit<span class="text-accent">.</span>
-      </p>
-      <h1 class="animate-rise delay-1 mt-4 max-w-2xl font-display text-2xl font-semibold leading-tight text-paper/95 md:text-4xl">
-        Fashion lookbooks. A fitness door. One lifestyle site.
-      </h1>
-      <p class="animate-rise delay-2 mt-4 max-w-xl text-base leading-relaxed text-paper/75 md:text-lg">
-        Curated women’s and men’s outfits with real merchant deep links — plus lean BMI and Desi calorie tools when that’s why you came.
-      </p>
-      <div class="animate-rise delay-3 mt-8 flex flex-wrap gap-3">
-        <a
-          href="/categories"
-          class="rounded-full bg-accent px-6 py-3 text-sm font-bold text-white transition hover:bg-accent-deep"
-        >
-          Browse lookbooks
-        </a>
-        <a
-          href="/fitness"
-          class="rounded-full border border-paper/40 px-6 py-3 text-sm font-bold text-paper transition hover:bg-paper/10"
-        >
-          Fitness studio
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <section class="mx-auto max-w-6xl px-4 py-16 md:px-6">
-    <div class="mb-8 max-w-2xl">
-      <h2 class="font-display text-3xl font-bold text-ink md:text-4xl">Three doors. Pick your intent.</h2>
-      <p class="mt-3 text-ink-soft">Women’s fashion, men’s fashion, or fitness tools — no forced CTAs for the wrong visitor.</p>
-    </div>
-    <div class="grid gap-5 md:grid-cols-3">
-      <a
-        href="/categories"
-        class="group relative overflow-hidden rounded-3xl border border-line bg-ink p-6 text-paper transition hover:-translate-y-1"
-      >
-        <p class="text-xs font-semibold uppercase tracking-[0.16em] opacity-60">{womenLookCount} looks</p>
-        <h3 class="mt-3 font-display text-2xl font-bold">Women</h3>
-        <p class="mt-3 text-sm leading-relaxed text-paper/70">
-          Indo-Western, desi casual, and accessories — the core shoppable studio.
-        </p>
-        <span class="mt-6 inline-block text-sm font-semibold text-accent">Enter studio →</span>
-      </a>
-      <a
-        href="/categories/mens"
-        class="group relative overflow-hidden rounded-3xl border border-line bg-white p-6 text-ink transition hover:-translate-y-1"
-      >
-        <p class="text-xs font-semibold uppercase tracking-[0.16em] text-sand">{menLookCount} looks</p>
-        <h3 class="mt-3 font-display text-2xl font-bold">Men</h3>
-        <p class="mt-3 text-sm leading-relaxed text-ink-soft">
-          Thin-start Bewakoof lookbooks — tees & denim, oversized street, ethnic casual.
-        </p>
-        <span class="mt-6 inline-block text-sm font-semibold text-accent-deep">Enter studio →</span>
-      </a>
-      <a
-        href="/fitness"
-        class="group relative overflow-hidden rounded-3xl border border-line bg-paper-2 p-6 text-ink transition hover:-translate-y-1"
-      >
-        <p class="text-xs font-semibold uppercase tracking-[0.16em] text-sand">Tools</p>
-        <h3 class="mt-3 font-display text-2xl font-bold">Fitness</h3>
-        <p class="mt-3 text-sm leading-relaxed text-ink-soft">
-          BMI calculator and Desi Food Calorie Index — lifestyle reference, not medical advice.
-        </p>
-        <span class="mt-6 inline-block text-sm font-semibold text-accent-deep">Open tools →</span>
-      </a>
-    </div>
-  </section>
-
-  <section class="border-y border-line bg-paper-2/60">
-    <div class="mx-auto max-w-6xl px-4 py-16 md:px-6">
-      <div class="mb-8 max-w-2xl">
-        <h2 class="font-display text-3xl font-bold text-ink md:text-4xl">Women’s worlds</h2>
-        <p class="mt-3 text-ink-soft">Each look is a curated outfit with shoppable pieces — not category dumps.</p>
-      </div>
-      <div class="grid gap-5 md:grid-cols-3">
-        {womenCategories.map((cat, idx) => (
-          <a
-            href={`/categories/${cat.id}`}
-            class:list={[
-              "group relative overflow-hidden rounded-3xl border border-line p-6 transition hover:-translate-y-1",
-              idx === 0 ? "bg-ink text-paper" : "bg-white text-ink",
-            ]}
+<Layout
+  title="DesiFit | Desi outfit inspiration"
+  description="Scroll desi outfit inspiration — full looks you can shop. Women’s ethnic and everyday style from partner merchants."
+>
+  <main class="wall-page">
+    <div class="wall-grid" id="wall-grid" aria-label="Outfit inspiration wall">
+      {
+        looks.map((look, index) => (
+          <button
+            type="button"
+            class="wall-tile"
+            data-index={index}
+            data-look-id={look.id}
+            id={`look-${look.id}`}
+            aria-label={`Open look: ${look.title}`}
           >
-            <p class="text-xs font-semibold uppercase tracking-[0.16em] opacity-60">
-              {cat.subcategories.length} subcategories
-            </p>
-            <h3 class="mt-3 font-display text-2xl font-bold">{cat.title}</h3>
-            <p class:list={["mt-3 text-sm leading-relaxed", idx === 0 ? "text-paper/70" : "text-ink-soft"]}>
-              {cat.description}
-            </p>
-            <span class:list={["mt-6 inline-block text-sm font-semibold", idx === 0 ? "text-accent" : "text-accent-deep"]}>
-              Explore →
-            </span>
-          </a>
-        ))}
-      </div>
+            <img
+              src={look.image}
+              alt=""
+              loading={index < 9 ? "eager" : "lazy"}
+              decoding="async"
+              referrerpolicy="no-referrer"
+            />
+          </button>
+        ))
+      }
     </div>
-  </section>
+  </main>
 
-  <section class="mx-auto max-w-6xl px-4 py-16 md:px-6">
-    <div class="mb-8 flex items-end justify-between gap-4">
-      <div>
-        <h2 class="font-display text-3xl font-bold text-ink">Featured looks</h2>
-        <p class="mt-2 text-ink-soft">A taste from women’s lookbooks — open Men’s or Fitness above for the other doors.</p>
+  <div
+    id="look-lightbox"
+    class="lightbox"
+    hidden
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="lightbox-title"
+  >
+    <div class="lightbox-backdrop" data-close></div>
+    <div class="lightbox-panel">
+      <button type="button" class="lightbox-close" data-close aria-label="Close">✕</button>
+      <button type="button" class="lightbox-nav lightbox-prev" data-prev aria-label="Previous look">‹</button>
+      <button type="button" class="lightbox-nav lightbox-next" data-next aria-label="Next look">›</button>
+
+      <div class="lightbox-body">
+        <div class="lightbox-hero">
+          <img id="lightbox-image" src="" alt="" referrerpolicy="no-referrer" />
+        </div>
+        <div class="lightbox-copy">
+          <h2 id="lightbox-title" class="font-display text-2xl font-bold text-ink md:text-3xl"></h2>
+          <p id="lightbox-desc" class="mt-3 text-sm leading-relaxed text-ink-soft md:text-base"></p>
+          <ul id="lightbox-items" class="lightbox-items"></ul>
+        </div>
       </div>
-      <a href="/categories" class="hidden text-sm font-semibold text-accent-deep md:inline">View all →</a>
     </div>
-    <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-      {featured.map((look) => (
-        <LookCard
-          id={look.id}
-          title={look.title}
-          image={look.image}
-          imageSecondary={look.imageSecondary}
-          items={look.items}
-        />
-      ))}
-    </div>
-  </section>
+  </div>
+
+  <script id="wall-data" type="application/json" set:html={looksJson} />
+  <script is:inline>
+    const baseLooks = JSON.parse(document.getElementById("wall-data").textContent || "[]");
+
+    function istDay() {
+      return new Date(new Date().toLocaleString("en-US", { timeZone: "Asia/Kolkata" })).getDay();
+    }
+
+    /** Wed–Sat IST: bottom 10 → top */
+    function displayLooks(list) {
+      if (list.length < 10) return list.slice();
+      const day = istDay();
+      if (day < 3 || day > 6) return list.slice();
+      const n = 10;
+      return list.slice(-n).concat(list.slice(0, -n));
+    }
+
+    let looks = displayLooks(baseLooks);
+    const grid = document.getElementById("wall-grid");
+
+    // Reorder DOM to match midweek display order
+    if (grid && looks.length) {
+      const byId = new Map(
+        Array.from(grid.querySelectorAll(".wall-tile")).map((el) => [el.getAttribute("data-look-id"), el])
+      );
+      looks.forEach((look, index) => {
+        const tile = byId.get(look.id);
+        if (!tile) return;
+        tile.dataset.index = String(index);
+        grid.appendChild(tile);
+      });
+    }
+
+    const lightbox = document.getElementById("look-lightbox");
+    const titleEl = document.getElementById("lightbox-title");
+    const descEl = document.getElementById("lightbox-desc");
+    const imageEl = document.getElementById("lightbox-image");
+    const itemsEl = document.getElementById("lightbox-items");
+    let current = 0;
+
+    function escapeHtml(s) {
+      return String(s)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;");
+    }
+
+    function renderItem(item) {
+      const priceBlock = item.mrp
+        ? `<span class="price-row"><span class="price-mrp">${escapeHtml(item.mrp)}</span><span class="price-sale">${escapeHtml(item.price)}</span></span>`
+        : `<span class="price-sale">${escapeHtml(item.price)}</span>`;
+      return `<li class="lightbox-item">
+        <img src="${escapeHtml(item.imageUrl)}" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <div class="lightbox-item-meta">
+          <p class="item-brand">${escapeHtml(item.brand)}</p>
+          <p class="item-name">${escapeHtml(item.name)}</p>
+          ${priceBlock}
+          <a class="shop-cta" href="${escapeHtml(item.affiliateUrl)}" target="_blank" rel="noopener sponsored">Shop at ${escapeHtml(item.brand)}</a>
+        </div>
+      </li>`;
+    }
+
+    function openAt(index) {
+      if (!looks.length) return;
+      current = ((index % looks.length) + looks.length) % looks.length;
+      const look = looks[current];
+      titleEl.textContent = look.title;
+      descEl.textContent = look.description;
+      imageEl.src = look.image;
+      imageEl.alt = look.title;
+      itemsEl.innerHTML = look.items.map(renderItem).join("");
+      lightbox.hidden = false;
+      document.body.style.overflow = "hidden";
+      history.replaceState(null, "", "#look-" + look.id);
+    }
+
+    function closeLightbox() {
+      lightbox.hidden = true;
+      document.body.style.overflow = "";
+      if (location.hash.indexOf("#look-") === 0) {
+        history.replaceState(null, "", location.pathname);
+      }
+    }
+
+    grid?.addEventListener("click", (e) => {
+      const tile = e.target.closest("[data-index]");
+      if (!tile) return;
+      openAt(Number(tile.dataset.index));
+    });
+
+    lightbox?.querySelectorAll("[data-close]").forEach((el) => {
+      el.addEventListener("click", closeLightbox);
+    });
+    lightbox?.querySelector("[data-prev]")?.addEventListener("click", () => openAt(current - 1));
+    lightbox?.querySelector("[data-next]")?.addEventListener("click", () => openAt(current + 1));
+
+    document.addEventListener("keydown", (e) => {
+      if (lightbox.hidden) return;
+      if (e.key === "Escape") closeLightbox();
+      if (e.key === "ArrowLeft") openAt(current - 1);
+      if (e.key === "ArrowRight") openAt(current + 1);
+    });
+
+    let touchX = null;
+    lightbox?.querySelector(".lightbox-panel")?.addEventListener(
+      "touchstart",
+      (e) => {
+        touchX = e.changedTouches[0].screenX;
+      },
+      { passive: true }
+    );
+    lightbox?.querySelector(".lightbox-panel")?.addEventListener(
+      "touchend",
+      (e) => {
+        if (touchX == null) return;
+        const dx = e.changedTouches[0].screenX - touchX;
+        touchX = null;
+        if (Math.abs(dx) < 50) return;
+        if (dx > 0) openAt(current - 1);
+        else openAt(current + 1);
+      },
+      { passive: true }
+    );
+
+    const hash = location.hash.replace(/^#/, "");
+    if (hash.indexOf("look-") === 0) {
+      const id = hash.slice(5);
+      const idx = looks.findIndex((l) => l.id === id);
+      if (idx >= 0) openAt(idx);
+    }
+  </script>
 </Layout>
