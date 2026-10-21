@@ -1,6 +1,6 @@
 {
   "updatedAt": "2026-10-21",
-  "note": "Homepage visual wall. Images must stay unique. Target ~30; launch may be leaner until more ethnic PDP images exist. Weekly: swap ~10. Midweek: UI rotates bottom 10 to top.",
+  "note": "Homepage visual wall. Unique images only. Prefer ~20–30 looks; launch lean while ethnic PDP variety is limited. Weekly: swap ~10. Midweek UI: bottom 10 → top (IST Wed–Sat). Optional per-item mrp for strikethrough.",
   "looks": [
     {
       "id": "skd-01",
@@ -235,6 +235,57 @@
       ]
     },
     {
+      "id": "osj-01",
+      "title": "Cascade Gleam Suite",
+      "description": "Finishing pieces that complete a desi look — shop the set at Salty.",
+      "image": "https://salty.co.in/cdn/shop/files/Image_20260803093353_2994_62.jpg?v=1788443855",
+      "items": [
+        {
+          "name": "Cascade Gleam Drop Earrings",
+          "brand": "Salty",
+          "price": "₹399",
+          "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fproducts%2Fcascade-gleam-drop-earrings&subid=osj01-item1",
+          "imageUrl": "https://salty.co.in/cdn/shop/files/Image_20260803093353_2994_62.jpg?v=1788443855"
+        },
+        {
+          "name": "Rendezvous Silver Chain",
+          "brand": "Salty",
+          "price": "₹502",
+          "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fproducts%2Frendezvous-silver-chain&subid=osj01-item2",
+          "imageUrl": "https://salty.co.in/cdn/shop/files/NS12475_model.png?v=1781797705"
+        },
+        {
+          "name": "Linked by Love Knot Bracelet - Silver",
+          "brand": "Salty",
+          "price": "₹349",
+          "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fproducts%2Flinked-by-love-knot-bracelet-silver&subid=osj01-item3",
+          "imageUrl": "https://salty.co.in/cdn/shop/files/BS14709-S_MAIN2.jpg?v=1789683964"
+        }
+      ]
+    },
+    {
+      "id": "cm-01",
+      "title": "Gold Heart & Minimal Hoops Set",
+      "description": "Finishing pieces that complete a desi look — shop the set at Salty.",
+      "image": "https://salty.co.in/cdn/shop/files/correct_20mp_20NS14121-G_MODEL3_20_281_29.jpg?v=1773354959",
+      "items": [
+        {
+          "name": "Luxe Gold Heart Pendant Necklace",
+          "brand": "Salty",
+          "price": "₹289",
+          "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fproducts%2Fluxe-gold-heart-pendant-necklace&subid=cm01-item1",
+          "imageUrl": "https://salty.co.in/cdn/shop/files/correct_20mp_20NS14121-G_MODEL3_20_281_29.jpg?v=1773354959"
+        },
+        {
+          "name": "Set of 3 Minimal Golden Hoop Earrings",
+          "brand": "Salty",
+          "price": "₹799",
+          "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fproducts%2Fset-of-3-minimal-golden-hoop-earrings&subid=cm01-item2",
+          "imageUrl": "https://salty.co.in/cdn/shop/files/EC33998-G__tirj7o_fcda1938-5d38-4b5c-9a67-ad61ba41e4af.jpg?v=1773352795"
+        }
+      ]
+    },
+    {
       "id": "fl-05",
       "title": "Green Ethnic Kurti × AirMelt Flare Lite",
       "description": "A complete desi-leaning outfit with real merchant links. Scroll the pieces below to shop.",
@@ -409,167 +460,6 @@
       ]
     },
     {
-      "id": "osj-01",
-      "title": "Cascade Gleam Suite",
-      "description": "Finishing pieces that complete a desi look — shop the set at Salty.",
-      "image": "https://salty.co.in/cdn/shop/files/Image_20260803093353_2994_62.jpg?v=1788443855",
-      "items": [
-        {
-          "name": "Cascade Gleam Drop Earrings",
-          "brand": "Salty",
-          "price": "₹399",
-          "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fproducts%2Fcascade-gleam-drop-earrings&subid=osj01-item1",
-          "imageUrl": "https://salty.co.in/cdn/shop/files/Image_20260803093353_2994_62.jpg?v=1788443855"
-        },
-        {
-          "name": "Rendezvous Silver Chain",
-          "brand": "Salty",
-          "price": "₹502",
-          "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fproducts%2Frendezvous-silver-chain&subid=osj01-item2",
-          "imageUrl": "https://salty.co.in/cdn/shop/files/NS12475_model.png?v=1781797705"
-        },
-        {
-          "name": "Linked by Love Knot Bracelet - Silver",
-          "brand": "Salty",
-          "price": "₹349",
-          "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fproducts%2Flinked-by-love-knot-bracelet-silver&subid=osj01-item3",
-          "imageUrl": "https://salty.co.in/cdn/shop/files/BS14709-S_MAIN2.jpg?v=1789683964"
-        }
-      ]
-    },
-    {
-      "id": "osj-02",
-      "title": "Lustre Halo & Bold Chain",
-      "description": "Finishing pieces that complete a desi look — shop the set at Salty.",
-      "image": "https://salty.co.in/cdn/shop/files/ES15215-S_MAIN.png?v=1788443808",
-      "items": [
-        {
-          "name": "Lustre Halo Statement Drop Earrings - Silver",
-          "brand": "Salty",
-          "price": "₹399",
-          "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fproducts%2Flustre-halo-statement-drop-earrings-silver&subid=osj02-item1",
-          "imageUrl": "https://salty.co.in/cdn/shop/files/ES15215-S_MAIN.png?v=1788443808"
-        },
-        {
-          "name": "D Bold Chain",
-          "brand": "Salty",
-          "price": "₹697",
-          "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fproducts%2Fd-bold-chain&subid=osj02-item2",
-          "imageUrl": "https://salty.co.in/cdn/shop/files/NS12273-S_model.jpg?v=1773425279"
-        }
-      ]
-    },
-    {
-      "id": "osj-03",
-      "title": "Zenith Cascade & Mariposa",
-      "description": "Finishing pieces that complete a desi look — shop the set at Salty.",
-      "image": "https://salty.co.in/cdn/shop/files/Zenith-Cascade-Drop-Earrings-Salty-226364849.png?v=1785233693",
-      "items": [
-        {
-          "name": "Zenith Cascade Drop Earrings",
-          "brand": "Salty",
-          "price": "₹689",
-          "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fproducts%2Fzenith-cascade-drop-earrings&subid=osj03-item1",
-          "imageUrl": "https://salty.co.in/cdn/shop/files/Zenith-Cascade-Drop-Earrings-Salty-226364849.png?v=1785233693"
-        },
-        {
-          "name": "Mariposa Black Chain",
-          "brand": "Salty",
-          "price": "₹1,190",
-          "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fproducts%2Fmariposa-black-chain&subid=osj03-item2",
-          "imageUrl": "https://salty.co.in/cdn/shop/files/NS12280-BLK_MODEL.jpg?v=1773410115"
-        }
-      ]
-    },
-    {
-      "id": "osj-06",
-      "title": "Silver Droplet & Bold Hoops",
-      "description": "Finishing pieces that complete a desi look — shop the set at Salty.",
-      "image": "https://salty.co.in/cdn/shop/files/ES15040-S_Main_20_282_29.jpg?v=1784899104",
-      "items": [
-        {
-          "name": "Silver Droplet Earrings",
-          "brand": "Salty",
-          "price": "₹799",
-          "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fproducts%2Fsilver-droplet-earrings&subid=osj06-item1",
-          "imageUrl": "https://salty.co.in/cdn/shop/files/ES15040-S_Main_20_282_29.jpg?v=1784899104"
-        },
-        {
-          "name": "Bold Silver Hoop Earrings",
-          "brand": "Salty",
-          "price": "₹299",
-          "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fproducts%2Fbold-silver-hoop-earrings&subid=osj06-item2",
-          "imageUrl": "https://salty.co.in/cdn/shop/files/ES14110-S_Main_202.jpg?v=1773416064"
-        }
-      ]
-    },
-    {
-      "id": "cm-01",
-      "title": "Gold Heart & Minimal Hoops Set",
-      "description": "Finishing pieces that complete a desi look — shop the set at Salty.",
-      "image": "https://salty.co.in/cdn/shop/files/correct_20mp_20NS14121-G_MODEL3_20_281_29.jpg?v=1773354959",
-      "items": [
-        {
-          "name": "Luxe Gold Heart Pendant Necklace",
-          "brand": "Salty",
-          "price": "₹289",
-          "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fproducts%2Fluxe-gold-heart-pendant-necklace&subid=cm01-item1",
-          "imageUrl": "https://salty.co.in/cdn/shop/files/correct_20mp_20NS14121-G_MODEL3_20_281_29.jpg?v=1773354959"
-        },
-        {
-          "name": "Set of 3 Minimal Golden Hoop Earrings",
-          "brand": "Salty",
-          "price": "₹799",
-          "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fproducts%2Fset-of-3-minimal-golden-hoop-earrings&subid=cm01-item2",
-          "imageUrl": "https://salty.co.in/cdn/shop/files/EC33998-G__tirj7o_fcda1938-5d38-4b5c-9a67-ad61ba41e4af.jpg?v=1773352795"
-        }
-      ]
-    },
-    {
-      "id": "cm-03",
-      "title": "Gleam Halo Hoops & Silver Elegance",
-      "description": "Finishing pieces that complete a desi look — shop the set at Salty.",
-      "image": "https://salty.co.in/cdn/shop/files/ES15193-S_MAIN2.png?v=1788443579",
-      "items": [
-        {
-          "name": "Gleam Halo Hoops Earrings - Silver",
-          "brand": "Salty",
-          "price": "₹459",
-          "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fproducts%2Fgleam-halo-hoops-earrings-silver&subid=cm03-item1",
-          "imageUrl": "https://salty.co.in/cdn/shop/files/ES15193-S_MAIN2.png?v=1788443579"
-        },
-        {
-          "name": "Silver Elegance Necklace",
-          "brand": "Salty",
-          "price": "₹269",
-          "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fproducts%2Fsilver-elegance-necklace&subid=cm03-item2",
-          "imageUrl": "https://salty.co.in/cdn/shop/files/SilverEleganceNecklace_1_bfdd7491-d4c1-4786-a47c-51f55cade5ea.jpg?v=1773377636"
-        }
-      ]
-    },
-    {
-      "id": "cm-04",
-      "title": "Pearl Hoops & Classic Chic Gold",
-      "description": "Finishing pieces that complete a desi look — shop the set at Salty.",
-      "image": "https://salty.co.in/cdn/shop/files/Pure-Pearls-Hoops-Salty-156910716.jpg?v=1773370090",
-      "items": [
-        {
-          "name": "Pure Pearls Hoops",
-          "brand": "Salty",
-          "price": "₹339",
-          "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fproducts%2Fpure-pearls-hoops&subid=cm04-item1",
-          "imageUrl": "https://salty.co.in/cdn/shop/files/Pure-Pearls-Hoops-Salty-156910716.jpg?v=1773370090"
-        },
-        {
-          "name": "Classic Chic Golden Necklace",
-          "brand": "Salty",
-          "price": "₹355",
-          "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fproducts%2Fclassic-chic-golden-necklace&subid=cm04-item2",
-          "imageUrl": "https://salty.co.in/cdn/shop/files/Classic-Chic-Golden-Necklace-Salty-223495619.jpg?v=1773371815"
-        }
-      ]
-    },
-    {
       "id": "ft-03",
       "title": "Mocha Curve & Girl Boss Watch Ring",
       "description": "Finishing pieces that complete a desi look — shop the set at Salty.",
@@ -588,50 +478,6 @@
           "price": "₹749",
           "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fproducts%2Fgirl-boss-salty-watch-ring-gold&subid=ft03-item2",
           "imageUrl": "https://salty.co.in/cdn/shop/files/RS12399_Main4.jpg?v=1785449585"
-        }
-      ]
-    },
-    {
-      "id": "ft-01",
-      "title": "Statement Rectangular Shades & Ebon Pin",
-      "description": "Finishing pieces that complete a desi look — shop the set at Salty.",
-      "image": "https://salty.co.in/cdn/shop/files/SG0036-BK-BK-ALPHA_MODEL.png?v=1789423298",
-      "items": [
-        {
-          "name": "Statement Rectangular Black UV Protection Sunglasses",
-          "brand": "Salty",
-          "price": "₹599",
-          "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fproducts%2Fstatement-rectangular-black-uv-protection-sunglasses&subid=ft01-item1",
-          "imageUrl": "https://salty.co.in/cdn/shop/files/SG0036-BK-BK-ALPHA_MODEL.png?v=1789423298"
-        },
-        {
-          "name": "Ebon Hair pin",
-          "brand": "Salty",
-          "price": "₹452",
-          "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fproducts%2Febon-hair-pin&subid=ft01-item2",
-          "imageUrl": "https://salty.co.in/cdn/shop/files/Salty-6080171.jpg?v=1773424827"
-        }
-      ]
-    },
-    {
-      "id": "cm-08",
-      "title": "Falling In Love & Bloom Ring",
-      "description": "Finishing pieces that complete a desi look — shop the set at Salty.",
-      "image": "https://salty.co.in/cdn/shop/files/Falling-In-Love-Silver-Necklace-Salty-224624333.jpg?v=1779648970",
-      "items": [
-        {
-          "name": "Falling In Love Silver Necklace",
-          "brand": "Salty",
-          "price": "₹364",
-          "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fproducts%2Ffalling-in-love-silver-necklace&subid=cm08-item1",
-          "imageUrl": "https://salty.co.in/cdn/shop/files/Falling-In-Love-Silver-Necklace-Salty-224624333.jpg?v=1779648970"
-        },
-        {
-          "name": "Adjustable Bloom Link Ring",
-          "brand": "Salty",
-          "price": "₹429",
-          "affiliateUrl": "https://tjzuh.com/g/9idoi1gyuy0be660c0620c509bedc5/?ulp=https%3A%2F%2Fsalty.co.in%2Fproducts%2Fadjustable-bloom-link-ring&subid=cm08-item2",
-          "imageUrl": "https://salty.co.in/cdn/shop/files/RS14938-G-WH_Main.jpg?v=1785409961"
         }
       ]
     }
