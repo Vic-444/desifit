@@ -7,15 +7,9 @@ interface Props {
 }
 
 const {
-  title = "DesiFit | Fashion Lookbooks & Fitness Studio",
-  description = "Curated women’s and men’s desi fashion lookbooks plus a lean fitness studio with BMI and Desi food calorie tools.",
+  title = "DesiFit | Desi outfit inspiration",
+  description = "Scroll desi outfit inspiration — full looks you can shop. Women’s ethnic and everyday style from partner merchants.",
 } = Astro.props;
-
-const studios = [
-  { label: "Women", href: "/categories" },
-  { label: "Men", href: "/categories/mens" },
-  { label: "Fitness", href: "/fitness" },
-];
 ---
 
 <!doctype html>
@@ -28,6 +22,9 @@ const studios = [
       gtag("js", new Date());
       gtag("config", "G-GB549ENN8E");
     </script>
+    <!-- AdSense placeholder: uncomment when approved
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+    -->
 
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -58,24 +55,15 @@ const studios = [
   </head>
   <body class="min-h-screen flex flex-col">
     <header class="sticky top-0 z-50 border-b border-line/80 bg-paper/90 backdrop-blur-md">
-      <div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3 md:px-6">
-        <a href="/" class="font-display text-2xl font-extrabold tracking-tight text-ink md:text-[1.75rem]">
+      <div class="mx-auto flex max-w-6xl items-center justify-between gap-3 px-3 py-2 md:px-6 md:py-2.5">
+        <a href="/" class="font-display text-xl font-extrabold tracking-tight text-ink md:text-2xl">
           DesiFit<span class="text-accent">.</span>
         </a>
-        <nav class="hidden items-center gap-5 text-sm font-semibold text-ink-soft md:flex">
-          {studios.map((s) => (
-            <a href={s.href} class="transition hover:text-accent">
-              {s.label}
-            </a>
-          ))}
-          <a href="/categories" class="rounded-full bg-ink px-3 py-1.5 text-paper transition hover:bg-accent">
-            Lookbooks
-          </a>
+        <nav class="flex items-center gap-4 text-sm font-semibold text-ink-soft">
+          <a href="/" class="transition hover:text-accent">Looks</a>
+          <a href="/blog" class="transition hover:text-accent">Blog</a>
+          <a href="/about" class="hidden transition hover:text-accent sm:inline">About</a>
         </nav>
-        <div class="flex items-center gap-3 md:hidden">
-          <a href="/fitness" class="text-sm font-semibold text-ink-soft">Fitness</a>
-          <a href="/categories" class="text-sm font-semibold text-accent">Lookbooks</a>
-        </div>
       </div>
     </header>
 
@@ -83,26 +71,23 @@ const studios = [
       <slot />
     </div>
 
-    <footer class="mt-16 border-t border-line bg-ink text-paper">
-      <div class="mx-auto grid max-w-6xl gap-8 px-4 py-12 md:grid-cols-[1.4fr_1fr] md:px-6">
+    <footer class="mt-10 border-t border-line bg-ink text-paper">
+      <div class="mx-auto grid max-w-6xl gap-8 px-4 py-10 md:grid-cols-[1.4fr_1fr] md:px-6">
         <div>
-          <p class="font-display text-3xl font-bold">DesiFit<span class="text-accent">.</span></p>
+          <p class="font-display text-2xl font-bold">DesiFit<span class="text-accent">.</span></p>
           <p class="mt-3 max-w-md text-sm leading-relaxed text-paper/70">
-            Women’s and men’s curated lookbooks, plus a lean fitness studio — lifestyle doors with real shoppable pieces where it matters.
+            Women’s desi outfit inspiration — a visual wall of full looks you can shop through partner merchants.
           </p>
         </div>
         <div class="grid grid-cols-2 gap-6 text-sm">
           <div class="space-y-2">
-            <p class="font-semibold uppercase tracking-wider text-paper/50">Studios</p>
-            <a class="block text-paper/85 hover:text-accent" href="/categories">Women</a>
-            <a class="block text-paper/85 hover:text-accent" href="/categories/mens">Men</a>
-            <a class="block text-paper/85 hover:text-accent" href="/fitness">Fitness</a>
-            <a class="block text-paper/85 hover:text-accent" href="/categories">All lookbooks</a>
+            <p class="font-semibold uppercase tracking-wider text-paper/50">Explore</p>
+            <a class="block text-paper/85 hover:text-accent" href="/">Looks</a>
+            <a class="block text-paper/85 hover:text-accent" href="/blog">Blog</a>
+            <a class="block text-paper/85 hover:text-accent" href="/about">About</a>
           </div>
           <div class="space-y-2">
             <p class="font-semibold uppercase tracking-wider text-paper/50">Site</p>
-            <a class="block text-paper/85 hover:text-accent" href="/blog">Blog</a>
-            <a class="block text-paper/85 hover:text-accent" href="/about">About</a>
             <a class="block text-paper/85 hover:text-accent" href="/contact">Contact</a>
             <a class="block text-paper/85 hover:text-accent" href="/disclosure">Affiliate disclosure</a>
             <a class="block text-paper/85 hover:text-accent" href="/privacy">Privacy</a>
